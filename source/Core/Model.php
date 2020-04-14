@@ -6,30 +6,13 @@ use Source\Support\Message;
 
 abstract class Model
 {
-    /** @var object|null */
     protected $data;
-
-    /** @var \PDOException|null */
     protected $fail;
-
-    /** @var Message|null */
     protected $message;
-
-    /** @var string $entity database table */
     protected static $entity;
-
-    /** @var array $protected no update or create */
     protected static $protected;
-
-    /** @var array $entity database table */
     protected static $required;
 
-    /**
-     * Model constructor.
-     * @param string $entity database table name
-     * @param array $protected table protected columns
-     * @param array $required table required columns
-     */
     public function __construct(string $entity, array $protected, array $required)
     {
         self::$entity = $entity;
@@ -39,10 +22,6 @@ abstract class Model
         $this->message = new Message();
     }
 
-    /**
-     * @param $name
-     * @param $value
-     */
     public function __set($name, $value)
     {
         if (empty($this->data)) {
@@ -52,53 +31,31 @@ abstract class Model
         $this->data->$name = $value;
     }
 
-    /**
-     * @param $name
-     * @return bool
-     */
     public function __isset($name)
     {
         return isset($this->data->$name);
     }
 
-    /**
-     * @param $name
-     * @return null
-     */
     public function __get($name)
     {
         return ($this->data->$name ?? null);
     }
 
-    /**
-     * @return null|object
-     */
     public function data(): ?object
     {
         return $this->data;
     }
 
-    /**
-     * @return \PDOException
-     */
     public function fail(): ?\PDOException
     {
         return $this->fail;
     }
 
-    /**
-     * @return Message|null
-     */
     public function message(): ?Message
     {
         return $this->message;
     }
 
-    /**
-     * @param string $entity
-     * @param array $data
-     * @return int|null
-     */
     protected function create(string $entity, array $data): ?int
     {
         try {
@@ -115,11 +72,6 @@ abstract class Model
         }
     }
 
-    /**
-     * @param string $select
-     * @param string|null $params
-     * @return null|\PDOStatement
-     */
     protected function read(string $select, string $params = null): ?\PDOStatement
     {
         try {
@@ -143,13 +95,6 @@ abstract class Model
         }
     }
 
-    /**
-     * @param string $entity
-     * @param array $data
-     * @param string $terms
-     * @param string $params
-     * @return int|null
-     */
     protected function update(string $entity, array $data, string $terms, string $params): ?int
     {
         try {
@@ -169,12 +114,6 @@ abstract class Model
         }
     }
 
-    /**
-     * @param string $entity
-     * @param string $terms
-     * @param string $params
-     * @return int|null
-     */
     protected function delete(string $entity, string $terms, string $params): ?int
     {
         try {
@@ -188,9 +127,6 @@ abstract class Model
         }
     }
 
-    /**
-     * @return array|null
-     */
     protected function safe(): ?array
     {
         $safe = (array)$this->data;
@@ -200,10 +136,6 @@ abstract class Model
         return $safe;
     }
 
-    /**
-     * @param array $data
-     * @return array|null
-     */
     private function filter(array $data): ?array
     {
         $filter = [];
@@ -213,9 +145,6 @@ abstract class Model
         return $filter;
     }
 
-    /**
-     * @return bool
-     */
     protected function required(): bool
     {
         $data = (array)$this->data();

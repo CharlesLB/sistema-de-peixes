@@ -6,9 +6,6 @@ use Source\Core\Model;
 
 class User extends Model
 {
-    /**
-     * User constructor.
-     */
     public function __construct()
     {
         parent::__construct(
@@ -17,15 +14,6 @@ class User extends Model
             ["first_name", "last_name", "email", "password"]
         );
     }
-
-    /**
-     * @param string $firstName
-     * @param string $lastName
-     * @param string $email
-     * @param string $password
-     * @param string|null $document
-     * @return User
-     */
     public function bootstrap(
         string $firstName,
         string $lastName,
@@ -41,12 +29,6 @@ class User extends Model
         return $this;
     }
 
-    /**
-     * @param string $terms
-     * @param string $params
-     * @param string $columns
-     * @return null|User
-     */
     public function find(string $terms, string $params, string $columns = "*"): ?User
     {
         $find = $this->read("SELECT {$columns} FROM " . self::$entity . " WHERE {$terms}", $params);
@@ -56,32 +38,16 @@ class User extends Model
         return $find->fetchObject(__CLASS__);
     }
 
-    /**
-     * @param int $id
-     * @param string $columns
-     * @return null|User
-     */
     public function findById(int $id, string $columns = "*"): ?User
     {
         return $this->find("id = :id", "id={$id}", $columns);
     }
 
-    /**
-     * @param string $email
-     * @param string $columns
-     * @return null|User
-     */
     public function findByEmail(string $email, string $columns = "*"): ?User
     {
         return $this->find("email = :email", "email={$email}", $columns);
     }
 
-    /**
-     * @param int $limit
-     * @param int $offset
-     * @param string $columns
-     * @return array|null
-     */
     public function all(int $limit = 30, int $offset = 0, string $columns = "*"): ?array
     {
         $all = $this->read("SELECT {$columns} FROM " . self::$entity . " LIMIT :limit OFFSET :offset",
@@ -93,9 +59,6 @@ class User extends Model
         return $all->fetchAll(\PDO::FETCH_CLASS, __CLASS__);
     }
 
-    /**
-     * @return null|User
-     */
     public function save(): ?User
     {
         if (!$this->required()) {
@@ -151,9 +114,6 @@ class User extends Model
         return $this;
     }
 
-    /**
-     * @return null|User
-     */
     public function destroy(): ?User
     {
         if (!empty($this->id)) {

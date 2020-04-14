@@ -6,19 +6,11 @@
  * ####################
  */
 
-/**
- * @param string $email
- * @return bool
- */
 function is_email(string $email): bool
 {
     return filter_var($email, FILTER_VALIDATE_EMAIL);
 }
 
-/**
- * @param string $password
- * @return bool
- */
 function is_passwd(string $password): bool
 {
     if (password_get_info($password)['algo']) {
@@ -34,10 +26,6 @@ function is_passwd(string $password): bool
  * ##################
  */
 
-/**
- * @param string $string
- * @return string
- */
 function str_slug(string $string): string
 {
     $string = filter_var(mb_strtolower($string), FILTER_SANITIZE_STRIPPED);
@@ -52,10 +40,6 @@ function str_slug(string $string): string
     return $slug;
 }
 
-/**
- * @param string $string
- * @return string
- */
 function str_studly_case(string $string): string
 {
     $string = str_slug($string);
@@ -66,30 +50,16 @@ function str_studly_case(string $string): string
     return $studlyCase;
 }
 
-/**
- * @param string $string
- * @return string
- */
 function str_camel_case(string $string): string
 {
     return lcfirst(str_studly_case($string));
 }
 
-/**
- * @param string $string
- * @return string
- */
 function str_title(string $string): string
 {
     return mb_convert_case(filter_var($string, FILTER_SANITIZE_SPECIAL_CHARS), MB_CASE_TITLE);
 }
 
-/**
- * @param string $string
- * @param int $limit
- * @param string $pointer
- * @return string
- */
 function str_limit_words(string $string, int $limit, string $pointer = "..."): string
 {
     $string = trim(filter_var($string, FILTER_SANITIZE_SPECIAL_CHARS));
@@ -104,12 +74,6 @@ function str_limit_words(string $string, int $limit, string $pointer = "..."): s
     return "{$words}{$pointer}";
 }
 
-/**
- * @param string $string
- * @param int $limit
- * @param string $pointer
- * @return string
- */
 function str_limit_chars(string $string, int $limit, string $pointer = "..."): string
 {
     $string = trim(filter_var($string, FILTER_SANITIZE_SPECIAL_CHARS));
@@ -127,10 +91,6 @@ function str_limit_chars(string $string, int $limit, string $pointer = "..."): s
  * ###############
  */
 
-/**
- * @param string $path
- * @return string
- */
 function url(string $path = null): string
 {
     if (strpos($_SERVER['HTTP_HOST'], "localhost")) {
@@ -147,18 +107,13 @@ function url(string $path = null): string
     return CONF_URL_BASE;
 }
 
-/**
- * @return string
- */
+
 function url_back(): string
 {
     return ($_SERVER['HTTP_REFERER'] ?? url());
 }
 
-/**
- * @param string|null $path
- * @return string
- */
+
 function theme(string $path = null): string
 {
     if (strpos($_SERVER['HTTP_HOST'], "localhost")) {
@@ -176,9 +131,7 @@ function theme(string $path = null): string
     return CONF_URL_BASE . "/themes/" . CONF_VIEW_THEME;
 }
 
-/**
- * @param string $url
- */
+
 function redirect(string $url): void
 {
     header("HTTP/1.1 302 Redirect");
@@ -200,29 +153,18 @@ function redirect(string $url): void
  * ################
  */
 
-/**
- * @param string $date
- * @param string $format
- * @return string
- */
+
 function date_fmt(string $date = "now", string $format = "d/m/Y H\hi"): string
 {
     return (new DateTime($date))->format($format);
 }
 
-/**
- * @param string $date
- * @return string
- */
 function date_fmt_br(string $date = "now"): string
 {
     return (new DateTime($date))->format(CONF_DATE_BR);
 }
 
-/**
- * @param string $date
- * @return string
- */
+
 function date_fmt_app(string $date = "now"): string
 {
     return (new DateTime($date))->format(CONF_DATE_APP);
@@ -234,29 +176,18 @@ function date_fmt_app(string $date = "now"): string
  * ####################
  */
 
-/**
- * @param string $password
- * @return string
- */
 function passwd(string $password): string
 {
     return password_hash($password, CONF_PASSWD_ALGO, CONF_PASSWD_OPTION);
 }
 
-/**
- * @param string $password
- * @param string $hash
- * @return bool
- */
+
 function passwd_verify(string $password, string $hash): bool
 {
     return password_verify($password, $hash);
 }
 
-/**
- * @param string $hash
- * @return bool
- */
+
 function passwd_rehash(string $hash): bool
 {
     return password_needs_rehash($hash, CONF_PASSWD_ALGO, CONF_PASSWD_OPTION);
@@ -268,9 +199,6 @@ function passwd_rehash(string $hash): bool
  * ################
  */
 
-/**
- * @return string
- */
 function csrf_input(): string
 {
     $session = new \Source\Core\Session();
@@ -278,10 +206,6 @@ function csrf_input(): string
     return "<input type='hidden' name='csrf' value='" . ($session->csrf_token ?? "") . "'/>";
 }
 
-/**
- * @param $request
- * @return bool
- */
 function csrf_verify($request): bool
 {
     $session = new \Source\Core\Session();

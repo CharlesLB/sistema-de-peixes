@@ -5,15 +5,8 @@ namespace Source\App;
 use Source\Core\Controller;
 use Source\Support\Pager;
 
-/**
- * Web Controller
- * @package Source\App
- */
 class Web extends Controller
 {
-    /**
-     * Web constructor.
-     */
     public function __construct()
     {
         parent::__construct(__DIR__ . "/../../themes/" . CONF_VIEW_THEME . "/");
@@ -57,7 +50,6 @@ class Web extends Controller
 
     /**
      * SITE BLOG
-     * @param array|null $data
      */
     public function blog(?array $data): void
     {
@@ -79,7 +71,6 @@ class Web extends Controller
 
     /**
      * SITE BLOG POST
-     * @param array $data
      */
     public function blogPost(array $data): void
     {
