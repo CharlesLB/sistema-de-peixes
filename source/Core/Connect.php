@@ -31,16 +31,10 @@ class Connect
         return self::$instance;
     }
 
-    /**
-     * Connect constructor.
-     */
     final private function __construct()
     {
     }
 
-    /**
-     * Connect clone.
-     */
     final private function __clone()
     {
     }
