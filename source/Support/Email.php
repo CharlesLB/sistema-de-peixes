@@ -5,12 +5,6 @@ namespace Source\Support;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-/**
- * FSPHP | Class Email
- *
- * @author Robson V. Leite <cursos@upinside.com.br>
- * @package Source\Core
- */
 class Email
 {
     /** @var array */
