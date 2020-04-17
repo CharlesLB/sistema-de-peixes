@@ -6,6 +6,9 @@ use Source\Core\Model;
 
 class User extends Model
 {
+    /**
+     * User constructor.
+     */
     public function __construct()
     {
         parent::__construct(
@@ -14,6 +17,7 @@ class User extends Model
             ["first_name", "last_name", "email", "password"]
         );
     }
+
     public function bootstrap(
         string $firstName,
         string $lastName,
@@ -42,6 +46,7 @@ class User extends Model
     {
         return $this->find("id = :id", "id={$id}", $columns);
     }
+
 
     public function findByEmail(string $email, string $columns = "*"): ?User
     {

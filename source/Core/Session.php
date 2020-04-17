@@ -6,6 +6,9 @@ use Source\Support\Message;
 
 class Session
 {
+    /**
+     * Session constructor.
+     */
     public function __construct()
     {
         if (!session_id()) {
@@ -43,6 +46,7 @@ class Session
         return $this;
     }
 
+
     public function has(string $key): bool
     {
         return isset($_SESSION[$key]);
@@ -53,6 +57,7 @@ class Session
         session_regenerate_id(true);
         return $this;
     }
+
 
     public function destroy(): Session
     {
@@ -70,6 +75,9 @@ class Session
         return null;
     }
 
+    /**
+     * CSRF Token
+     */
     public function csrf(): void
     {
         $_SESSION['csrf_token'] = md5(uniqid(rand(), true));

@@ -1,15 +1,15 @@
 <?php
 
-/**
- * ####################
- * ###   VALIDATE   ###
- * ####################
- */
+//
+// ─── VALIDATE ───────────────────────────────────────────────────────────────────
+//
+
 
 function is_email(string $email): bool
 {
     return filter_var($email, FILTER_VALIDATE_EMAIL);
 }
+
 
 function is_passwd(string $password): bool
 {
@@ -20,11 +20,10 @@ function is_passwd(string $password): bool
     return (mb_strlen($password) >= CONF_PASSWD_MIN_LEN && mb_strlen($password) <= CONF_PASSWD_MAX_LEN ? true : false);
 }
 
-/**
- * ##################
- * ###   STRING   ###
- * ##################
- */
+//
+// ─── STRING ─────────────────────────────────────────────────────────────────────
+//
+
 
 function str_slug(string $string): string
 {
@@ -39,6 +38,7 @@ function str_slug(string $string): string
     );
     return $slug;
 }
+
 
 function str_studly_case(string $string): string
 {
@@ -55,10 +55,12 @@ function str_camel_case(string $string): string
     return lcfirst(str_studly_case($string));
 }
 
+
 function str_title(string $string): string
 {
     return mb_convert_case(filter_var($string, FILTER_SANITIZE_SPECIAL_CHARS), MB_CASE_TITLE);
 }
+
 
 function str_limit_words(string $string, int $limit, string $pointer = "..."): string
 {
@@ -74,6 +76,7 @@ function str_limit_words(string $string, int $limit, string $pointer = "..."): s
     return "{$words}{$pointer}";
 }
 
+
 function str_limit_chars(string $string, int $limit, string $pointer = "..."): string
 {
     $string = trim(filter_var($string, FILTER_SANITIZE_SPECIAL_CHARS));
@@ -85,50 +88,14 @@ function str_limit_chars(string $string, int $limit, string $pointer = "..."): s
     return "{$chars}{$pointer}";
 }
 
-/**
- * ###############
- * ###   URL   ###
- * ###############
- */
+//
+// ─── URL ────────────────────────────────────────────────────────────────────────
+//
 
-function url(string $path = null): string
+
+function url(string $path): string
 {
-    if (strpos($_SERVER['HTTP_HOST'], "localhost")) {
-        if ($path) {
-            return CONF_URL_TEST . "/" . ($path[0] == "/" ? mb_substr($path, 1) : $path);
-        }
-        return CONF_URL_TEST;
-    }
-
-    if ($path) {
-        return CONF_URL_BASE . "/" . ($path[0] == "/" ? mb_substr($path, 1) : $path);
-    }
-
-    return CONF_URL_BASE;
-}
-
-
-function url_back(): string
-{
-    return ($_SERVER['HTTP_REFERER'] ?? url());
-}
-
-
-function theme(string $path = null): string
-{
-    if (strpos($_SERVER['HTTP_HOST'], "localhost")) {
-        if ($path) {
-            return CONF_URL_TEST . "/themes/" . CONF_VIEW_THEME . "/" . ($path[0] == "/" ? mb_substr($path, 1) : $path);
-        }
-
-        return CONF_URL_TEST . "/themes/" . CONF_VIEW_THEME;
-    }
-
-    if ($path) {
-        return CONF_URL_BASE . "/themes/" . CONF_VIEW_THEME . "/" . ($path[0] == "/" ? mb_substr($path, 1) : $path);
-    }
-
-    return CONF_URL_BASE . "/themes/" . CONF_VIEW_THEME;
+    return CONF_URL_BASE . "/" . ($path[0] == "/" ? mb_substr($path, 1) : $path);
 }
 
 
@@ -140,18 +107,14 @@ function redirect(string $url): void
         exit;
     }
 
-    if (filter_input(INPUT_GET, "route", FILTER_DEFAULT) != $url) {
-        $location = url($url);
-        header("Location: {$location}");
-        exit;
-    }
+    $location = url($url);
+    header("Location: {$location}");
+    exit;
 }
 
-/**
- * ################
- * ###   DATE   ###
- * ################
- */
+//
+// ─── DATE ───────────────────────────────────────────────────────────────────────
+//
 
 
 function date_fmt(string $date = "now", string $format = "d/m/Y H\hi"): string
@@ -164,17 +127,15 @@ function date_fmt_br(string $date = "now"): string
     return (new DateTime($date))->format(CONF_DATE_BR);
 }
 
-
 function date_fmt_app(string $date = "now"): string
 {
     return (new DateTime($date))->format(CONF_DATE_APP);
 }
 
-/**
- * ####################
- * ###   PASSWORD   ###
- * ####################
- */
+//
+// ─── PASSWORD ───────────────────────────────────────────────────────────────────
+//
+
 
 function passwd(string $password): string
 {
@@ -193,11 +154,10 @@ function passwd_rehash(string $hash): bool
     return password_needs_rehash($hash, CONF_PASSWD_ALGO, CONF_PASSWD_OPTION);
 }
 
-/**
- * ################
- * ###   CSRF   ###
- * ################
- */
+//
+// ─── CSFR ───────────────────────────────────────────────────────────────────────
+//
+
 
 function csrf_input(): string
 {

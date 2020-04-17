@@ -1,0 +1,51 @@
+/*
+ * ─── NAV ────────────────────────────────────────────────────────────────────────
+ */
+
+/*
+ * ─── HOME ───────────────────────────────────────────────────────────────────────
+ */
+
+.home{
+    position: relative;
+    background: url(../img/web/background.png);
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    display: table;
+}
+
+.home .landing-text{
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    color: aliceblue;
+}
+
+.home .landing-text h1{
+    color: #fff ;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 50px;
+    font-family: sans-serif;
+}
+
+.home .landing-text h3{
+    padding: 10px;
+    font-size: 15px;
+    color: #fff;
+    font-family: sans-serif;
+}
+
+/*
+ * ─── CONTENT ────────────────────────────────────────────────────────────────────
+ */
+
+section#content{
+    background-color: #002f4b;
+}
+
+img{
+    height: 100px;
+    width: 100px;
+}

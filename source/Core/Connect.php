@@ -4,7 +4,7 @@ namespace Source\Core;
 
 class Connect
 {
-    private const OPTIONS = [
+        private const OPTIONS = [
         \PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8",
         \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
         \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_OBJ,
@@ -13,7 +13,7 @@ class Connect
 
     private static $instance;
 
-    public static function getInstance(): ?\PDO
+    public static function getInstance(): \PDO
     {
         if (empty(self::$instance)) {
             try {
@@ -24,7 +24,7 @@ class Connect
                     self::OPTIONS
                 );
             } catch (\PDOException $exception) {
-                redirect("/ops/problemas");
+                die("<h1>Whoops! Erro ao conectar...</h1>");
             }
         }
 
