@@ -1,20 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/css/admin.css">
-    <link rel="stylesheet" href="../assets/css/bootstrap.css">
-    <link rel="stylesheet" href="../assets/css/globals.css">
-    <script src="../assets/js/icons.js"></script>
-    <title>Admisnistrador do Laboratório</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+  <link rel="stylesheet" href="../assets/css/bootstrap.css">
+  <link rel="stylesheet" href="../assets/css/globals.css">
+  <script src="../assets/js/icons.js"></script>
+  <title>Admisnistrador do Laboratório</title>
 </head>
+
 <body>
-    
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+  <label for="check">
+    <i class="fas fa-bars" id="sidebar_btn"></i>
+  </label>
+  <input type="checkbox" id="check">
+
+  <nav class="navbar navbar-light bg-dark fixed-top">
+    <h3> Laboratório de <span>Biologia</span></h3>
+    <div class="form-inline">
+      <button class="btn logout my-2 my-sm-0" type="submit">Sair</button>
+    </div>
+  </nav>
+
+  <div class="sidebar">
+    <center>
+      <img src="../assets/img/admin/foto-perfil.jpeg" alt="perfil" class="profile-image">
+      <h4>Charles Braga</h4>
+    </center>
+    <a href="#"><i class="fas fa-fish"></i> <span>Estudos de Peixe</span></a>
+    <a href="#"><i class="fas fa-info-circle"></i> <span>Informações</span></a>  
+    <a href="#"><i class="fas fa-users"></i> <span>Usuários</span></a>  
+    <label id="sidebar-btn" for="check">
+      <i class="fas fa-bars"></i> <span>Redimencionar</span>
+    </label> 
+  </div>
+
+  <div class="content">
+
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </body>
+
 </html>
