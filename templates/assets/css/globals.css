@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+
 * {
     margin: 0;
     padding: 0;
@@ -6,7 +8,7 @@
 }
 
 body{
-    font: 400 14px sans-serif !important;
+    font: 400 14px Poppins, sans-serif !important;
     -webkit-font-smoothing: antialiased !important;
 }
 
@@ -23,7 +25,9 @@ button, input[type="submit"]{
     font-size: 15px !important;
     border: solid #50A7C2 !important;
     color: #fff !important;
-    border-radius: 5px !important;
+    border-radius: 5
+    
+    px !important;
     padding: 10px 15px 10px 15px !important;
  }
  
