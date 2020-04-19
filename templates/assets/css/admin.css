@@ -5,7 +5,6 @@
 nav{
   position: fixed;
   background: #002f4b;
-  border-radius: ;
 }
 
 nav h3{
@@ -46,7 +45,7 @@ nav .logout:hover{
 
 .sidebar{
   background: #2f323a;
-  padding-top: 30px;
+  padding-top: 50px;
   position: fixed;
   left: 0;
   width: 250px;
@@ -66,6 +65,7 @@ nav .logout:hover{
   margin-top: 0;
   margin-bottom: 20px;
   font-size: 20px;
+  transition: 1s;
 }
 
 .sidebar a,
@@ -98,6 +98,7 @@ nav .logout:hover{
 #check:checked ~ .sidebar a span,
 #check:checked ~ .sidebar label span{
   display: none;
+  font-size: 0;
 }
 
 #check:checked ~ .sidebar a,
@@ -118,9 +119,12 @@ nav .logout:hover{
   
 .content{
   margin-left: 250px;
+  margin-top: 25px;
   background: #fff;
+  transition: .5s;
 }
 
 #check:checked ~ .content{
   margin-left:60px;
 }
+
