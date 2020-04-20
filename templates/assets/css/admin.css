@@ -9,11 +9,14 @@
   border-radius: 2px !important;
   color: aliceblue !important;
   transition: 0.5s !important;
+  height: 38px;
 }
 
 .button:hover {
   background: #fff !important;
+  color: #3ac9f1 !important;
 }
+
 
 /*
  * ─── NAVBAR ─────────────────────────────────────────────────────────────────────
@@ -146,3 +149,43 @@ nav .logout:hover {
 .content .card-deck {
   padding: 20px;
 }
+
+.content .navbar{
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.19);
+}
+
+.content .card{
+  background: #fff;
+   border-radius: 0;
+   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.19);
+   transition: 0.5s;
+}
+
+.content .card:hover{
+  background: #fff;
+   border-radius: 0;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+.content .card a{
+  color: #2f323a;
+  text-decoration: none;
+  transition: .5s;
+}
+
+.content .card a:hover{
+  color: #535353;
+}
+
+.content .card .auxiliar-button{
+  color: #535353;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.19);
+  transition: .5s;
+}
+
+.content .card .auxiliar-button:hover{
+  color: #222222;
+  
+}
+
