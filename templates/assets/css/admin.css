@@ -188,24 +188,28 @@ nav .logout:hover {
   color: #222222;
 }
 
-.fish .fish-content{
+.table-page table{
+  overflow-x: auto;
+}
+
+.table-page .table-content{
   padding: 30px;
 }
 
-.fish .fish-content h1{
+.table-page .table-content h1{
   font-size: 30px;
 }
 
-.fish .fish-content table{
+.table-page .table-content table{
   margin-top: 30px;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.19);
 }
 
-.fish .fish-content i{
+.table-page .table-content i{
   cursor: pointer;
 }
 
-.fish .fish-content th.order{
+.table-page .table-content th.order{
   cursor: pointer;
 }
 
