@@ -19,20 +19,4 @@ input, button, textarea {
 button, input[type="submit"]{
     cursor: pointer;
 }
-
-.button{
-    background: #50A7C2 !important;
-    font-size: 15px !important;
-    border: solid #50A7C2 !important;
-    color: #fff !important;
-    border-radius: 5
-    
-    px !important;
-    padding: 10px 15px 10px 15px !important;
- }
- 
- .button:hover{
-     background: #fff !important;
-     color: #50A7C2 !important;
- }
  

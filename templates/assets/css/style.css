@@ -82,6 +82,21 @@ section#intro{
     min-width: 200px;
 }
 
+#login .button{
+    background: #50A7C2 ;
+    font-size: 15px ;
+    border: solid #50A7C2 ;
+    color: #fff ;
+    border-radius: 5px ;
+    padding: 10px 15px 10px 15px ;
+}
+     
+#login .button:hover{
+    background: #fff ;
+    color: #50A7C2 ;
+}
+
+
 form{
     margin-left: 20px;
 }
@@ -169,7 +184,7 @@ form{
 	font-size: 20px;
 	font-weight: lighter;
 	line-height: normal;
-	margin-bottom: 0 !important;
+	margin-bottom: 0 ;
 	padding-bottom: 0;
 }
 

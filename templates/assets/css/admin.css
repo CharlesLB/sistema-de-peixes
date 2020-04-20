@@ -1,13 +1,30 @@
 /*
+ * ─── GENERAL ────────────────────────────────────────────────────────────────────
+ */
+
+.button {
+  border: solid #3ac9f1 !important;
+  background: #3ac9f1 !important;
+  text-decoration: none !important;
+  border-radius: 2px !important;
+  color: aliceblue !important;
+  transition: 0.5s !important;
+}
+
+.button:hover {
+  background: #fff !important;
+}
+
+/*
  * ─── NAVBAR ─────────────────────────────────────────────────────────────────────
  */
 
-nav{
+nav {
   position: fixed;
   background: #002f4b;
 }
 
-nav h3{
+nav h3 {
   color: aliceblue;
   margin: 0;
   text-transform: uppercase;
@@ -15,25 +32,24 @@ nav h3{
   font-weight: 900;
 }
 
-nav span{
+nav span {
   color: #3ac9f1;
 }
 
-nav .logout{
+nav .logout {
   padding: 5px 10px 5px 10px;
   background: #3ac9f1;
   text-decoration: none;
   float: right;
   margin-top: -30px;
-  margin-right: 40px;
   border-radius: 2px;
   font-size: 15px;
   font-weight: 600;
   color: aliceblue;
-  transition: .5s;
+  transition: 0.5s;
 }
 
-nav .logout:hover{
+nav .logout:hover {
   background: #fff;
   color: #002f4b;
   text-decoration: none;
@@ -43,24 +59,24 @@ nav .logout:hover{
  * ─── SIDEBAR ────────────────────────────────────────────────────────────────────
  */
 
-.sidebar{
+.sidebar {
   background: #2f323a;
   padding-top: 50px;
   position: fixed;
   left: 0;
   width: 250px;
   height: 100%;
-  transition: .5s;
+  transition: 0.5s;
 }
 
-.sidebar .profile-image{
+.sidebar .profile-image {
   width: 100px;
   height: 100px;
   border-radius: 100px;
   margin-bottom: 10px;
 }
 
-.sidebar h4{
+.sidebar h4 {
   color: #ccc;
   margin-top: 0;
   margin-bottom: 20px;
@@ -69,7 +85,7 @@ nav .logout:hover{
 }
 
 .sidebar a,
-.sidebar label{
+.sidebar label {
   color: aliceblue;
   display: block;
   width: 100%;
@@ -77,38 +93,38 @@ nav .logout:hover{
   text-decoration: none;
   padding-left: 40px;
   box-sizing: border-box;
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .sidebar a:hover,
-.sidebar label:hover{
+.sidebar label:hover {
   background: #3ac9f1;
   color: #002f4b;
   text-decoration: none;
 }
 
-.sidebar span{
+.sidebar span {
   padding: 10px;
 }
 
-#check:checked ~ .sidebar{
+#check:checked ~ .sidebar {
   left: -190px;
 }
 
 #check:checked ~ .sidebar a span,
-#check:checked ~ .sidebar label span{
+#check:checked ~ .sidebar label span {
   display: none;
   font-size: 0;
 }
 
 #check:checked ~ .sidebar a,
-#check:checked ~ .sidebar label{
+#check:checked ~ .sidebar label {
   font-size: 20px;
   margin-left: 170px;
   width: 80px;
 }
 
-#check:checked ~ .sidebar h4{
+#check:checked ~ .sidebar h4 {
   font-size: 0;
 }
 
@@ -116,15 +132,17 @@ nav .logout:hover{
  * ─── CONTENT ────────────────────────────────────────────────────────────────────
  */
 
-  
-.content{
+.content {
   margin-left: 250px;
   margin-top: 25px;
   background: #fff;
-  transition: .5s;
+  transition: 0.5s;
 }
 
-#check:checked ~ .content{
-  margin-left:60px;
+#check:checked ~ .content {
+  margin-left: 60px;
 }
 
+.content .card-deck {
+  padding: 20px;
+}
