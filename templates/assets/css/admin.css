@@ -186,6 +186,26 @@ nav .logout:hover {
 
 .content .card .auxiliar-button:hover{
   color: #222222;
-  
+}
+
+.fish .fish-content{
+  padding: 30px;
+}
+
+.fish .fish-content h1{
+  font-size: 30px;
+}
+
+.fish .fish-content table{
+  margin-top: 30px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.19);
+}
+
+.fish .fish-content i{
+  cursor: pointer;
+}
+
+.fish .fish-content th.order{
+  cursor: pointer;
 }
 

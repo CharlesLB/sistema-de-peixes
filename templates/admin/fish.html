@@ -45,68 +45,65 @@
   </div>
 
   <div class="content fish">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <button type="button" class="btn button" data-toggle="modal" data-target="#addModal">Adicionar</button>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Search">
+          <button class="btn button my-2 my-sm-0" type="submit">Pesquisar</button>
+        </form>
+      </div>
+    </nav>
+
+    <div class="fish-content">
       <h1>Espécie selecionada</h1>
-    <table class="table">
+      <table class="table table-striped">
         <thead class="thead-dark">
           <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+            <th class="order" scope="col">ID <i class="fas fa-sort"></i></th>
+            <th class="order" scope="col">Espécie <i class="fas fa-sort"></i></th>
+            <th class="order" scope="col">Sexo <i class="fas fa-sort"></i></th>
+            <th class="order" scope="col">Comp. Padrão <i class="fas fa-sort"></i></th>
+            <th class="order" scope="col">Comp. Total <i class="fas fa-sort"></i></th>
+            <th class="order" scope="col">Peso <i class="fas fa-sort"></i></th>
+            <th scope="col">EDITAR</th>
+            <th scope="col">DELETAR</th>          
           </tr>
         </thead>
         <tbody>
           <tr>
             <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <td>espécie X</td>
+            <td>Macho</td>
+            <td>48,25cm </td>
+            <td>51,25cm </td>
+            <td>5,25 Kg</td>
+            <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#editModal">Editar</button></td>
+            <td><button class="btn btn-danger my-2 my-sm-0" type="submit">Excluir</button></td>
           </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-          </tr>
-        </tbody>
-      </table>
-      
-      <table class="table">
-        <thead class="thead-light">
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-          </tr>
-        </thead>
-        <tbody>
           <tr>
             <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <td>espécie X</td>
+            <td>Macho</td>
+            <td>48,25cm </td>
+            <td>51,25cm </td>
+            <td>5,25 Kg</td>
+            <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#editModal">Editar</button></td>
+            <td><button class="btn btn-danger my-2 my-sm-0" type="submit">Excluir</button></td>
           </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-          </tr>
+          
         </tbody>
       </table>
+    </div>
   </div>
 
 
@@ -114,11 +111,11 @@
   -- ─── MODALS ─────────────────────────────────────────────────────────────────────
   -->
 
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Adicionar espécie ainda não cadastrada</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Adicionar Espécie</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -127,26 +124,74 @@
           <div class="modal-body">
             <div class="form-group">
               <label for="specie">Nome da Espécie</label>
-              <input type="text" class="form-control" id="specie" placeholder="Espécie">
+              <input type="text" class="form-control" id="specie" placeholder="Espécie" required>
             </div>
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="defaultLength">Comprimento Padrão</label>
-                <input type="number" class="form-control" id="defaultLength">
+                <input type="number" class="form-control" placeholder="Comprimento padrão" id="defaultLength">
               </div>
               <div class="form-group col-md-6">
                 <label for="totalLength">Comprimento Total</label>
-                <input type="number" class="form-control" id="totalLength">
+                <input type="number" class="form-control" placeholder="Comprimento total" id="totalLength">
               </div>
             </div>
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="weight">Peso</label>
-                <input type="number" class="form-control" id="weight">
+                <input type="number" class="form-control" id="weight" placeholder="Peso">
               </div>
               <div class="form-group col-md-6">
                 <label for="sex">Sexo</label>
-                <select id="sex" class="form-control">
+                <select id="sex" class="form-control" required>
+                  <option selected>Macho</option>
+                  <option>Fêmea</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn button">Save changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Editar peixe 1</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="specie">Nome da Espécie</label>
+              <input type="text" class="form-control" id="specie" placeholder="Espécie" required>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="defaultLength">Comprimento Padrão</label>
+                <input type="number" class="form-control" placeholder="Comprimento padrão" id="defaultLength">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="totalLength">Comprimento Total</label>
+                <input type="number" class="form-control" placeholder="Comprimento total" id="totalLength">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="weight">Peso</label>
+                <input type="number" class="form-control" id="weight" placeholder="Peso">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="sex">Sexo</label>
+                <select id="sex" class="form-control" required>
                   <option selected>Macho</option>
                   <option>Fêmea</option>
                 </select>
