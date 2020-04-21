@@ -17,6 +17,9 @@ $route = new Router(url(), ":");
 $route->namespace("Source\Controllers");
 $route->get("/", "Web:index");
 
+$route->namespace("Source\Controllers")->group("/admin");
+$route->get("/", "Admin:index");
+
 $route->namespace("Source\Controllers")->group("/error");
 $route->get("/{errcode}", "Web:error");
 

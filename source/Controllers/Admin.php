@@ -4,7 +4,7 @@ namespace Source\Controllers;
 
 use Source\Core\Controller;
 
-class Web extends Controller
+class Admin extends Controller
 {
     public function __construct() 
     {
@@ -18,7 +18,8 @@ class Web extends Controller
 
     public function error(array $data): void
     {
-        echo "Erro:";
-        var_dump($data);
+        echo $this->view->render("error", [
+           "title" => "{$data['errcode']} | Error"
+        ]);
     }
 }
