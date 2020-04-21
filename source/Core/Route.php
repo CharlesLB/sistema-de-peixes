@@ -4,13 +4,8 @@ namespace Source\Core;
 
 class Route
 {
-    /** @var array */
     protected static $route;
 
-    /**
-     * @param string $route
-     * @param $handler
-     */
     public static function get(string $route, $handler): void
     {
         $get = "/" . filter_input(INPUT_GET, "url", FILTER_SANITIZE_SPECIAL_CHARS);
@@ -25,9 +20,6 @@ class Route
         self::dispatch($get);
     }
 
-    /**
-     * @param $route
-     */
     public static function dispatch($route): void
     {
         $route = (self::$route[$route] ?? []);
@@ -50,17 +42,11 @@ class Route
         }
     }
 
-    /**
-     * @return array
-     */
     public static function routes(): array
     {
         return self::$route;
     }
 
-    /**
-     * @return string
-     */
     private static function namespace(): string
     {
         return "Source\App\Controllers\\";

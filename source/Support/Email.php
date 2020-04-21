@@ -5,26 +5,12 @@ namespace Source\Support;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-/**
- * FSPHP | Class Email
- *
- * @author Robson V. Leite <cursos@upinside.com.br>
- * @package Source\Core
- */
 class Email
 {
-    /** @var array */
     private $data;
-
-    /** @var PHPMailer */
     private $mail;
-
-    /** @var Message */
     private $message;
 
-    /**
-     * Email constructor.
-     */
     public function __construct()
     {
         $this->mail = new PHPMailer(true);
@@ -46,13 +32,6 @@ class Email
         $this->mail->Password = CONF_MAIL_PASS;
     }
 
-    /**
-     * @param string $subject
-     * @param string $message
-     * @param string $toEmail
-     * @param string $toName
-     * @return Email
-     */
     public function bootstrap(string $subject, string $message, string $toEmail, string $toName): Email
     {
         $this->data->subject = $subject;
@@ -68,11 +47,6 @@ class Email
         return $this;
     }
 
-    /**
-     * @param $fromEmail
-     * @param $fromName
-     * @return bool
-     */
     public function send($fromEmail = CONF_MAIL_SENDER['address'], $fromName = CONF_MAIL_SENDER["name"]): bool
     {
         if (empty($this->data)) {
@@ -110,17 +84,11 @@ class Email
         }
     }
 
-    /**
-     * @return PHPMailer
-     */
     public function mail(): PHPMailer
     {
         return $this->mail;
     }
 
-    /**
-     * @return Message
-     */
     public function message(): Message
     {
         return $this->message;

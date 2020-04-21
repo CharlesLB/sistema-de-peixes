@@ -6,9 +6,6 @@ use Source\Core\Model;
 
 class User extends Model
 {
-    /**
-     * User constructor.
-     */
     public function __construct()
     {
         parent::__construct(
