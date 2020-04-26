@@ -20,16 +20,6 @@ define("CONF_URL_TEST", "https://www.localhost/sistema-de-peixes");
 define("CONF_URL_ADMIN", "/admin");
 
 //
-// ─── SITE ───────────────────────────────────────────────────────────────────────
-//
-
-    
-define("CONF_SITE_NAME", "UpInside");
-define("CONF_SITE_LANG", "pt_BR");
-define("CONF_SITE_DOMAIN", "upinside.com.br");
-
-
-//
 // ─── DATE ───────────────────────────────────────────────────────────────────────
 //
   
