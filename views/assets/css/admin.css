@@ -1,0 +1,219 @@
+/*
+ * ─── GENERAL ────────────────────────────────────────────────────────────────────
+ */
+
+.button {
+  border: solid #3ac9f1 !important;
+  background: #3ac9f1 !important;
+  text-decoration: none !important;
+  border-radius: 2px !important;
+  color: aliceblue !important;
+  transition: 0.5s !important;
+  height: 38px;
+}
+
+.button:hover {
+  background: #fff !important;
+  color: #3ac9f1 !important;
+}
+
+
+/*
+ * ─── NAVBAR ─────────────────────────────────────────────────────────────────────
+ */
+
+nav {
+  position: fixed;
+  background: #002f4b;
+}
+
+nav h3 {
+  color: aliceblue;
+  margin: 0;
+  text-transform: uppercase;
+  font-size: 22px;
+  font-weight: 900;
+}
+
+nav span {
+  color: #3ac9f1;
+}
+
+nav .logout {
+  padding: 5px 10px 5px 10px;
+  background: #3ac9f1;
+  text-decoration: none;
+  float: right;
+  margin-top: -30px;
+  border-radius: 2px;
+  font-size: 15px;
+  font-weight: 600;
+  color: aliceblue;
+  transition: 0.5s;
+}
+
+nav .logout:hover {
+  background: #fff;
+  color: #002f4b;
+  text-decoration: none;
+}
+
+/*
+ * ─── SIDEBAR ────────────────────────────────────────────────────────────────────
+ */
+
+.sidebar {
+  background: #2f323a;
+  padding-top: 50px;
+  position: fixed;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  transition: 0.5s;
+}
+
+.sidebar .profile-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 100px;
+  margin-bottom: 10px;
+}
+
+.sidebar h4 {
+  color: #ccc;
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 20px;
+  transition: 1s;
+}
+
+.sidebar a,
+.sidebar label {
+  color: aliceblue;
+  display: block;
+  width: 100%;
+  line-height: 60px;
+  text-decoration: none;
+  padding-left: 40px;
+  box-sizing: border-box;
+  transition: 0.5s;
+}
+
+.sidebar a:hover,
+.sidebar label:hover {
+  background: #3ac9f1;
+  color: #002f4b;
+  text-decoration: none;
+}
+
+.sidebar span {
+  padding: 10px;
+}
+
+#check:checked ~ .sidebar {
+  left: -190px;
+}
+
+#check:checked ~ .sidebar a span,
+#check:checked ~ .sidebar label span {
+  display: none;
+  font-size: 0;
+}
+
+#check:checked ~ .sidebar a,
+#check:checked ~ .sidebar label {
+  font-size: 20px;
+  margin-left: 170px;
+  width: 80px;
+}
+
+#check:checked ~ .sidebar h4 {
+  font-size: 0;
+}
+
+/*
+ * ─── CONTENT ────────────────────────────────────────────────────────────────────
+ */
+
+.content {
+  margin-left: 250px;
+  margin-top: 25px;
+  background: #fff;
+  transition: 0.5s;
+}
+
+#check:checked ~ .content {
+  margin-left: 60px;
+}
+
+.content .card-deck {
+  padding: 20px;
+}
+
+.content .navbar{
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.19);
+}
+
+.content .card{
+  background: #fff;
+   border-radius: 0;
+   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.19);
+   transition: 0.5s;
+}
+
+.content .card:hover{
+  background: #fff;
+   border-radius: 0;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+.content .card a{
+  color: #2f323a;
+  text-decoration: none;
+  transition: .5s;
+}
+
+.content .card a:hover{
+  color: #535353;
+}
+
+.content .card .auxiliar-button{
+  color: #535353;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.19);
+  transition: .5s;
+}
+
+.content .card .auxiliar-button:hover{
+  color: #222222;
+}
+
+.table-page table{
+  overflow-x: auto;
+}
+
+.table-page .table-content{
+  padding: 30px;
+}
+
+.table-page .table-content h1{
+  font-size: 30px;
+}
+
+.table-page .table-content table{
+  margin-top: 30px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.19);
+}
+
+.table-page .table-content th.order{
+  cursor: pointer;
+}
+
+.about{
+  padding: 60px;
+}
+
+.about .about-form{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 30px;
+}

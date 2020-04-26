@@ -72,12 +72,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <h4> Museu do Computador</h4>
+                        <h4> Laboratório de Biologia </h4>
                     </div>
                     <div class="col-lg-3 col-sm-2 col-xs-3">
-                        <h3> Contato </h3>
+                        <h3> Contact </h3>
                         <ul>
-                            <li><a class="email" href="#">museudocompuatdorif@gmail.com</a></li>
+                            <li><a class="email" href="#">laboratoriobiologiaif@gmail.com</a></li>
                             <br />
                             <li>
                                 <p> IF Sudeste MG Campus Juiz de Fora</p>
@@ -91,7 +91,7 @@
             </div>
             <div class="footer-bottom">
                 <div class="container">
-                    <p class="pull-left copyright"> <a href="https://github.com/CharlesLB" target="_blank">@CharlesLB </a></p>
+                    <p class="pull-left copyright"> <a href="https://github.com/CharlesLB" target="_blank">@CharlesLB </a> e Viviane Serafim </p>
 
                 </div>
             </div>
