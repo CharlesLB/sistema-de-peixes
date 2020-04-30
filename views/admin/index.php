@@ -10,7 +10,35 @@
 </head>
 
 <body>
+
+<!--
+// ─── SIDEBAR ────────────────────────────────────────────────────────────────────
+-->
+
     <nav class="admin-navbar">
+        <ul class="navbar-nav">
+            <li class="logo">
+                <a href="#" class="nav-link">
+                    <span class="link-icon"><i class="fas fa-angle-double-right"></i></span>
+                    <span class="link-text">Lab de Biologia</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <span class="link-icon"><i class="fas fa-fish"></i></span>
+                    <span class="link-text">Peixes</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <span class="link-icon"><i class="fas fa-user-edit"></i></span>
+                    <span class="link-text">Meu usuário</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <nav class="responsive-navbar">
         <ul class="navbar-nav">
             <li class="logo">
                 <a href="#" class="nav-link">

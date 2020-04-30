@@ -127,3 +127,38 @@ main {
 .admin-navbar:hover .logo .link-icon{
   transform: rotate(-540deg);
 }
+
+/*
+ * ─── RESPONSIVE NAVBAR ──────────────────────────────────────────────────────────
+ */
+
+.responsive-navbar{
+  display: none;
+}
+
+/*
+ * ─── SMALL SCREENS ──────────────────────────────────────────────────────────────
+ */
+
+@media only screen and (max-width: 600px){
+  .admin-navbar{
+    display: none;
+  }
+
+  .responsive-navbar{
+    display: flex;
+  }
+
+  main{
+    margin: 0;
+  }
+}
+
+
+/*
+ * ─── LARGE SCREENS ──────────────────────────────────────────────────────────────
+ */
+
+@media only screen and (min-width: 600px){
+  
+}
