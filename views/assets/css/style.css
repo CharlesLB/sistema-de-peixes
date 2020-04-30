@@ -115,7 +115,7 @@ form{
 	display: block;
 }
 .footer {
-	background: #002f4b;
+	background: --secondary-color;
 	height: auto;
 	padding-bottom: 30px;
 	position: relative;
