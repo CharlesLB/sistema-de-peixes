@@ -26,6 +26,18 @@ body {
 	line-height: 1;
 }
 
+body::-webkit-scrollbar{
+    width: 0.25rem;
+}
+
+body::-webkit-scrollbar-track{
+    background: #1e1e24;
+}
+
+body::-webkit-scrollbar-thumb{
+    background: #013763;
+}
+
 ol, ul {
 	list-style: none;
 }

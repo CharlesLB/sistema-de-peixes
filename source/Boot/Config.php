@@ -19,6 +19,26 @@ define("CONF_URL_BASE", "https://www.sistemadepeixes.com");
 define("CONF_URL_TEST", "https://www.localhost/sistema-de-peixes");
 define("CONF_URL_ADMIN", "/admin");
 
+
+//
+// ─── SITE ───────────────────────────────────────────────────────────────────────
+//
+
+    
+define("CONF_SITE_NAME", "Laboratório de Biologia");
+define("CONF_SITE_TITLE", "Site da bolsa de biologia do IF Sudeste MG Campus Juiz de Fora");
+define("CONF_SITE_DESC",
+    "O que o laboratório faz. Aqui é um pequeno textinho que aparece quando enviar o link para alguém kk");
+define("CONF_SITE_LANG", "pt_BR");
+define("CONF_SITE_DOMAIN", "LINK.COM");
+define("CONF_SITE_ADDR_STREET", "R. Bernardo Mascarenhas");
+define("CONF_SITE_ADDR_NUMBER", "1283");
+define("CONF_SITE_ADDR_COMPLEMENT", "IF Sudeste MG Campus Juiz de Fora.");
+define("CONF_SITE_ADDR_CITY", "Juiz de Fora");
+define("CONF_SITE_ADDR_STATE", "MG");
+define("CONF_SITE_ADDR_ZIPCODE", "36080-001");
+
+
 //
 // ─── DATE ───────────────────────────────────────────────────────────────────────
 //
