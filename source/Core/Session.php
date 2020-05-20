@@ -6,6 +6,7 @@ use Source\Support\Message;
 
 class Session
 {
+
     public function __construct()
     {
         if (!session_id()) {
