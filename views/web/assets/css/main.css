@@ -16,7 +16,9 @@ section, summary, time, mark, audio, video {
 	border: 0;
 	font-size: 100%;
 	font: inherit;
-	vertical-align: baseline;}
+	vertical-align: baseline;
+	scroll-behavior: smooth;
+}
 
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
@@ -3058,7 +3060,6 @@ input, select, textarea {
 			-ms-justify-content: center;
 			justify-content: center;
 			width: 50em;
-			-ms-flex: 1;
 		}
 
 			.spotlights > section > .content > .inner {
@@ -3247,7 +3248,7 @@ input, select, textarea {
 		}
 
 		.wrapper.style1 {
-			background: url(../images/background.png);
+			background: url(../../../../Shared/images/background.png);
 		}
 
 		.wrapper.style1-alt {
