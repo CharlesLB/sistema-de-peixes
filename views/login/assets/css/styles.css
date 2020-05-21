@@ -1,0 +1,154 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,regular,italic,600,600italic,700,700italic,800,800italic);
+
+/*
+ * ─── GENERAL ────────────────────────────────────────────────────────────────────
+ */
+
+:root {
+  font-size: 16px;
+  font-family: "Open Sans";
+  --trasition-speed: 200ms ease;
+  --text-primary: #b6b6b6;
+  --text-secondary: #ececec;
+  --bg-primary: #003f68;
+  --bg-secondary: #3e4094;
+}
+
+input,
+button,
+textarea {
+  font: 400 14px var(--font-family), sans-serif;
+  outline: none;
+}
+
+button,
+input[type="submit"] {
+  cursor: pointer;
+}
+
+body {
+  color: black;
+  background-image: url(../../../../Shared/images/background.png);
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+body::-webkit-scrollbar {
+  width: 0.25rem;
+}
+
+body::-webkit-scrollbar-track {
+  background: #1e1e24;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #013763;
+}
+
+/*
+ * ─── GENERAL ────────────────────────────────────────────────────────────────────
+ */
+
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+/*
+ * ─── MAIN ──────────────────────────────────────────────────────────────────────
+ */
+
+main{
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main .box{
+  background-color: white;
+  padding: 50px;
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  display: flex;
+  border-radius: 4px;
+  color: var(--bg-primary);
+  width: 300px;
+  flex-direction: column;
+  animation: Fade .5s ease-in-out ;
+}
+
+main .box h1{
+  margin-bottom: 40px;
+}
+
+main .box form{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-size: 16px;
+}
+
+main .box form label{
+  
+  float: left;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+main .box form label span{
+  margin-left: 5px;
+}
+
+main .box form input{
+  border: none white;
+  border-bottom: solid 3px var(--bg-primary);
+  width: 100%;
+  margin-bottom: 20px;
+  transition: .1s;
+}
+
+main .box form button{
+  width: 0 auto;
+  height: auto;
+  padding: 10px;
+  background-color: var(--bg-primary);
+  color: white;
+  border: solid 3px var(--bg-primary);
+  margin-top: 20px;
+  transition: .2s ease-in-out;
+}
+
+main .box form button:hover{
+  background-color: white;
+  color: var(--bg-primary);
+}
+
+main .box ul{
+  margin: 40px 0 20px -40px;
+  list-style: none;
+  float: left;
+  color: var(--bg-primary);
+}
+
+main .box a{
+  color: var(--bg-primary);
+  text-decoration: none;
+  border-bottom: solid 1px var(--bg-primary);
+}
+
+/*
+ * ─── KEYFRAMES ──────────────────────────────────────────────────────────────────
+ */
+
+  
+@keyframes Fade{
+  0%{
+    opacity: 0;
+  }
+
+  100%{
+    opacity: 1;
+  }
+}
