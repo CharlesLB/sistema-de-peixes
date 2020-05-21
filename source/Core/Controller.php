@@ -2,16 +2,15 @@
 
 namespace Source\Core;
 
-use Source\Support\Seo;
+use League\Plates\Engine;
 
 class Controller
 {
     protected $view;
-    protected $seo;
 
-    public function __construct(string $pathToViews = null)
+    public function __construct($router) 
     {
-        $this->view = new View($pathToViews);
-        $this->seo = new Seo();
+        $this->view = Engine::create(__DIR__ . "/../../Views", "php");
+        $this->view->addData(["router" => $router]);
     }
 }
