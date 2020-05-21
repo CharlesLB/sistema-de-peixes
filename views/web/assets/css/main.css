@@ -3880,7 +3880,8 @@ input, select, textarea {
 /* Intro */
 
 	#intro {
-		background-attachment: fixed;
+		height: 100vh;
+		background-attachment: cover;
 		background-position: top right;
 		background-repeat: no-repeat;
 		background-size: 100% 100%;
@@ -3909,7 +3910,7 @@ input, select, textarea {
 		@media screen and (max-width: 1280px) {
 
 			#intro {
-				background-attachment: scroll;
+				background-attachment: cover;
 			}
 
 		}
