@@ -29,6 +29,15 @@ function asset(string $path, string $view): ?string
     return URL["base"] . "/views/{$view}/assets/" . ($path[0] == "/" ? mb_substr($path, 1) : $path);
 }
 
+function shared(string $path): ?string
+{
+    if (strpos($_SERVER['HTTP_HOST'], "localhost")) {
+        return URL["localhost"] . "/Shared/" . ($path[0] == "/" ? mb_substr($path, 1) : $path);
+    }
+
+    return URL["base"] . "/Shared/" . ($path[0] == "/" ? mb_substr($path, 1) : $path);
+}
+
 function fragment(string $path, string $view): ?string
 {
     if (strpos($_SERVER['HTTP_HOST'], "localhost")) {
@@ -38,14 +47,16 @@ function fragment(string $path, string $view): ?string
     return URL["base"] . "/views/{$view}/fragments/" . ($path[0] == "/" ? mb_substr($path, 1) : $path);
 }
 
-function shared(string $path): ?string
+function storage(string $path): ?string
 {
     if (strpos($_SERVER['HTTP_HOST'], "localhost")) {
-        return URL["localhost"] . "/Shared/" . ($path[0] == "/" ? mb_substr($path, 1) : $path);
+        return URL["localhost"] . "/Storage/" . ($path[0] == "/" ? mb_substr($path, 1) : $path);
     }
 
-    return URL["base"] . "/Shared/" . ($path[0] == "/" ? mb_substr($path, 1) : $path);
+    return URL["base"] . "/Storage/" . ($path[0] == "/" ? mb_substr($path, 1) : $path);
 }
+
+
 
 //
 // ─── MESSAGE ────────────────────────────────────────────────────────────────────
