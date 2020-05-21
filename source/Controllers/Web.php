@@ -54,6 +54,13 @@ class Web extends Controller
     // ─── ADMIN ──────────────────────────────────────────────────────────────────────
 
 
+    public function admin()
+    {       
+        echo $this->view->render("admin/dashboard" , [
+            "title" => "Administrador | " . SITE["name"] 
+        ]);
+    }
+
     // ─── ERROR ──────────────────────────────────────────────────────────────────────
 
     public function error(array $data): void
