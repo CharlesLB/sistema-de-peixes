@@ -21,6 +21,7 @@ $route->post("/contato", "Mail:contact", "mail.contact");
 
 $route->get("/login", "Web:login", "web.login");
 $route->get("/esqueci-senha", "Web:forget", "web.forget");
+$route->get("/confirmar-codigo", "Web:code", "web.code");
 $route->get("/nova-senha", "Web:newPassword", "web.newPassword");
 
 
@@ -33,15 +34,14 @@ $route->get("/nova-senha", "Web:newPassword", "web.newPassword");
 $route->group("/admin");
 $route->get("/", "Web:admin", "web.admin");
 
-$route->get("/categoria","Web:category", "web.category");
-$route->post("/create-category", "CategoryController:create", "category.create");
-$route->post("/delete-category", "CategoryController:delete", "category.delete");
+$route->get("/especies","Web:species", "web.species");
+$route->post("/create-specie", "SpecieController:create", "specie.create");
+$route->post("/delete-specie", "SpecieController:delete", "category.delete");
 
-$route->get("/palavra", "Web:word", "web.word");
-$route->post("/create-word", "WordController:create", "word.create");
-$route->post("/delete-word", "WordController:delete", "word.delete");
-$route->post("/show-word", "WordController:show", "word.show");
-
+$route->get("/peixe/{specie}", "Web:fishes", "web.fishes");
+$route->post("/create-fish", "FishController:create", "word.create");
+$route->post("/edit-fish", "FishController:edit", "word.edit");
+$route->post("/delete-word", "FishController:delete", "word.delete");
 
 
 //
