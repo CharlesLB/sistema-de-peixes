@@ -4,7 +4,7 @@ namespace Source\Core;
 
 use League\Plates\Engine;
 
-class Controller
+abstract class Controller
 {
     protected $view;
 
