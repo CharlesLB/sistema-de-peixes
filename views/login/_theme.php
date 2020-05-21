@@ -22,7 +22,7 @@
 // ─── SCRIPTS ────────────────────────────────────────────────────────────────────
 -->
 
-<script src= "<?= asset("/js/icons.js", "login");?>"></script>
+<script src= "<?= shared("/scripts/icons.js", "login");?>"></script>
 
 </body>
 

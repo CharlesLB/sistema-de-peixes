@@ -2,7 +2,7 @@
 
 <h1>Login</h1>
 
-<form action="">
+<form action="<?= url()?>">
     <label for="id"><i class="fas fa-envelope"></i> <span>Matrícula</span> </label>
     <input type="number" name="id" id="id">
 
