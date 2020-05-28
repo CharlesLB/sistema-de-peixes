@@ -6,7 +6,7 @@
     <label for="id"><i class="fas fa-envelope"></i> <span>Matrícula</span> </label>
     <input type="number" name="id" id="id">
 
-    <button>Enviar Código</button>
+    <button>Enviar pedido de nova senha</button>
 </form>
 
 <ul>
