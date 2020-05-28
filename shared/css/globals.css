@@ -1,0 +1,83 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,regular,italic,600,600italic,700,700italic,800,800italic);
+
+/*
+ * ─── GENERAL ────────────────────────────────────────────────────────────────────
+ */
+
+:root {
+    --trasition-speed: .4s ease-out;
+    --font-family: "Open Sans";
+    --primary-color: #e100ff;
+    --secondary-color: #7f00ff;
+    --color-red: #ff7675;
+    --color-blue: #0984e3;
+    --color-green: #00b894;
+    --color-yellow: #fdcb6e;
+}
+
+body {
+    font: 400 14px var(--font-family), sans-serif !important;
+    -webkit-font-smoothing: antialiased !important;
+}
+
+input,
+button,
+textarea {
+    font: 400 14px var(--font-family), sans-serif;
+    outline: none;
+}
+
+button,
+input[type="submit"] {
+    cursor: pointer;
+}
+
+
+/*
+ * ─── MESSAGE ────────────────────────────────────────────────────────────────────
+ */
+
+.message {
+    display: block;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #636e72;
+    border-left-width: 50px;
+    border-radius: 4px;
+    color: #636e72;
+    font-size: 1em;
+    font-weight: 100;
+}
+
+.message.info {
+    border-color: var(--color-blue);
+    color: var(--color-blue);
+}
+
+.message.error {
+    border-color: var(--color-red);
+    color: var(--color-red);
+}
+
+.message.success {
+    border-color: var(--color-green);
+    color: var(--color-green);
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
