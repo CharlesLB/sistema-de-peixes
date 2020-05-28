@@ -29,7 +29,7 @@ define("DATA_LAYER_CONFIG", [
     "driver" => "mysql",
     "host" => "localhost",
     "port" => "3306",
-    "dbname" => "db_adedonha",
+    "dbname" => "db_sdp",
     "username" => "root",
     "passwd" => "",
     "options" => [
