@@ -17,7 +17,7 @@ $route->namespace("Source\Controllers");
 
 $route->group(null);
 $route->get("/", "Web:home", "web.home");
-$route->post("/contato", "Mail:contact", "mail.contact");
+$route->post("/contato", "MailController:contact", "mail.contact");
 
 
 //
