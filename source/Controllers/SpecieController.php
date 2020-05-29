@@ -2,13 +2,21 @@
 
 namespace Source\Controllers;
 
+use Exception;
 use Source\Core\Controller;
 use Source\Models\Specie;
 
 class SpecieController extends Controller
 {
+
+    private $error;
+    private $specie;
+
     public function __construct($router) {
         parent::__construct($router);
+
+        $specie = new Specie;
+        $error = new Exception();
     }
 
     public function home()

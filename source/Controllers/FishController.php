@@ -2,13 +2,20 @@
 
 namespace Source\Controllers;
 
+use Exception;
 use Source\Core\Controller;
 use Source\Models\Fish;
 
 class FishController extends Controller
 {
+    private $error;
+    private $fish;
+
     public function __construct($router) {
         parent::__construct($router);
+
+        $fish = new Fish;
+        $error = new Exception();
     }
 
     public function home()
