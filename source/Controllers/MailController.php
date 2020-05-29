@@ -33,6 +33,7 @@ class MailController extends Controller
         $this->mail->save();
         # $this->mail->send("Nova mensagem do {$this->mail->name}", $this->mail->message );
 
+        $callback["success"] = true;
         $callback["message"] = message("Mensagem enviada com sucesso!", "success");
         echo json_encode($callback);
     }

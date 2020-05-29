@@ -173,6 +173,13 @@
 							$(this).html("");
 						});
 					}
+
+					if(callback.success){
+						$("#name").val("");
+						$("#email").val("");
+						$("#message").val("");
+					}
+					
 				}
 			});
 		});
