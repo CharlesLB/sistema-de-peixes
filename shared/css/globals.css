@@ -16,7 +16,6 @@
 }
 
 body {
-    font: 400 14px var(--font-family), sans-serif !important;
     -webkit-font-smoothing: antialiased !important;
 }
 
@@ -47,6 +46,7 @@ input[type="submit"] {
     color: #636e72;
     font-size: 1em;
     font-weight: 100;
+    background-color: rgba(255, 255, 255, 0.658);
 }
 
 .message.info {
