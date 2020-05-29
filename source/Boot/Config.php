@@ -33,7 +33,6 @@ define("MAIL", [
     "passwd" => "",
     "from_name" => "",
     "from_email" => "",
-
 ]);
 
 
