@@ -2,22 +2,22 @@
 
 <?php $v->start("sidebar"); ?>
 
-	<li><a href="#intro">Bem Vindo!</a></li>
-	<li><a href="#one">Nosso Projeto</a></li>
-	<li><a href="#two">O que fazemos</a></li>
-	<li><a href="#three">Contato</a></li>
-	<li><a href="<?= url("/login")  ?>">Login</a></li>
+<li><a href="#intro">Bem Vindo!</a></li>
+<li><a href="#projeto">Nosso Projeto</a></li>
+<li><a href="#o-que-fazemos">O que fazemos</a></li>
+<li><a href="#contato">Contato</a></li>
+<li><a href="<?= url("/login")  ?>">Login</a></li>
 
 <?php $v->end(); ?>
 
 <?php $v->start("text"); ?>
 
-	<h1>Projeto de Biologia</h1>
-	<p>Um projeto pertencente ao <a href="https://www.ifsudestemg.edu.br/juizdefora">IF Sudeste MG Campus Juiz de Fora</a><br />
-		com o objetivo de esturdarmos peixes bacanas</a>.</p>
-	<ul class="actions">
-		<li><a href="#one" class="button scrolly">Conhecer nosso projeto</a></li>
-	</ul>
+<h1>Projeto de Biologia</h1>
+<p>Um projeto pertencente ao <a href="https://www.ifsudestemg.edu.br/juizdefora">IF Sudeste MG Campus Juiz de Fora</a><br />
+	com o objetivo de esturdarmos peixes bacanas</a>.</p>
+<ul class="actions">
+	<li><a href="#projeto" class="button scrolly">Conhecer nosso projeto</a></li>
+</ul>
 
 <?php $v->end(); ?>
 
@@ -27,12 +27,12 @@
 // ─── SECTIONS ────────────────────────────────────────────────────────────────────
 -->
 
-	
+
 <!-- Wrapper -->
 <div id="wrapper">
 
-	<!-- One -->
-	<section id="one" class="wrapper style2 spotlights">
+	<!-- projeto -->
+	<section id="projeto" class="wrapper style2 spotlights">
 		<section>
 			<a href="#" class="image"><img src="<?= asset("/images/pic02.jpg", "web"); ?>" alt="" data-position="center center" /></a>
 			<div class="content">
@@ -62,8 +62,8 @@
 		</section>
 	</section>
 
-	<!-- Two -->
-	<section id="two" class="wrapper style3 fade-up">
+	<!-- o-que-fazemos -->
+	<section id="o-que-fazemos" class="wrapper style3 fade-up">
 		<div class="inner">
 			<h2>O que nós fazemos</h2>
 			<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus, lacus eget hendrerit bibendum, urna est aliquam sem, sit amet imperdiet est velit quis lorem.</p>
@@ -102,22 +102,25 @@
 		</div>
 	</section>
 
-	<!-- Three -->
-	<section id="three" class="wrapper style1 fade-up">
+	<!-- contato -->
+	<section id="contato" class="wrapper style1 fade-up">
 		<div class="inner">
-			<h2>Área Restrita</h2>
-			<p>Caso seja um bolsista ou voluntário, basta fazer seu login para prosseguir. Caso ainda não possui um login, entre em contato com o orientador do projeto.</p>
+			<h2>Contato</h2>
+			<p>Entre em contato conosco.</p>
+
 			<div class="split style1">
+				
 				<section>
-					<form method="post" action="#">
+					<div class="form_ajax" style="display: none"></div>
+					<form method="post" action="<?= $router->route("mail.contact") ?>">
 						<div class="fields">
 							<div class="field half">
 								<label for="name">Nome</label>
-								<input type="text" name="name" id="name" />
+								<input type="text" name="name" id="name"/>
 							</div>
 							<div class="field half">
 								<label for="email">E-mail</label>
-								<input type="text" name="email" id="email" />
+								<input type="text" name="email" id="email"/>
 							</div>
 							<div class="field">
 								<label for="message">Messagem</label>
@@ -125,7 +128,7 @@
 							</div>
 						</div>
 						<ul class="actions">
-							<li><a href="" class="button submit">Send Message</a></li>
+							<li><a href="" class="button submit">Enviar Mensagem</a></li>
 						</ul>
 					</form>
 				</section>
@@ -146,5 +149,34 @@
 			</div>
 		</div>
 	</section>
-	
 </div>
+
+<?php $v->start("scripts"); ?>
+<script>
+	$(function() {
+		$("form").submit(function(e) {
+			e.preventDefault();
+
+			var form = $(this);
+			var form_ajax = $(".form_ajax");
+
+			$.ajax({
+				url: form.attr("action"),
+				data: form.serialize(),
+				type: "post",
+				dataType: "json",
+				success: function(callback) {
+					if (callback.message) {
+						form_ajax.html(callback.message).fadeIn();
+					} else {
+						form_ajax.fadeOut(function() {
+							$(this).html("");
+						});
+					}
+				}
+			});
+		});
+	});
+</script>
+
+<?php $v->end(); ?>

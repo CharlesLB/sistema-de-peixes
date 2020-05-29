@@ -6,6 +6,7 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="<?= asset("/css/main.css?version5565", "web");?>" />
+	<link rel="stylesheet" href="<?= shared("/css/globals.css?updated");?>" />
 	<link rel="icon" href="<?= shared("/images/icon.ico") ?> " type="image/x-icon" />
 	<noscript>
 		<link rel="stylesheet" href="<?= asset("/css/noscript.css", "web");?>" /></noscript>
@@ -50,14 +51,14 @@
 	</footer>
 
 	<!-- Scripts -->
-	<script src="<?= shared("scripts/jquery.min.js"); ?>"></script>
+	<script src="<?= shared("/scripts/jquery.min.js"); ?>"></script>
 	<script src="<?= asset("/js/jquery.scrollex.min.js", "web");?>"></script>
 	<script src="<?= asset("/js/jquery.scrolly.min.js", "web");?>"></script>
 	<script src="<?= asset("/js/browser.min.js", "web");?>"></script>
 	<script src="<?= asset("/js/breakpoints.min.js", "web");?>"></script>
 	<script src="<?= asset("/js/util.js", "web");?>"></script>
 	<script src="<?= asset("/js/main.js", "web");?>"></script>
-	<?= $v->section("js"); ?>
+	<?= $v->section("scripts"); ?>
 
 </body>
 
