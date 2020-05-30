@@ -54,6 +54,4 @@ class Mail extends DataLayer
 
         return true;
     }
-    
-    
 }

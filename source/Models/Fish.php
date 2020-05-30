@@ -3,27 +3,22 @@
 namespace Source\Models;
 
 use CoffeeCode\DataLayer\DataLayer;
+use Source\Models\Specie;
 use Exception;
 
 class Fish extends DataLayer
 {
     public function __construct()
     {
-        parent::__construct("fishes", []);
+        parent::__construct("fishes", ["specie_id"]);
     }
 
-    public function validate(): bool
+    public function save(): bool
     {
-        if (empty($this->name)){
-            $this->fail = new Exception("Insira o nome da espécie!");
+        if (!$this->validate() || !parent::save()) {
             return false;
         }
 
-        if($this->findByName()){
-            $this->fail = new Exception("Categoria já cadastrada!");
-            return false;
-        }
-            
         return true;
     }
 
@@ -31,16 +26,20 @@ class Fish extends DataLayer
     // ─── PRIVATE FUNCTIONS ──────────────────────────────────────────────────────────
     //
 
-    private function findByName(): ?object
+    private function validate(): bool
     {
-        $fishByName = $this->find("name = :name", "name={$this->name}")->count();
-
-        if($fishByName){
-            return $fishByName;
+        if (empty($this->specie_id)) {
+            $this->fail = new Exception("A espécie não foi muito bem especificada");    
+            return false;
         }
 
-        return null;
+        if (empty($this->sex) && empty($this->defaultLength) && empty($this->totalLength) && empty($this->weigth)) {
+            $this->fail = new Exception("Nenhum campo foi preenchido.");    
+            return false;
+        }
+
+        return true;
     }
-    
+
     
 }
