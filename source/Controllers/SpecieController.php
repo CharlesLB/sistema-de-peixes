@@ -8,15 +8,12 @@ use Source\Models\Specie;
 
 class SpecieController extends Controller
 {
-
-    private $error;
     private $specie;
 
     public function __construct($router) {
         parent::__construct($router);
 
-        $specie = new Specie;
-        $error = new Exception();
+        $this->specie = new Specie;
     }
 
     public function home()
@@ -28,22 +25,20 @@ class SpecieController extends Controller
 
     public function create(array $data): void
     {
-        return;
-
         $data = filter_var_array($data, FILTER_SANITIZE_STRING);
 
-        $specie = new specie();
-        $specie->name = ucfirst($data["name"]);
-
-        if (!$specie->validate()) {
-            $callback["message"] = message($specie->fail()->getMessage(), "error");
+        $this->specie->name = $data["name"];
+        
+        if (!$this->specie->save()) {
+            $callback["message"] = message($this->specie->fail()->getMessage(), "error");
             echo json_encode($callback);
             return;
         }
 
-        $specie->save();
-        $callback["specie"] = $specie;
-        $callback["message"] = message("Categoria cadastrada com sucesso!", "success");
+        $this->specie->save();
+
+        $callback["success"] = true;
+        $callback["message"] = message("Espécie cadastrada com sucesso!", "success");
         echo json_encode($callback);
     }
 }
