@@ -16,13 +16,6 @@ class SpecieController extends Controller
         $this->specie = new Specie;
     }
 
-    public function home()
-    {       
-        echo $this->view->render("web/home" , [
-            "title" => "Home | " . SITE["name"] 
-        ]);
-    }
-
     public function create(array $data): void
     {
         $data = filter_var_array($data, FILTER_SANITIZE_STRING);
@@ -39,6 +32,50 @@ class SpecieController extends Controller
 
         $callback["success"] = true;
         $callback["message"] = message("Espécie cadastrada com sucesso!", "success");
+        echo json_encode($callback);
+    }
+
+    public function read(array $data): void
+    {
+        return;
+    }
+
+    public function update(array $data): void
+    {
+        $data = filter_var_array($data, FILTER_SANITIZE_STRING);
+
+        $this->specie->id = $data["id"];
+        $this->specie->id = $data["name"];
+        
+        if (!$this->specie->save()) {
+            $callback["message"] = message($this->specie->fail()->getMessage(), "error");
+            echo json_encode($callback);
+            return;
+        }
+
+        $this->specie->save();
+
+        $callback["success"] = true;
+        $callback["message"] = message("Espécie editada com sucesso!", "success");
+        echo json_encode($callback);
+    }
+
+    public function delete(array $data): void
+    {
+        $data = filter_var_array($data, FILTER_SANITIZE_STRING);
+
+        $this->specie->id = $data["id"];
+        
+        if (!$this->specie->destroy()) {
+            $callback["message"] = message($this->specie->fail()->getMessage(), "error");
+            echo json_encode($callback);
+            return;
+        }
+
+        $this->specie->destroy();
+
+        $callback["success"] = true;
+        $callback["message"] = message("Espécie deletada com sucesso!", "success");
         echo json_encode($callback);
     }
 }
