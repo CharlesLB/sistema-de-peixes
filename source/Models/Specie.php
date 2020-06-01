@@ -3,6 +3,7 @@
 namespace Source\Models;
 
 use CoffeeCode\DataLayer\DataLayer;
+use Source\Models\Fish;
 use Exception;
 
 class Specie extends DataLayer
@@ -20,6 +21,19 @@ class Specie extends DataLayer
 
         return true;
     }
+
+    public function destroy(): bool
+    {
+        if (!parent::destroy() || !$this->deleteFishesOfThisSpecie()) {
+            return false;
+        }
+
+        return true;
+    }
+
+    //
+    // ─── AUXILIAR FUNCTIONS ─────────────────────────────────────────────────────────
+    //
 
     public function findByName(): ?array
     {
@@ -51,5 +65,14 @@ class Specie extends DataLayer
         return true;
     }
 
-    
+    private function deleteFishesOfThisSpecie(): void
+    {
+        $fish = new Fish;
+
+        $fishesOfThisSpecie = $fish->find("specie_id = :specie_id", "specie_id={$this->id}")->fetch(true);
+
+        foreach ($fishesOfThisSpecie as $fish) {
+            $fish->destroy();
+        }
+    }
 }
