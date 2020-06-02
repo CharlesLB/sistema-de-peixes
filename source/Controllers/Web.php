@@ -52,7 +52,8 @@ class Web extends Controller
     public function admin()
     {       
         echo $this->view->render("admin/dashboard" , [
-            "title" => "Administrador | " . SITE["name"] 
+            "title" => "Administrador | " . SITE["name"],
+            "page" => "dashboard"
         ]);
     }
 
