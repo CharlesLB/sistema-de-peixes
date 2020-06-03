@@ -40,16 +40,26 @@ $route->post("/nova-senha", "Auth:newPassword", "auth.newPassword");
 $route->group("/admin");
 $route->get("/", "Web:admin", "web.admin");
 
-$route->get("/especies","Web:species", "web.species");
-$route->post("/create-specie", "SpecieController:create", "specie.create");
-$route->put("/edit-specie", "SpecieController:edit", "specie.edit");
-$route->post("/delete-specie", "SpecieController:delete", "category.delete");
+$route->get("/projeto", "Web:project", "web.project");
+$route->post("/projeto/create-specie", "SpecieController:create", "specie.create");
+$route->put("/projeto/edit-specie", "SpecieController:edit", "specie.edit");
+$route->post("/projeto/delete-specie", "SpecieController:delete", "specie.delete");
 
 $route->get("/peixe/{specie}", "Web:fishes", "web.fishes");
-$route->post("/create-fish", "FishController:create", "word.create");
-$route->put("/edit-fish", "FishController:edit", "word.edit");
-$route->post("/delete-word", "FishController:delete", "word.delete");
+$route->post("/create-fish", "FishController:create", "fish.create");
+$route->put("/edit-fish", "FishController:edit", "fish.edit");
+$route->post("/delete-fish", "FishController:delete", "fish.delete");
 
+$route->get("/mails", "Web:mails", "web.mails");
+$route->post("/mails/make-as-read/{id}", "MailController:makeAsRead", "mail.makeasread");
+
+$route->get("/users", "Web:users", "web.users");
+$route->post("/users/create-users", "UsersController:create", "users.create");
+$route->put("/users/edit-users", "UsersController:edit", "users.edit");
+$route->post("/users/delete-users", "UsersController:delete", "category.delete");
+
+$route->get("/user", "Web:user", "web.user");
+$route->put("/user/edit-user", "UserController:edit", "user.edit");
 
 //
 // ─── ERROR ──────────────────────────────────────────────────────────────────────
