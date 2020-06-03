@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?= shared("/css/globals.css"); ?>">
-    <link rel="stylesheet" href="<?= asset("/css/styles.css?544", "admin"); ?>">
+    <link rel="stylesheet" href="<?= asset("/css/styles.css?4", "admin"); ?>">
     <link rel="icon" href="<?= shared("/images/icon.ico") ?> " type="image/x-icon" />
     <title><?= $title ?></title>
 </head>
@@ -42,30 +42,41 @@
                     </div>
                     <ul>
                         <li>
-                            <a href="#" class="<?php if($page == "dashboard"): echo "active"; endif;?>">
+                            <a href="<?= url("/admin") ?>" class="<?php if($page == "dashboard"): echo "active"; endif;?>">
                                 <span class="icon" >
                                     <i class="fas fa-border-all"></i></span>
                                 <span class="list">Dashboard</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="<?php if($page == "project"): echo "active"; endif;?>">
+                            <a href="<?= url("/admin/projeto") ?>" class="<?php if($page == "project"): echo "active"; endif;?>">
                                 <span class="icon"><i class="fas fa-chart-pie"></i></span>
                                 <span class="list">Projeto</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="<?php if($page == "user"): echo "active"; endif;?>">
+                            <a href="<?= url("admin/mails") ?>" class="<?php if($page == "mails"): echo "active"; endif;?>">
+                                <span class="icon"><i class="fas fa-envelope"></i></span>
+                                <span class="list">Notificações</span>
+                            </a>
+                        </li>
+
+                        <?php if( 1 == 1): ?>
+                        <li>
+                            <a href="<?= url("admin/users") ?>" class="<?php if($page == "users"): echo "active"; endif;?>">
                                 <span class="icon"><i class="fas fa-address-book"></i></span>
+                                <span class="list">Usuários</span>
+                            </a>
+                        </li>
+                        <?php endif; ?>
+
+                        <li>
+                            <a href="<?= url("admin/user") ?>" class="<?php if($page == "user"): echo "active"; endif;?>">
+                                <span class="icon"><i class="fas fa-user"></i></span>
                                 <span class="list">Meu usuário</span>
                             </a>
                         </li>
-                        <li>
-                            <a href="#" class="<?php if($page == "site"): echo "active"; endif;?>">
-                                <span class="icon"><i class="fas fa-sitemap"></i></span>
-                                <span class="list">Site</span>
-                            </a>
-                        </li>
+                        
                     </ul>
 
                     <div class="hamburger">

@@ -2,12 +2,13 @@
  * ─── GENERAL ────────────────────────────────────────────────────────────────────
  */
 
-:root {
+ :root {
     --trasition-speed: .3s ease;
+    --default-radius: 5px;
     --text-primary: #b6b6b6;
     --text-secondary: #ececec;
-    --bg-primary: #01466d;
-    --bg-secondary: #013763;
+    --bg-primary: #013763;
+    --bg-secondary: #01466d;
 }
 
 * {
@@ -52,6 +53,20 @@ body {
     background: #e8edf5;
     width: 100%;
     height: 100%;
+}
+
+button {
+    padding: 10px;
+    background-color: var(--bg-primary);
+    color: white;
+    border: none;
+    margin-left: 10px;
+    border-radius: var(--default-radius);
+    transition: var(--trasition-speed);
+}
+
+button:hover {
+    background-color: var(--bg-secondary);
 }
 
 
@@ -101,7 +116,7 @@ body {
     background: var(--bg-primary);
     color: #fff;
     padding: 8px 15px;
-    border-radius: 3px;
+    border-radius: var(--default-radius);
     transition: var(--trasition-speed);
 }
 
@@ -116,7 +131,7 @@ body {
 
 .wrapper .top_navbar .right_info .icon_wrap {
     padding: 8px 15px;
-    border-radius: 3px;
+    border-radius: var(--default-radius);
     background: var(--bg-primary);
     color: #fff;
     margin: 0 5px;
@@ -227,35 +242,214 @@ body {
     display: none;
 }
 
+
+/*
+ * ─── CONTAINER ──────────────────────────────────────────────────────────────────
+ */
+
 .main_body .container {
     width: calc(100% - 250px);
     margin-top: 65px;
     margin-left: 250px;
-    padding: 25px 40px;
+    padding: 50px 80px;
     transition: all 0.3s linear;
-}
-
-.main_body .container .item_wrap {
     display: flex;
-    margin-bottom: 20px;
+    flex-direction: row;
 }
 
-.main_body .container .item_wrap .item {
-    background: #fff;
-    border: 1px solid #e0e0e0;
-    padding: 25px;
-    font-size: 14px;
-    line-height: 22px;
+
+/*Left*/
+
+.main_body .container .left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
-.main_body .container .item_wrap .item:first-child {
-    margin-right: 20px;
+.main_body .container .left h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.main_body .container .left .text {
+    margin-top: 15px;
+}
+
+.main_body .container .left .list {
+    margin-top: 20px;
+    display: flex;
+}
+
+.main_body .container .left .list .item {
+    padding: 10px;
+    width: 80%;
+    border-radius: var(--default-radius);
+    transition: var(--trasition-speed);
+    color: black;
+}
+
+.main_body .container .left .list .active,
+.main_body .container .left .list .item:hover {
+    background-color: white;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+.main_body .container .left .list .item span {
+    padding-left: 5px;
+}
+
+
+/*Right*/
+
+.main_body .container .right {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-left: 20px;
+}
+
+.main_body .container .right .cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.main_body .container .right .cards .card {
+    padding: 20px;
+    width: 45%;
+    background-color: white;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+    border-radius: var(--default-radius);
+    transition: var(--trasition-speed);
+    color: black;
+}
+
+.main_body .container .right .cards .card .title {
+    display: flex;
+    flex-direction: row;
+    padding: 10px 0 5px 0;
+}
+
+.main_body .container .right .cards .card .title h3 {
+    margin-left: 7px;
+}
+
+.main_body .container .right .cards .card ul {
+    margin-top: 10px;
+}
+
+.main_body .container .right .cards .card ul li {
+    margin-top: 2px;
+}
+
+
+/*notifications*/
+
+.main_body .container .right .notifications {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+    transition: var(--trasition-speed);
+    color: black;
+}
+
+.main_body .container .right .notifications .header {
+    display: flex;
+    flex-direction: row;
+}
+
+.main_body .container .right .notifications .header h3 {
+    margin-left: 7px;
+}
+
+.main_body .container .right .notifications .noNotifications {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border: 3px solid var(--bg-primary);
+    border-radius: var(--default-radius);
+}
+
+.main_body .container .right .notifications .notificationCard {
+    padding: 30px;
+    margin-top: 20px;
+    background-color: white;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+    border-radius: var(--default-radius);
+    transition: var(--trasition-speed);
+    color: black;
+}
+
+.main_body .container .right .notifications .notificationBody span {
+    font-size: 15px;
+    color: #888;
+}
+
+.main_body .container .right .notifications .notificationBody p {
+    margin-top: 10px;
+    text-align: justify;
+}
+
+.main_body .container .right .notifications .notificationFooter {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 15px;
+}
+
+.message {
+    background-color: transparent;
+}
+
+
+/*paginator*/
+
+.main_body .container .right .paginator {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.main_body .container .right .paginator div {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+    border-radius: var(--default-radius);
+    background-color: white;
+    display: flex;
+}
+
+.main_body .container .right .paginator a {
+    padding: 15px 20px 15px 20px;
+    transition: var(--trasition-speed);
+    color: black;
+}
+
+.main_body .container .right .paginator #right {
+    border-radius: 0 5px 5px 0;
+}
+
+.main_body .container .right .paginator #left {
+    border-radius: 5px 0 0 5px;
+}
+
+.main_body .container .right .paginator .active,
+.main_body .container .right .paginator a:hover {
+    background-color: var(--bg-primary);
+    color: var(--text-secondary);
 }
 
 
 /*
- * ─── ACTIVE ─────────────────────────────────────────────────────────────────────
- */
+    * ─── ACTIVE ─────────────────────────────────────────────────────────────────────
+    */
 
 .wrapper.active .sidebar_menu {
     width: 100px;
