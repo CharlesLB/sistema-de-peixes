@@ -53,7 +53,44 @@ class Web extends Controller
     {       
         echo $this->view->render("admin/dashboard" , [
             "title" => "Administrador | " . SITE["name"],
-            "page" => "dashboard"
+            "page" => "dashboard",
+            "subPage" => "dash"
+        ]);
+    }
+
+    public function project()
+    {       
+        echo $this->view->render("admin/project" , [
+            "title" => "Projeto | " . SITE["name"],
+            "page" => "project",
+            "subPage" => "dash"
+        ]);
+    }
+
+    public function mails()
+    {       
+        echo $this->view->render("admin/mails" , [
+            "title" => "Notificações | " . SITE["name"],
+            "page" => "mails",
+            "subPage" => "dash"
+        ]);
+    }
+
+    public function users()
+    {       
+        echo $this->view->render("admin/users" , [
+            "title" => "Usuários | " . SITE["name"],
+            "page" => "users",
+            "subPage" => "dash"
+        ]);
+    }
+
+    public function user()
+    {       
+        echo $this->view->render("admin/dashboard" , [
+            "title" => "Meu usuário | " . SITE["name"],
+            "page" => "user",
+            "subPage" => "dash"
         ]);
     }
 
