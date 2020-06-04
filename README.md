@@ -32,7 +32,7 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias
 ## :heavy_check_mark: Inteface:
 
 <h1 align="center">
-    <img alt="Web" src="./storage/gitImages/home.png" width="900px">
+    <img alt="Web" src="./Storage/gitImages/home.png" width="900px">
 </h1>
 
 <a id="como-usar"></a>
