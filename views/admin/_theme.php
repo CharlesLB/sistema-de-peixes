@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?= shared("/css/globals.css"); ?>">
-    <link rel="stylesheet" href="<?= asset("/css/styles.css?4", "admin"); ?>">
+    <link rel="stylesheet" href="<?= asset("/css/styles.css?44", "admin"); ?>">
     <link rel="icon" href="<?= shared("/images/icon.ico") ?> " type="image/x-icon" />
     <title><?= $title ?></title>
 </head>
@@ -15,7 +15,7 @@
         <div class="main_body">
             <div class="top_navbar">
                 <div class="logo">
-                    <a href="#">Laboratório de biologia</a>
+                    <a href="<?= url("/admin") ?>">Laboratório de biologia</a>
                 </div>
                 <div class="top_menu">
                     <div class="right_info">
@@ -108,7 +108,7 @@
         });
     </script>
     <script src="<?= shared("/scripts/icons.js", "admin"); ?>"></script>
-
+    <?= $v->section("scripts"); ?>
 
 </body>
 

@@ -69,6 +69,18 @@ button:hover {
     background-color: var(--bg-secondary);
 }
 
+.main_body .container .right .generalText {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border: 3px solid var(--bg-primary);
+    border-radius: var(--default-radius);
+}
+
 
 /*
  * ─── MAIN ───────────────────────────────────────────────────────────────────────
@@ -278,6 +290,7 @@ button:hover {
 .main_body .container .left .list {
     margin-top: 20px;
     display: flex;
+    flex-direction: column;
 }
 
 .main_body .container .left .list .item {
@@ -286,6 +299,7 @@ button:hover {
     border-radius: var(--default-radius);
     transition: var(--trasition-speed);
     color: black;
+    margin-bottom: 10px;
 }
 
 .main_body .container .left .list .active,
@@ -362,18 +376,6 @@ button:hover {
 
 .main_body .container .right .notifications .header h3 {
     margin-left: 7px;
-}
-
-.main_body .container .right .notifications .noNotifications {
-    margin-top: 20px;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    border: 3px solid var(--bg-primary);
-    border-radius: var(--default-radius);
 }
 
 .main_body .container .right .notifications .notificationCard {

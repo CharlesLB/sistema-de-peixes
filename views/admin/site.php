@@ -6,7 +6,7 @@
         <div class="text">Analisando os dados gerais da aplicação e as notificações.</div>
     </div>
     <div class="list">
-        <a href="<?= url("/admin") ?>" class="item <?php if($subPage == "dash"): echo "active"; endif;?>">
+        <a href="<?= url("/admin") ?>" class="item <?php if ($subPage == "dash") : echo "active";endif; ?>">
             <i class="fas fa-toolbox"></i>
             <span class="item-text">Dash</span>
         </a>
@@ -22,7 +22,7 @@
             </div>
             <hr>
             <ul>
-                <li><strong>Espécies cadastradas:</strong>  8</li>
+                <li><strong>Espécies cadastradas:</strong> 8</li>
                 <li><strong>Peixes cadastrados:</strong> 59</li>
                 <li><strong>Peso médio:</strong> 5,47kg</li>
                 <li><strong>Tamanho médio:</strong> 15cm</li>
@@ -47,8 +47,8 @@
             <h3>Notificações não lidas:</h3>
         </div>
 
-        <?php if(1==1): 
-            for ($i=0; $i < 3; $i++): ?> 
+        <?php if (1 == 1) :
+            for ($i = 0; $i < 3; $i++) : ?>
                 <div class="notificationCard">
                     <div class="notificationBody">
                         <span>José da Silva</span>
@@ -58,9 +58,9 @@
                         <button>Marcar como vista</button>
                         <button>Responder Via E-mail</button>
                     </div>
-                </div>    
-            <?php endfor; ?>  
-            
+                </div>
+            <?php endfor; ?>
+
             <nav class="paginator">
                 <div>
                     <a href="" id="left"><i class="fas fa-angle-double-left"></i></a>
@@ -70,7 +70,7 @@
                     <a href="" id="right"><i class="fas fa-angle-double-right"></i></a>
                 </div>
             </nav>
-        <?php else:
+        <?php else :
             $v->insert('admin/fragments/noNotifications');
         endif; ?>
     </div>
