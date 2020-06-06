@@ -72,7 +72,16 @@ class Web extends Controller
         echo $this->view->render("admin/mails" , [
             "title" => "Notificações | " . SITE["name"],
             "page" => "mails",
-            "subPage" => "dash"
+            "subPage" => "unreadedMails"
+        ]);
+    }
+
+    public function readedMails()
+    {       
+        echo $this->view->render("admin/mails" , [
+            "title" => "Notificações | " . SITE["name"],
+            "page" => "mails",
+            "subPage" => "readedMails"
         ]);
     }
 
