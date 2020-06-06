@@ -31,7 +31,7 @@
 
         <div class="card">
             <div class="title">
-                <i class="fas fa-chart-pie"></i>
+                <i class="fas fa-envelope"></i>
                 <h3> Notificações</h3>
             </div>
             <hr>
@@ -71,7 +71,7 @@
                 </div>
             </nav>
         <?php else :
-            $v->insert('admin/fragments/text', ["text" => "Opa, parecem que todas as mensagens já foram respondidas! Quando houver alguma nova notificação, ela aparecerá aqui."]);
+            $v->insert('admin/fragments/widgets/text', ["text" => "Opa, parecem que todas as mensagens já foram respondidas! Quando houver alguma nova notificação, ela aparecerá aqui."]);
         endif; ?>
     </div>
 </div>

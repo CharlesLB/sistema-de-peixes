@@ -1,25 +1,25 @@
 <?php $v->layout('admin/_theme'); ?>
 
 <div class="left">
-    <div>
-        <h2>Dashboard</h2>
-        <div class="text">Analisando os dados gerais da aplicação e as notificações.</div>
-    </div>
-    <div class="list">
-        <?php 
-        for ($i=0; $i < 5; $i++):
-            $v->insert("admin/fragments/specieCard");
-        endfor;
-        ?>
-        <div class="item addSpecie">
-            <i class="fas fa-plus"></i>
-            <span class="item-text">Adicionar Espécie</span>
-        </div>
-    </div>
+	<div>
+		<h2>Espécies</h2>
+		<div class="text">Selecione uma espécie da lista para gerenciá-la.</div>
+	</div>
+	<div class="list">
+		<?php
+		for ($i = 0; $i < 5; $i++) :
+			$v->insert("admin/fragments/widgets/specieCard");
+		endfor;
+		?>
+		<div class="item addSpecie">
+			<i class="fas fa-plus"></i>
+			<span class="item-text">Adicionar Espécie</span>
+		</div>
+	</div>
 </div>
 
 <div class="right">
-    <?php $v->insert("admin/fragments/text", ["text" => "Para ver mais informções sobre as espécies, selecione alguma na barra de navegação lateral."]) ?>
+	<?php $v->insert("admin/fragments/widgets/text", ["text" => "Para ver mais informções sobre as espécies, selecione alguma na barra de navegação lateral."]); ?>
 </div>
 
 <?php $v->start("scripts"); ?>
@@ -45,7 +45,7 @@
 						});
 					}
 
-					if(callback.success){
+					if (callback.success) {
 						$("#name").val("");
 						$("#email").val("");
 						$("#message").val("");

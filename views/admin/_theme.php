@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?= shared("/css/globals.css"); ?>">
-    <link rel="stylesheet" href="<?= asset("/css/styles.css?44", "admin"); ?>">
+    <link rel="stylesheet" href="<?= asset("/css/styles.css?44445", "admin"); ?>">
     <link rel="icon" href="<?= shared("/images/icon.ico") ?> " type="image/x-icon" />
     <title><?= $title ?></title>
 </head>
@@ -64,7 +64,7 @@
                         <?php if( 1 == 1): ?>
                         <li>
                             <a href="<?= url("admin/users") ?>" class="<?php if($page == "users"): echo "active"; endif;?>">
-                                <span class="icon"><i class="fas fa-address-book"></i></span>
+                                <span class="icon"><i class="fas fa-users"></i></span>
                                 <span class="list">Usuários</span>
                             </a>
                         </li>
