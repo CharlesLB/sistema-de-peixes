@@ -526,6 +526,75 @@ button:hover {
 }
 
 
+/*form*/
+
+.main_body .container .right .userForm {
+    background-color: #fff;
+    width: 100%;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: var(--default-radius);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.main_body .container .right .userForm form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.main_body .container .right .userForm .photo {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.main_body .container .right .userForm .formGroup {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.main_body .container .right .userForm .formItem {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.main_body .container .right .userForm .formItem:nth-child(even) {
+    margin-left: 20px;
+}
+
+.main_body .container .right .userForm label {
+    margin: 0 10px 10px 0;
+}
+
+.main_body .container .right .userForm input[type="text"],
+.main_body .container .right .userForm input[type="number"],
+.main_body .container .right .userForm input[type="email"],
+.main_body .container .right .userForm input[type="password"],
+.main_body .container .right .userForm select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    border: none;
+    background-color: #eee;
+    margin: 0;
+    padding: 10px;
+    border-radius: var(--default-radius);
+}
+
+.main_body .container .right .userForm form button {
+    margin: 20px 0;
+}
+
+
 /*
 * ─── ACTIVE ─────────────────────────────────────────────────────────────────────
 */

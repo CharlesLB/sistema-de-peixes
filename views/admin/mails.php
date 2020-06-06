@@ -6,11 +6,11 @@
         <div class="text">Aqui você pode gerenciar as notificações.</div>
     </div>
     <div class="list">
-        <a href="<?= url("/admin") ?>" class="item <?php if ($subPage == "unreadedMails") : echo "active";endif; ?>">
+        <a href="<?= url("/admin/mails") ?>" class="item <?php if ($subPage == "unreadedMails") : echo "active";endif; ?>">
             <i class="fas fa-envelope"></i>
             <span class="item-text">Não visualisadas</span>
         </a>
-        <a href="<?= url("/admin") ?>" class="item <?php if ($subPage == "readedMails") : echo "active";endif; ?>">
+        <a href="<?= url("/admin/mails/visualizadas") ?>" class="item <?php if ($subPage == "readedMails") : echo "active";endif; ?>">
             <i class="fas fa-envelope-open"></i>
             <span class="item-text">Visualizadas</span>
         </a>

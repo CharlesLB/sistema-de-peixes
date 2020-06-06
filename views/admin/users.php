@@ -32,6 +32,8 @@
             <hr>
             <ul>
                 <li><strong>Total de usuários:</strong> 8</li>
+                <li><strong>Total de administradores:</strong> 2</li>
+                <li><strong>Total de bolsistas:</strong> 6</li>
             </ul>
         </div>
     </div>
