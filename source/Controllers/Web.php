@@ -87,7 +87,7 @@ class Web extends Controller
 
     public function user()
     {       
-        echo $this->view->render("admin/dashboard" , [
+        echo $this->view->render("admin/user" , [
             "title" => "Meu usuário | " . SITE["name"],
             "page" => "user",
             "subPage" => "dash"
