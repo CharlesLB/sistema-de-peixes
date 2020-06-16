@@ -301,6 +301,7 @@ button:hover {
     transition: var(--trasition-speed);
     color: black;
     margin-bottom: 10px;
+    cursor: pointer;
 }
 
 .main_body .container .left .list .active,
@@ -311,6 +312,22 @@ button:hover {
 
 .main_body .container .left .list .item span {
     padding-left: 5px;
+}
+
+.main_body .container .left .list form{
+    width: 100%;
+    margin-top: 10px;
+}
+
+.main_body .container .left .list form input{
+    padding: 10px;
+    border: none;
+    border-radius: 10px 0 0 10px;
+}
+
+.main_body .container .left .list form button{
+    margin-left: -5px;
+    border-radius: 0 10px 10px 0;
 }
 
 
@@ -519,16 +536,47 @@ button:hover {
 /*table*/
 
 .main_body .container .right table {
-    margin-top: 10px;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9rem;
+    min-width: 400px;
     background-color: white;
     border-radius: var(--default-radius);
-    padding: 20px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
 }
+
+.main_body .container .right table thead tr{
+    background-color: var(--bg-primary);
+    color: var(--text-secondary);
+    text-align: left;
+    font-weight: bold;
+    border-radius: 5px 5px 0 0;
+}
+
+.main_body .container .right table th,
+.main_body .container .right table td{
+    padding: 12px 15px;
+}
+
+.main_body .container .right table tbody tr{
+    border-bottom: 1px solid #ddd;
+}
+
+.main_body .container .right table tbody tr:nth-last-of-type(even){
+    background-color: #f3f3f3;
+}
+
+.main_body .container .right table tbody tr:last-of-type{
+    border-bottom: 2px solid var(--bg-primary);
+}
+
+
 
 
 /*form*/
 
-.main_body .container .right .userForm {
+.main_body .container .right .myForm {
     background-color: #fff;
     width: 100%;
     margin-top: 20px;
@@ -540,20 +588,20 @@ button:hover {
     justify-content: center;
 }
 
-.main_body .container .right .userForm form {
+.main_body .container .right .myForm form {
     width: 100%;
     display: flex;
     flex-direction: column;
 }
 
-.main_body .container .right .userForm .photo {
+.main_body .container .right .myForm .photo {
     display: flex;
     flex-direction: row;
     width: 100%;
     margin-top: 20px;
 }
 
-.main_body .container .right .userForm .formGroup {
+.main_body .container .right .myForm .formGroup {
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -561,25 +609,25 @@ button:hover {
     margin-top: 20px;
 }
 
-.main_body .container .right .userForm .formItem {
+.main_body .container .right .myForm .formItem {
     display: flex;
     flex-direction: column;
     flex: 1;
 }
 
-.main_body .container .right .userForm .formItem:nth-child(even) {
+.main_body .container .right .myForm .formItem:nth-child(even) {
     margin-left: 20px;
 }
 
-.main_body .container .right .userForm label {
+.main_body .container .right .myForm label {
     margin: 0 10px 10px 0;
 }
 
-.main_body .container .right .userForm input[type="text"],
-.main_body .container .right .userForm input[type="number"],
-.main_body .container .right .userForm input[type="email"],
-.main_body .container .right .userForm input[type="password"],
-.main_body .container .right .userForm select {
+.main_body .container .right .myForm input[type="text"],
+.main_body .container .right .myForm input[type="number"],
+.main_body .container .right .myForm input[type="email"],
+.main_body .container .right .myForm input[type="password"],
+.main_body .container .right .myForm select {
     -webkit-appearance: none;
     -moz-appearance: none;
     outline: none;
@@ -590,7 +638,7 @@ button:hover {
     border-radius: var(--default-radius);
 }
 
-.main_body .container .right .userForm form button {
+.main_body .container .right .myForm form button {
     margin: 20px 0;
 }
 

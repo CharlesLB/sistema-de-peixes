@@ -19,57 +19,7 @@
 </div>
 
 <div class="right">
-    <header>
-        <h1>Usuários</h1>
-    </header>
-
-    <div class="cards center-cards">
-        <div class="card">
-            <div class="title">
-                <i class="fas fa-users"></i>
-                <h3> Relação de Usuários</h3>
-            </div>
-            <hr>
-            <ul>
-                <li><strong>Total de usuários:</strong> 8</li>
-                <li><strong>Total de administradores:</strong> 2</li>
-                <li><strong>Total de bolsistas:</strong> 6</li>
-            </ul>
-        </div>
-    </div>
-
-
-    <div class="body">
-        <div class="actions">
-            <form>
-                <input type="text" placeholder="pesquisar">
-                <button><i class="fas fa-search"></i></button>
-            </form>
-        </div>
-        <table>
-            <tr>
-                <th>ID <span><i class="fas fa-sort"></i></span></th>
-                <th>Sexo <span><i class="fas fa-sort"></i></span></th>
-                <th>Comprimento padrão <span><i class="fas fa-sort"></i></span></th>
-                <th>Comprimento Total <span><i class="fas fa-sort"></i></span></th>
-                <th>Peso <span><i class="fas fa-sort"></i></span></th>
-                <th>Editar <span><i class="fas fa-sort"></i></span></th>
-                <th>Deletar <span><i class="fas fa-sort"></i></span></th>
-            </tr>
-            <?php for ($i = 0; $i < 10; $i++) :
-                $v->insert("admin/fragments/widgets/table-line");
-            endfor; ?>
-        </table>
-        <nav class="paginator">
-            <div>
-                <a href="" id="left"><i class="fas fa-angle-double-left"></i></a>
-                <a href="">1</a>
-                <a href="" class="active">2</a>
-                <a href="">3</a>
-                <a href="" id="right"><i class="fas fa-angle-double-right"></i></a>
-            </div>
-        </nav>
-    </div>
+    <?php $v->insert("admin/fragments/pages/users/usersList"); ?>
 </div>
 
 <?php $v->start("scripts"); ?>
