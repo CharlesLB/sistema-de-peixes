@@ -45,7 +45,7 @@ $route->post("/projeto/create-specie", "SpecieController:create", "specie.create
 $route->put("/projeto/edit-specie", "SpecieController:edit", "specie.edit");
 $route->post("/projeto/delete-specie", "SpecieController:delete", "specie.delete");
 
-$route->get("/peixe/{specie}", "Web:fishes", "web.fishes");
+$route->get("/projeto/{specie_id}", "Web:project", "web.project");
 $route->post("/create-fish", "FishController:create", "fish.create");
 $route->put("/edit-fish", "FishController:edit", "fish.edit");
 $route->post("/delete-fish", "FishController:delete", "fish.delete");
