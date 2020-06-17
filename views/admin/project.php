@@ -5,16 +5,20 @@
 		<h2>Espécies</h2>
 		<div class="text">Selecione uma espécie da lista para gerenciá-la.</div>
 	</div>
-	<div class="list">
-		<?php
-		foreach ($species as $listed_specie) :
-			$v->insert("admin/fragments/widgets/project/specieCard", ["specie" => $listed_specie]);
-		endforeach;
-		?>
+	<div class="">
+		<div class="list specieList">
+			<?php
+			foreach ($species as $listed_specie) :
+				$v->insert("admin/fragments/widgets/project/specieCard", ["specie" => $listed_specie]);
+			endforeach;
+			?>
+		</div>
+
 		<form id="addEspecie" action="<?= $router->route("specie.create"); ?>" method="post" enctype="multipart/form-data">
-			<input id="addEspecieInput" type="text" name="name" placeholder="Adicionar espécie">
+			<input class="addEspecieInput" type="text" name="name" placeholder="Adicionar espécie">
 			<button> <i class="fas fa-plus"></i></button>
 		</form>
+		<div class="specieMessage"></div>
 	</div>
 </div>
 
@@ -25,7 +29,7 @@
 	else : ?>
 		<header>
 			<h1><?= $specie->name ?></h1>
-			<button class="delete">Excluir Espécie</button>
+			<button class="delete" data-especieId="<?= $specie->id; ?>">Excluir Espécie</button>
 		</header>
 
 		<?php if ($numberFishes > 0) : ?>
@@ -108,7 +112,8 @@
 		$("#addEspecie").submit(function(e) {
 			e.preventDefault();
 			var form = $(this);
-			var list = $(".list");
+			var list = $(".specieList");
+			var message = $(".specieMessage");
 
 			$.ajax({
 				url: form.attr("action"),
@@ -116,10 +121,14 @@
 				type: "POST",
 				dataType: "json",
 				success: function(callback) {
-					$("#addEspecieInput").val("");
+					$(".addEspecieInput").val("");
+
+					if (callback.message) {
+						message.append(callback.message);
+					}
 
 					if (callback.specie) {
-						categories.prepend(callback.specie);
+						list.append(callback.specie);
 					}
 				}
 			});

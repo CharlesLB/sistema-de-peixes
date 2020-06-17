@@ -64,10 +64,10 @@ class Web extends Controller
     public function project(array $data): void
     {
         $Specie = new Specie;
-        $species = $Specie->find()->fetch(true);
+        $species = $Specie->find()->order("name ASC")->fetch(true);
 
         if (!$data) {
-            echo $this->view->render("admin/dashboard", [
+            echo $this->view->render("admin/project", [
                 "title" => "Projeto | " . SITE["name"],
                 "page" => "project",
                 "subPage" => "",
@@ -81,8 +81,6 @@ class Web extends Controller
             $fish = new Fish;
             $fishesOfThisSpecie = $fish->find("specie_id = :specie_id", "specie_id={$SelectedSpecie->id}")->fetch(true);
             $numberFishes = $fish->find("specie_id = :specie_id", "specie_id={$SelectedSpecie->id}")->count();
-
-            echo json_encode($SelectedSpecie->name);
 
             echo $this->view->render("admin/project", [
                 "title" => "Projeto | " . SITE["name"],

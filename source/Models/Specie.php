@@ -35,7 +35,7 @@ class Specie extends DataLayer
     // ─── AUXILIAR FUNCTIONS ─────────────────────────────────────────────────────────
     //
 
-    public function findByName(): ?array
+    public function findByName(): ?Object
     {
         $specieByName = $this->find("name = :name", "name={$this->name}")->fetch();
 

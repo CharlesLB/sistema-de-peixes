@@ -314,20 +314,26 @@ button:hover {
     padding-left: 5px;
 }
 
-.main_body .container .left .list form{
+.main_body .container .left form{
     width: 100%;
     margin-top: 10px;
 }
 
-.main_body .container .left .list form input{
+.main_body .container .left form input{
     padding: 10px;
     border: none;
     border-radius: 10px 0 0 10px;
+    width: 80%;
 }
 
-.main_body .container .left .list form button{
+.main_body .container .left form button{
     margin-left: -5px;
     border-radius: 0 10px 10px 0;
+}
+
+.main_body .container .left .specieMessage{
+    margin-top: 10px;
+    width: 90%;
 }
 
 

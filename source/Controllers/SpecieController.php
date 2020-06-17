@@ -32,6 +32,7 @@ class SpecieController extends Controller
 
         $callback["success"] = true;
         $callback["message"] = message("Espécie cadastrada com sucesso!", "success");
+        $callback["specie"] = $this->view->render("admin/fragments/widgets/project/newSpecieCard", ["specie" => $this->specie]);
         echo json_encode($callback);
     }
 
