@@ -42,23 +42,20 @@
                     </div>
                     <ul>
                         <li>
-                            <a href="<?= url("/admin") ?>" class="<?php if ($page == "dashboard") : echo "active";
-                                                                    endif; ?>">
+                            <a href="<?= url("/admin") ?>" class="<?php if ($page == "dashboard") : echo "active";endif; ?>">
                                 <span class="icon">
                                     <i class="fas fa-border-all"></i></span>
                                 <span class="list">Dashboard</span>
                             </a>
                         </li>
                         <li>
-                            <a href="<?= url("/admin/projeto") ?>" class="<?php if ($page == "project") : echo "active";
-                                                                            endif; ?>">
+                            <a href="<?= url("/admin/projeto") ?>" class="<?php if ($page == "project") : echo "active"; endif; ?>">
                                 <span class="icon"><i class="fas fa-chart-pie"></i></span>
                                 <span class="list">Projeto</span>
                             </a>
                         </li>
                         <li>
-                            <a href="<?= url("admin/mails") ?>" class="<?php if ($page == "mails") : echo "active";
-                                                                        endif; ?>">
+                            <a href="<?= url("admin/mails") ?>" class="<?php if ($page == "mails") : echo "active"; endif; ?>">
                                 <span class="icon"><i class="fas fa-envelope"></i></span>
                                 <span class="list">Notificações</span>
                             </a>
@@ -66,8 +63,7 @@
 
                         <?php if (1 == 1) : ?>
                             <li>
-                                <a href="<?= url("admin/users") ?>" class="<?php if ($page == "users") : echo "active";
-                                                                            endif; ?>">
+                                <a href="<?= url("admin/users") ?>" class="<?php if ($page == "users") : echo "active"; endif; ?>">
                                     <span class="icon"><i class="fas fa-users"></i></span>
                                     <span class="list">Usuários</span>
                                 </a>
@@ -75,13 +71,11 @@
                         <?php endif; ?>
 
                         <li>
-                            <a href="<?= url("admin/user") ?>" class="<?php if ($page == "user") : echo "active";
-                                                                        endif; ?>">
+                            <a href="<?= url("admin/user") ?>" class="<?php if ($page == "user") : echo "active"; endif; ?>">
                                 <span class="icon"><i class="fas fa-user"></i></span>
                                 <span class="list">Meu usuário</span>
                             </a>
                         </li>
-
                     </ul>
 
                     <div class="hamburger">
@@ -105,6 +99,8 @@
 // ─── SCRIPTS ────────────────────────────────────────────────────────────────────
 -->
     <script src="<?= shared("/scripts/jquery.min.js"); ?>"></script>
+    <script src="<?= shared("/scripts/icons.js"); ?>"></script>
+    <script src="<?= shared("/scripts/jqueryModal.js"); ?>"></script>
     <script>
         $(document).ready(function() {
             $(".hamburger").click(function() {
@@ -112,8 +108,7 @@
             })
         });
     </script>
-    <script src="<?= shared("/scripts/icons.js"); ?>"></script>
-    <script src="<?= shared("/scripts/jqueryModal.js"); ?>"></script>
+    
     <?= $v->section("scripts"); ?>
 
 </body>

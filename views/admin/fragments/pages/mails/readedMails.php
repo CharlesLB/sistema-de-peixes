@@ -7,7 +7,7 @@
 <div class="notificationsBlock notifications">
     <?php if (1 == 1) :
         for ($i = 0; $i < 3; $i++) :
-            $v->insert('admin/fragments/widgets/readedMail');
+            $v->insert('admin/fragments/widgets/mails/readedMail');
         endfor; ?>
 
         <nav class="paginator">
