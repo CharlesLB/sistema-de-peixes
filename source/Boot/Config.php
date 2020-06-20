@@ -7,8 +7,8 @@
 
 define("URL", [
     "localhost" => "https://www.localhost/sistema-de-peixes",
-    "base" => "https://www.laboratoriobiologia.com"]
-);
+    "base" => "https://www.laboratoriobiologia.com"
+]);
 
 //
 // ─── SITE ───────────────────────────────────────────────────────────────────────

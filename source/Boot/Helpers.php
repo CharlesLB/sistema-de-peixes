@@ -10,14 +10,14 @@ function url(string $path = null): string
         if ($path) {
             return URL["localhost"]  . "/" . ($path[0] == "/" ? mb_substr($path, 1) : $path);
         }
-        return URL["localhost"] ;
+        return URL["localhost"];
     }
 
     if ($path) {
         return URL["base"] . "/" . ($path[0] == "/" ? mb_substr($path, 1) : $path);
     }
 
-    return URL["base"] ;
+    return URL["base"];
 }
 
 function asset(string $path, string $view): string
@@ -46,11 +46,6 @@ function storage(string $path): string
 
     return URL["base"] . "/Storage/" . ($path[0] == "/" ? mb_substr($path, 1) : $path);
 }
-
-//
-// ─── STRING ─────────────────────────────────────────────────────────────────────
-//
-
 
 
 //
