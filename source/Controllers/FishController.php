@@ -10,7 +10,8 @@ class FishController extends Controller
 {
     private $fish;
 
-    public function __construct($router) {
+    public function __construct($router)
+    {
         parent::__construct($router);
 
         $this->fish = new Fish;
@@ -22,7 +23,7 @@ class FishController extends Controller
 
         $specie_id = $this->findSpecieId(ucfirst($data["specie"]));
 
-        $this->fish->specie_id = $specie_id;   
+        $this->fish->specie_id = $specie_id;
         $this->fish->sex = ucfirst($data["sex"]);
         $this->fish->defaultLength = $data["defaultLength"];
         $this->fish->totalLength = $data["totalLength"];
@@ -52,8 +53,8 @@ class FishController extends Controller
 
         $specie_id = $this->findSpecieId(ucfirst($data["specie"]));
 
-        $this->fish->id = $data["id"];   
-        $this->fish->specie_id = $specie_id;   
+        $this->fish->id = $data["id"];
+        $this->fish->specie_id = $specie_id;
         $this->fish->sex = ucfirst($data["sex"]);
         $this->fish->defaultLength = $data["defaultLength"];
         $this->fish->totalLength = $data["totalLength"];
@@ -77,7 +78,7 @@ class FishController extends Controller
     {
         $data = filter_var_array($data, FILTER_SANITIZE_STRING);
 
-        $this->fish->id = $data['id'];   
+        $this->fish->id = $data['id'];
 
 
         if (!$this->fish->destroy()) {
@@ -101,13 +102,13 @@ class FishController extends Controller
     private function findSpecieId($specie_name): ?int
     {
         $specie = new Specie;
-        $specie->name = $specie_name ;
+        $specie->name = $specie_name;
         $specieResults = $specie->findByName();
 
-        if($specieResults){
+        if ($specieResults) {
             return $specieResults[0]->id;
         }
-        
+
         return null;
     }
 }

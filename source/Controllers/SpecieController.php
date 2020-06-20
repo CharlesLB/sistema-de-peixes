@@ -10,7 +10,8 @@ class SpecieController extends Controller
 {
     private $specie;
 
-    public function __construct($router) {
+    public function __construct($router)
+    {
         parent::__construct($router);
 
         $this->specie = new Specie;
@@ -21,7 +22,7 @@ class SpecieController extends Controller
         $data = filter_var_array($data, FILTER_SANITIZE_STRING);
 
         $this->specie->name = $data["name"];
-        
+
         if (!$this->specie->save()) {
             $callback["message"] = message($this->specie->fail()->getMessage(), "error");
             echo json_encode($callback);
@@ -47,7 +48,7 @@ class SpecieController extends Controller
 
         $this->specie->id = $data["id"];
         $this->specie->id = $data["name"];
-        
+
         if (!$this->specie->save()) {
             $callback["message"] = message($this->specie->fail()->getMessage(), "error");
             echo json_encode($callback);
@@ -66,7 +67,7 @@ class SpecieController extends Controller
         $data = filter_var_array($data, FILTER_SANITIZE_STRING);
 
         $this->specie->id = $data["id"];
-        
+
         if (!$this->specie->destroy()) {
             $callback["message"] = message($this->specie->fail()->getMessage(), "error");
             echo json_encode($callback);

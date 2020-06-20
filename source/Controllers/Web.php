@@ -76,7 +76,6 @@ class Web extends Controller
             ]);
         } else {
             $SelectedSpecie = $Specie->find("id = :id", "id={$data['specie_id']}")->fetch()->data();
-            
 
             $fish = new Fish;
             $fishesOfThisSpecie = $fish->find("specie_id = :specie_id", "specie_id={$SelectedSpecie->id}")->fetch(true);

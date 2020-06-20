@@ -10,7 +10,8 @@ class MailController extends Controller
 
     private $mail;
 
-    public function __construct($router) {
+    public function __construct($router)
+    {
         parent::__construct($router);
 
         $this->mail = new Mail;
@@ -23,7 +24,7 @@ class MailController extends Controller
         $this->mail->name = $data["name"];
         $this->mail->email = $data["email"];
         $this->mail->message = $data["message"];
-        
+
         if (!$this->mail->save()) {
             $callback["message"] = message($this->mail->fail()->getMessage(), "error");
             echo json_encode($callback);
