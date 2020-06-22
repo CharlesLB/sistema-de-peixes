@@ -54,5 +54,9 @@ function storage(string $path): string
 
 function message(string $message, string $type): string
 {
-    return "<div class=\"message {$type}\">{$message}</div>";
+    return "<div class=\"card bg-{$type} text-white shadow\">
+                <div class=\"card-body\">
+                    {$message}
+                </div>
+            </div>";
 }
