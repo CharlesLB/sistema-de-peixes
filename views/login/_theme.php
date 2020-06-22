@@ -24,6 +24,9 @@
 -->
 
 <script src= "<?= shared("/scripts/icons.js", "login");?>"></script>
+<?php $v->start("scripts"); ?>
+
+<?php $v->end(); ?>
 
 </body>
 
