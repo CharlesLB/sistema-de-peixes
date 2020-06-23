@@ -23,7 +23,8 @@ class SpecieController extends Controller
         $this->specie->name = $data["name"];
 
         if (!$this->specie->save()) {
-            $callback["message"] = $this->view->render("admin/fragments/widgets/general/message", ["type" => "error", "message" => $this->specie->fail()->getMessage()]);
+            $callback["alert"] = $this->view->render("admin/fragments/widgets/general/alert", ["type" => "danger", "message" => $this->specie->fail()->getMessage()]);
+            $callback["success"] = false;
             echo json_encode($callback);
             return;
         }
@@ -31,8 +32,8 @@ class SpecieController extends Controller
         $this->specie->save();
 
         $callback["success"] = true;
-        $callback["message"] = $this->view->render("admin/fragments/widgets/general/message", ["type" => "danger", "message" => "Nenhuma espécie foi encontrada. Ou o texto inserido está incorreto, ou espécie ainda não foi cadastrada"]);
-        $callback["specie"] = $this->view->render("admin/fragments/widgets/project/newSpecieCard", ["specie" => $this->specie]);
+        $callback["alert"] = $this->view->render("admin/fragments/widgets/general/alert", ["type" => "success", "message" => "Espécie {$this->specie->name} foi cadastrada com sucesso! :)"]);
+        $callback["specie"] = $this->view->render("admin/fragments/widgets/project/specie", ["specie" => $this->specie]);
         echo json_encode($callback);
     }
 
@@ -40,7 +41,7 @@ class SpecieController extends Controller
     {
         $data = filter_var_array($data, FILTER_SANITIZE_STRING);
         $term = $data["search"];
-        
+
         $species = $this->specie->show($term);
 
         if(!$species){
@@ -56,7 +57,7 @@ class SpecieController extends Controller
         $data = filter_var_array($data, FILTER_SANITIZE_STRING);
 
         $this->specie->id = $data["id"];
-        $this->specie->name = $data["name"];
+        $this->specie->name = ucfirst($data["name"]);
 
         if (!$this->specie->save()) {
             $callback["message"] = $this->view->render("admin/fragments/widgets/general/message", ["type" => "error", "message" => $this->specie->fail()->getMessage()]);
