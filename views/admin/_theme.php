@@ -5,10 +5,10 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" href="<?= shared("/images/icon.ico") ?> " type="image/x-icon" />
 
-  <link href="<?= shared("css/globals.css") ?>" rel="stylesheet">
-  <link href="<?= shared("vendor/fontawesome/css/all.css?lslss") ?>" rel="stylesheet">
-  <link href="<?= asset("css/styles.css?s", "admin") ?>" rel="stylesheet">
+  <link href="<?= shared("vendor/fontawesome/css/all.css") ?>" rel="stylesheet">
+  <link href="<?= asset("css/styles.css?", "admin") ?>" rel="stylesheet">
 
   <title><?= $title ?></title>
 </head>
@@ -108,7 +108,7 @@
   </div>
 
   <!-- Arrow up -->
-  <a class="scroll-to-top rounded" href="#page-top">
+  <a class="scroll-to-top rounded" href="">
     <i class="fas fa-angle-up"></i>
   </a>
 
@@ -121,6 +121,8 @@
   <script src="<?= shared("scripts/popper.min.js") ?>"></script>
   <script src="<?= shared("/scripts/icons.js"); ?>"></script>
   <script src="<?= asset("scripts/scripts.min.js", "admin") ?>"></script>
+
+  <?= $v->section("scripts"); ?>
 
 </body>
 

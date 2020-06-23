@@ -64,7 +64,7 @@ class Web extends Controller
     public function project(array $data): void
     {
         $Specie = new Specie;
-        $species = $Specie->find()->order("name ASC")->fetch(true);
+        $species = $Specie->show();
 
         if (!$data) {
             echo $this->view->render("admin/project", [

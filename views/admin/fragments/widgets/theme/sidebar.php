@@ -1,14 +1,13 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= url("/admin") ?>">
         <div class="sidebar-brand-text mx-3">Laboratório de <sup>Biologia</sup></div>
     </a>
 
     <hr class="sidebar-divider my-0">
 
-    <li class="nav-item <?php if ($page == "dashboard") : echo "active";
-                        endif; ?>">
-        <a class="nav-link" href="index.html">
+    <li class="nav-item <?= ($page == "dashboard") ? "active" : ""; ?>">
+        <a class="nav-link" href="<?= url("/admin") ?>">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span>
         </a>
@@ -20,8 +19,8 @@
         Projeto
     </div>
 
-    <li class="nav-item <?= ($page == "species") ? "active" : ""; ?>">
-        <a class="nav-link" href="index.html">
+    <li class="nav-item <?= ($page == "project") ? "active" : ""; ?>">
+        <a class="nav-link" href="<?= url("/admin/projeto") ?>">
             <i class="fas fa-fw fa-fish"></i>
             <span>Espécies</span>
         </a>
@@ -35,8 +34,8 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Categoria:</h6>
-                <a class="collapse-item" href="utilities-border.html">Não visualizadas</a>
-                <a class="collapse-item" href="utilities-color.html">Visualizadas</a>
+                <a class="collapse-item" href="<?= url("/admin/mensagens") ?>">Não visualizadas</a>
+                <a class="collapse-item" href="<?= url("/admin/mensagens/visualizadas") ?>">Visualizadas</a>
             </div>
         </div>
     </li>
@@ -48,7 +47,7 @@
     </div>
 
     <li class="nav-item <?= ($page == "myUser") ? "active" : ""; ?>">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="<?= url("/admin/meu-usuario") ?>">
             <i class="fas fa-fw fa-user"></i>
             <span>Meu usuário</span>
         </a>
@@ -56,7 +55,7 @@
 
     <?php if (1 == 0) : ?>
         <li class="nav-item <?= ($page == "users") ? "active" : ""; ?>">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="<?= url("/admin/usuarios") ?>">
                 <i class="fas fa-fw fa-users"></i>
                 <span>Usuários</span>
             </a>

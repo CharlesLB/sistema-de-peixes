@@ -1,4 +1,4 @@
-<div class="card mb-4 py-3 border-bottom-primary">
+<div class="card mb-4 ml-3 py-3 border-bottom-<?=$type?> message text-center">
     <div class="card-body">
         <?= $message ?>
     </div>

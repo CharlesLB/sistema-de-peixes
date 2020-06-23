@@ -2,6 +2,7 @@
 
 namespace Source\Models;
 
+use CoffeeCode\DataLayer\Connect;
 use CoffeeCode\DataLayer\DataLayer;
 use Source\Models\Fish;
 use Exception;
@@ -20,6 +21,21 @@ class Specie extends DataLayer
         }
 
         return true;
+    }
+
+    public function show(string $term = null): ?array
+    {
+        $conn = Connect::getInstance();
+        $query = $conn->query("SELECT * FROM species WHERE name LIKE '%$term%' ORDER BY name ASC");
+        $species = $query->fetchAll();
+
+        if(!$species){
+            $this->fail = new Exception("Nenhuma espécie foi encontrada. Talvez a espécie ainda não foi cadastrada ou o texto inserido está incorreto.");
+            return null;
+        }
+        
+        return $species;
+        
     }
 
     public function destroy(): bool

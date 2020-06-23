@@ -21,7 +21,9 @@
 </div>
 
 <!-- species -->
-<?= $v->insert("admin/fragments/pages/project/species", ["species" => $species]) ?>
+<div class="species">
+    <?= $v->insert("admin/fragments/pages/project/species", ["species" => $species]) ?>
+</div>
 
 <?php $v->start("scripts"); ?>
 <script>
@@ -31,12 +33,11 @@
 
             var species = $(".species");
             var form = $(this);
-            var input = $("#specieInput");
 
             $.ajax({
                 url: form.attr("action"),
                 data: form.serialize(),
-                type: "get",
+                type: "post",
                 dataType: "json",
                 success: function(callback) {
 
@@ -45,8 +46,6 @@
                     }else{
                         species.html(callback.species).fadeIn();
                     }
-
-                    input.val("");
                 }
             });
         });

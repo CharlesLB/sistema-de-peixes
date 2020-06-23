@@ -2,7 +2,6 @@
 
 namespace Source\Controllers;
 
-use Exception;
 use Source\Core\Controller;
 use Source\Models\Specie;
 
@@ -24,7 +23,7 @@ class SpecieController extends Controller
         $this->specie->name = $data["name"];
 
         if (!$this->specie->save()) {
-            $callback["message"] = message($this->specie->fail()->getMessage(), "error");
+            $callback["message"] = $this->view->render("admin/fragments/widgets/general/message", ["type" => "error", "message" => $this->specie->fail()->getMessage()]);
             echo json_encode($callback);
             return;
         }
@@ -32,14 +31,24 @@ class SpecieController extends Controller
         $this->specie->save();
 
         $callback["success"] = true;
-        $callback["message"] = message("Espécie cadastrada com sucesso!", "success");
+        $callback["message"] = $this->view->render("admin/fragments/widgets/general/message", ["type" => "danger", "message" => "Nenhuma espécie foi encontrada. Ou o texto inserido está incorreto, ou espécie ainda não foi cadastrada"]);
         $callback["specie"] = $this->view->render("admin/fragments/widgets/project/newSpecieCard", ["specie" => $this->specie]);
         echo json_encode($callback);
     }
 
-    public function read(array $data): void
+    public function search(array $data): void
     {
-        return;
+        $data = filter_var_array($data, FILTER_SANITIZE_STRING);
+        $term = $data["search"];
+        
+        $species = $this->specie->show($term);
+
+        if(!$species){
+            $callback["message"] = $this->view->render("admin/fragments/widgets/general/message", ["type" => "error", "message" => $this->specie->fail()->getMessage()]);
+        }else{
+            $callback["species"] = $this->view->render("admin/fragments/pages/project/species", ["species" => $species]);
+        }
+        echo json_encode($callback);
     }
 
     public function update(array $data): void
@@ -47,10 +56,10 @@ class SpecieController extends Controller
         $data = filter_var_array($data, FILTER_SANITIZE_STRING);
 
         $this->specie->id = $data["id"];
-        $this->specie->id = $data["name"];
+        $this->specie->name = $data["name"];
 
         if (!$this->specie->save()) {
-            $callback["message"] = message($this->specie->fail()->getMessage(), "error");
+            $callback["message"] = $this->view->render("admin/fragments/widgets/general/message", ["type" => "error", "message" => $this->specie->fail()->getMessage()]);
             echo json_encode($callback);
             return;
         }
@@ -58,7 +67,7 @@ class SpecieController extends Controller
         $this->specie->save();
 
         $callback["success"] = true;
-        $callback["message"] = message("Espécie editada com sucesso!", "success");
+        $callback["message"] = $this->view->render("admin/fragments/widgets/general/message", ["type" => "error", "message" => $this->specie->fail()->getMessage()]);
         echo json_encode($callback);
     }
 
@@ -69,7 +78,7 @@ class SpecieController extends Controller
         $this->specie->id = $data["id"];
 
         if (!$this->specie->destroy()) {
-            $callback["message"] = message($this->specie->fail()->getMessage(), "error");
+            $callback["message"] = $this->view->render("admin/fragments/widgets/general/message", ["type" => "error", "message" => $this->specie->fail()->getMessage()]);
             echo json_encode($callback);
             return;
         }
@@ -77,7 +86,7 @@ class SpecieController extends Controller
         $this->specie->destroy();
 
         $callback["success"] = true;
-        $callback["message"] = message("Espécie deletada com sucesso!", "success");
+        $callback["message"] = $this->view->render("admin/fragments/widgets/general/message", ["type" => "error", "message" => $this->specie->fail()->getMessage()]);
         echo json_encode($callback);
     }
 }

@@ -100,7 +100,7 @@
             <!-- Card Body -->
             <div class="card-body">
                 <?php if (1 == 0) :
-                    $v->insert("admin/fragments/widgets/general/message", ["message" => "Você, junto com todos os outros membros do projeto, já visualaram todas as mensagens. Quando enviarem mais uma mensagem para o projeto, ela aparecerá aqui!"]);
+                    $v->insert("admin/fragments/widgets/general/message", ["message" => "Você, junto com todos os outros membros do projeto, já visualaram todas as mensagens. Quando enviarem mais uma mensagem para o projeto, ela aparecerá aqui!", "type" => "primary"]);
                 else :
                     for ($i = 0; $i < 5; $i++) {
                         $v->insert("admin/fragments/widgets/mails/mail", ["message" => "Você, junto com todos os outros membros do projeto, já visualaram todas as mensagens. Quando enviarem mais uma mensagem para o projeto, ela aparecerá aqui!", ""]);
