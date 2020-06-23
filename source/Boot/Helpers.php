@@ -46,17 +46,3 @@ function storage(string $path): string
 
     return URL["base"] . "/Storage/" . ($path[0] == "/" ? mb_substr($path, 1) : $path);
 }
-
-
-//
-// ─── MESSAGE ────────────────────────────────────────────────────────────────────
-//
-
-function message(string $message, string $type): string
-{
-    return "<div class=\"card bg-{$type} text-white shadow\">
-                <div class=\"card-body\">
-                    {$message}
-                </div>
-            </div>";
-}
