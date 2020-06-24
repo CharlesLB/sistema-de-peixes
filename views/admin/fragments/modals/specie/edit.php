@@ -7,7 +7,7 @@
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <form class="edit-specie" action="<?= $router->route("specie.edit"); ?>" method="POST">
+            <form class="edit-specie" action="<?= $router->route("specie.edit"); ?>">
                 <div class="modal-body">
                     <div class="form-group d-none">
                         <label for="specie-id-input">ID</label>

@@ -6,85 +6,33 @@
 
 <!-- cards -->
 <div class="row">
-    <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card border-left-primary shadow h-100 py-2">
-            <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Espécie</div>
-                        <div class="h6 mb-0 font-weight-bold text-gray-800">
-                            Espécies : <?= "9" ?><br>
-                            Peixes : <?= "120 " ?> <br>
-                        </div>
-                    </div>
-                    <div class="col-auto">
-                        <i class="fas fa-fish fa-2x text-gray-300"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <?php
+    $v->insert("admin/fragments/widgets/general/cards/smCard", [
+        "title" => "Espécie",
+        "cardBody" => "Espécies : 0 <br> Peixes : 120<br>",
+        "icon" => "fish"
+    ]);
 
-    <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card border-left-info shadow h-100 py-2">
-            <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Peso e altura</div>
-                        <div class="h6 mb-0 font-weight-bold text-gray-800">
-                            Peso médio : <?= "4,56kg" ?> <br>
-                            Altura média : <?= "0,56m" ?> <br>
-                        </div>
-                    </div>
-                    <div class="col-auto">
-                        <i class="fas fa-ruler fa-2x text-gray-300"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    $v->insert("admin/fragments/widgets/general/cards/smCard", [
+        "title" => "Peso e altura",
+        "cardBody" => "Peso médio : 4,56kg <br> Altura média : 0,56m <br>",
+        "icon" => "ruler"
+    ]);
 
-    <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card border-left-success shadow h-100 py-2">
-            <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Mensagens</div>
-                        <div class="h6 mb-0 font-weight-bold text-gray-800">
-                            Não lidas : <?= "2" ?><br>
-                            Total : <?= "17" ?> <br>
-                            <br>
-                        </div>
-                    </div>
-                    <div class="col-auto">
-                        <i class="fas fa-envelope fa-2x text-gray-300"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    $v->insert("admin/fragments/widgets/general/cards/smCard", [
+        "title" => "Mensagens",
+        "cardBody" => "Não lidas : 2 <br> Total : 17 <br>",
+        "icon" => "envelope"
+    ]);
 
-    <?php if (1 == 1) : ?>
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-warning shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Usuários</div>
-                            <div class="h6 mb-0 font-weight-bold text-gray-800">
-                                Bolsistas : <?= "9" ?><br>
-                                Administradores : <?= "120 " ?> <br>
-                                <br>
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-users fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    <?php endif; ?>
+    if (1 == 1) :
+        $v->insert("admin/fragments/widgets/general/cards/smCard", [
+            "title" => "Usuários",
+            "cardBody" => "Bolsistas : 9 <br> Administradores : 120  <br>",
+            "icon" => "users"
+        ]);
+    endif;
+    ?>
 </div>
 
 <div class="row">
