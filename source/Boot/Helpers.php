@@ -38,6 +38,15 @@ function shared(string $path): string
     return URL["base"] . "/Shared/" . ($path[0] == "/" ? mb_substr($path, 1) : $path);
 }
 
+function script(string $path): string
+{
+    if (strpos($_SERVER['HTTP_HOST'], "localhost")) {
+        return URL["localhost"] . "/fragments/scripts/" . ($path[0] == "/" ? mb_substr($path, 1) : $path);
+    }
+
+    return URL["base"] . "/fragments/scripts/" . ($path[0] == "/" ? mb_substr($path, 1) : $path);
+}
+
 function storage(string $path): string
 {
     if (strpos($_SERVER['HTTP_HOST'], "localhost")) {
