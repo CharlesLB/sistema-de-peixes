@@ -41,7 +41,7 @@ $route->group("/admin");
 $route->get("/", "Web:admin", "web.admin");
 
 $route->get("/projeto", "Web:project", "web.project");
-$route->post("/projeto/especie/{specie_id}", "Web:project", "web.specie");
+$route->get("/projeto/especie/{specie_id}", "Web:specie", "web.specie");
 $route->post("/projeto/pesquisa/", "SpecieController:search", "specie.search");
 
 $route->post("/projeto/create-specie", "SpecieController:create", "specie.create");

@@ -61,36 +61,37 @@ class Web extends Controller
         ]);
     }
 
-    public function project(array $data): void
+    public function project(): void
     {
         $Specie = new Specie;
         $species = $Specie->show();
 
-        if (!$data) {
-            echo $this->view->render("admin/project", [
-                "title" => "Projeto | " . SITE["name"],
-                "page" => "project",
-                "subPage" => "",
-                "specie" => "",
-                "species" => $species
-            ]);
-        } else {
-            $SelectedSpecie = $Specie->find("id = :id", "id={$data['specie_id']}")->fetch()->data();
+        echo $this->view->render("admin/project", [
+            "title" => "Projeto | " . SITE["name"],
+            "page" => "project",
+            "subPage" => "",
+            "specie" => "",
+            "species" => $species
+        ]);
+    }
 
-            $fish = new Fish;
-            $fishesOfThisSpecie = $fish->find("specie_id = :specie_id", "specie_id={$SelectedSpecie->id}")->fetch(true);
-            $numberFishes = $fish->find("specie_id = :specie_id", "specie_id={$SelectedSpecie->id}")->count();
+    public function specie(array $data): void
+    {
+        $data = filter_var_array($data, FILTER_SANITIZE_STRING);
 
-            echo $this->view->render("admin/project", [
-                "title" => "Projeto | " . SITE["name"],
-                "page" => "project",
-                "subPage" => $SelectedSpecie->id,
-                "species" => $species,
-                "specie" => $SelectedSpecie,
-                "numberFishes" => $numberFishes,
-                "fishesOfThisSpecie" => $fishesOfThisSpecie,
-            ]);
-        }
+        $Specie = new Specie;
+        $Specie->id =  $data['specie_id'];
+        $specie = $Specie->find("id = :id", "id={$Specie->id}")->fetch()->data();
+        
+        $dataSpecie = $Specie->dataFind();
+
+        echo $this->view->render("admin/specie", [
+            "title" => $specie->name . " | " . SITE["name"],
+            "page" => "project",
+            "subPage" => $specie->id,
+            "specie" => $specie,
+            "dataEspecie" => $dataSpecie,
+        ]);
     }
 
     public function mails(): void
@@ -133,6 +134,8 @@ class Web extends Controller
 
     public function error(array $data): void
     {
+        $data = filter_var_array($data, FILTER_SANITIZE_STRING);
+
         echo $this->view->render("web/error", [
             "title" => "Error | " . $data["errcode"],
             "error" => $data["errcode"]

@@ -26,7 +26,7 @@ class Specie extends DataLayer
     public function show(string $term = null): ?array
     {
         $conn = Connect::getInstance();
-        $query = $conn->query("SELECT * FROM species WHERE name LIKE '%$term%' ORDER BY name ASC");
+        $query = $conn->query("SELECT id, name FROM species WHERE name LIKE '%$term%' ORDER BY name ASC");
         $species = $query->fetchAll();
 
         if(!$species){
@@ -35,7 +35,15 @@ class Specie extends DataLayer
         }
         
         return $species;
-        
+    }
+
+    public function edit(): bool
+    {
+        if (!$this->validate(true) || !parent::save()) {
+            return false;
+        }
+
+        return true;
     }
 
     public function destroy(): bool
@@ -61,18 +69,52 @@ class Specie extends DataLayer
 
         return null;
     }
+
+    public function dataFind(): array
+    {
+        $data[] = "";
+        $fish = new Fish;
+
+        $data["fishes"] = $fish->find("specie_id = :specie_id", "specie_id={$this->id}")->fetch(true);
+        $data["total"] = $fish->find("specie_id = :specie_id", "specie_id={$this->id}")->count();
+
+        $totalWeight = 0;
+        $totalTotalLenght = 0;
+        $totalDefaultLenght = 0;
+
+        if($data["fishes"]){
+            foreach ($data["fishes"] as $fish){
+               $totalWeight += $fish->weight;
+               $totalTotalLenght += $fish->totalLenght;
+               $totalDefaultLenght += $fish->defaultLenght;
+            }
+
+            $data["totalWeight"] = $totalWeight / $data["total"];
+            $data["totalTotalLenght"] = $totalTotalLenght / $data["total"];
+            $data["totalDefaultLenght"] = $totalDefaultLenght / $data["total"];
+        }
+
+        return $data;
+    }
     
     //
     // ─── PRIVATE FUNCTIONS ──────────────────────────────────────────────────────────
     //
 
-    private function validate(): bool
+    private function validate(bool $update = false): bool
     {
-        if (empty($this->name)) {
-            $this->fail = new Exception("Informe o seu nome");    
-            return false;
+        if($update){
+            if (!$this->findById($this->id)) {
+                $this->fail = new Exception("O ID não foi definido corretamente");    
+                return false;
+            }
+        }else{
+            if (empty($this->name)) {
+                $this->fail = new Exception("Informe o nome da espécie");    
+                return false;
+            }
         }
-
+        
         if ($this->findByName()) {
             $this->fail = new Exception("Espécie já cadastrada");    
             return false;

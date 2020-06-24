@@ -4,6 +4,7 @@ namespace Source\Controllers;
 
 use Source\Core\Controller;
 use Source\Models\Specie;
+use Source\Controllers\Web;
 
 class SpecieController extends Controller
 {
@@ -44,31 +45,33 @@ class SpecieController extends Controller
 
         $species = $this->specie->show($term);
 
-        if(!$species){
+        if (!$species) {
             $callback["message"] = $this->view->render("admin/fragments/widgets/general/message", ["type" => "error", "message" => $this->specie->fail()->getMessage()]);
-        }else{
+        } else {
             $callback["species"] = $this->view->render("admin/fragments/pages/project/species", ["species" => $species]);
         }
         echo json_encode($callback);
     }
 
-    public function update(array $data): void
+    public function edit(array $data): void
     {
         $data = filter_var_array($data, FILTER_SANITIZE_STRING);
 
         $this->specie->id = $data["id"];
         $this->specie->name = ucfirst($data["name"]);
 
-        if (!$this->specie->save()) {
-            $callback["message"] = $this->view->render("admin/fragments/widgets/general/message", ["type" => "error", "message" => $this->specie->fail()->getMessage()]);
+        if (!$this->specie->edit()) {
+            $callback["alert"] = $this->view->render("admin/fragments/widgets/general/alert", ["type" => "danger", "message" => $this->specie->fail()->getMessage()]);
+            $callback["success"] = false;
             echo json_encode($callback);
             return;
         }
 
-        $this->specie->save();
+        $this->specie->edit();
 
         $callback["success"] = true;
-        $callback["message"] = $this->view->render("admin/fragments/widgets/general/message", ["type" => "error", "message" => $this->specie->fail()->getMessage()]);
+        $callback["alert"] = $this->view->render("admin/fragments/widgets/general/alert", ["type" => "success", "message" => "Espécie {$this->specie->name} foi cadastrada com sucesso! :)"]);
+        $callback["header"] = $this->view->render("admin/fragments/widgets/specie/header", ["specie" => $this->specie]);
         echo json_encode($callback);
     }
 
