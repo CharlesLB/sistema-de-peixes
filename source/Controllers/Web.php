@@ -57,7 +57,6 @@ class Web extends Controller
         echo $this->view->render("admin/dashboard", [
             "title" => "Administrador | " . SITE["name"],
             "page" => "dashboard",
-            "subPage" => "dash"
         ]);
     }
 
@@ -69,8 +68,6 @@ class Web extends Controller
         echo $this->view->render("admin/project", [
             "title" => "Projeto | " . SITE["name"],
             "page" => "project",
-            "subPage" => "",
-            "specie" => "",
             "species" => $species
         ]);
     }
@@ -88,7 +85,6 @@ class Web extends Controller
         echo $this->view->render("admin/specie", [
             "title" => $specie->name . " | " . SITE["name"],
             "page" => "project",
-            "subPage" => $specie->id,
             "specie" => $specie,
             "dataEspecie" => $dataSpecie,
         ]);
@@ -99,7 +95,6 @@ class Web extends Controller
         echo $this->view->render("admin/mails", [
             "title" => "Notificações | " . SITE["name"],
             "page" => "mails",
-            "subPage" => "unreadedMails"
         ]);
     }
 
@@ -108,7 +103,6 @@ class Web extends Controller
         echo $this->view->render("admin/mails", [
             "title" => "Notificações | " . SITE["name"],
             "page" => "mails",
-            "subPage" => "readedMails"
         ]);
     }
 
@@ -117,7 +111,6 @@ class Web extends Controller
         echo $this->view->render("admin/users", [
             "title" => "Usuários | " . SITE["name"],
             "page" => "users",
-            "subPage" => "dash"
         ]);
     }
 
@@ -126,7 +119,6 @@ class Web extends Controller
         echo $this->view->render("admin/user", [
             "title" => "Meu usuário | " . SITE["name"],
             "page" => "user",
-            "subPage" => "dash"
         ]);
     }
 

@@ -2,6 +2,7 @@
 
 namespace Source\Controllers;
 
+use CoffeeCode\Router\Router;
 use Source\Core\Controller;
 use Source\Models\Specie;
 use Source\Controllers\Web;
@@ -78,19 +79,15 @@ class SpecieController extends Controller
     public function delete(array $data): void
     {
         $data = filter_var_array($data, FILTER_SANITIZE_STRING);
-
         $this->specie->id = $data["id"];
 
         if (!$this->specie->destroy()) {
-            $callback["message"] = $this->view->render("admin/fragments/widgets/general/message", ["type" => "error", "message" => $this->specie->fail()->getMessage()]);
+            $callback["alert"] = $this->view->render("admin/fragments/widgets/general/alert", ["type" => "error", "message" => $this->specie->fail()->getMessage()]);
             echo json_encode($callback);
             return;
-        }
-
-        $this->specie->destroy();
+        };
 
         $callback["success"] = true;
-        $callback["message"] = $this->view->render("admin/fragments/widgets/general/message", ["type" => "error", "message" => $this->specie->fail()->getMessage()]);
         echo json_encode($callback);
     }
 }

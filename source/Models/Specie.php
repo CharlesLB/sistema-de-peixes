@@ -29,11 +29,11 @@ class Specie extends DataLayer
         $query = $conn->query("SELECT id, name FROM species WHERE name LIKE '%$term%' ORDER BY name ASC");
         $species = $query->fetchAll();
 
-        if(!$species){
+        if (!$species) {
             $this->fail = new Exception("Nenhuma espécie foi encontrada. Talvez a espécie ainda não foi cadastrada ou o texto inserido está incorreto.");
             return null;
         }
-        
+
         return $species;
     }
 
@@ -48,10 +48,11 @@ class Specie extends DataLayer
 
     public function destroy(): bool
     {
-        if (!parent::destroy() || !$this->deleteFishesOfThisSpecie()) {
+        if (!$this->validate(false, true) || !parent::destroy()) {
             return false;
         }
 
+        $this->deleteFishesOfThisSpecie();
         return true;
     }
 
@@ -63,7 +64,7 @@ class Specie extends DataLayer
     {
         $specieByName = $this->find("name = :name", "name={$this->name}")->fetch();
 
-        if($specieByName){
+        if ($specieByName) {
             return $specieByName;
         }
 
@@ -82,11 +83,11 @@ class Specie extends DataLayer
         $totalTotalLenght = 0;
         $totalDefaultLenght = 0;
 
-        if($data["fishes"]){
-            foreach ($data["fishes"] as $fish){
-               $totalWeight += $fish->weight;
-               $totalTotalLenght += $fish->totalLenght;
-               $totalDefaultLenght += $fish->defaultLenght;
+        if ($data["fishes"]) {
+            foreach ($data["fishes"] as $fish) {
+                $totalWeight += $fish->weight;
+                $totalTotalLenght += $fish->totalLenght;
+                $totalDefaultLenght += $fish->defaultLenght;
             }
 
             $data["totalWeight"] = $totalWeight / $data["total"];
@@ -96,28 +97,30 @@ class Specie extends DataLayer
 
         return $data;
     }
-    
+
     //
     // ─── PRIVATE FUNCTIONS ──────────────────────────────────────────────────────────
     //
 
-    private function validate(bool $update = false): bool
+    private function validate(bool $update = false, bool $delete = false): bool
     {
-        if($update){
+        if ($update || $delete) {
             if (!$this->findById($this->id)) {
-                $this->fail = new Exception("O ID não foi definido corretamente");    
-                return false;
-            }
-        }else{
-            if (empty($this->name)) {
-                $this->fail = new Exception("Informe o nome da espécie");    
+                $this->fail = new Exception("Essa espécie já foi excluída.");
                 return false;
             }
         }
-        
-        if ($this->findByName()) {
-            $this->fail = new Exception("Espécie já cadastrada");    
-            return false;
+
+        if (!$delete) {
+            if (empty($this->name)) {
+                $this->fail = new Exception("Informe o nome da espécie");
+                return false;
+            }
+
+            if ($this->findByName()) {
+                $this->fail = new Exception("Espécie já cadastrada");
+                return false;
+            }
         }
 
         return true;
@@ -129,8 +132,10 @@ class Specie extends DataLayer
 
         $fishesOfThisSpecie = $fish->find("specie_id = :specie_id", "specie_id={$this->id}")->fetch(true);
 
-        foreach ($fishesOfThisSpecie as $fish) {
-            $fish->destroy();
+        if ($fishesOfThisSpecie) {
+            foreach ($fishesOfThisSpecie as $fish) {
+                $fish->destroy();
+            }
         }
     }
 }

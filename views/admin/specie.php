@@ -55,6 +55,27 @@
                 }
             });
         });
+
+        $(".delete-specie").submit(function(e) {
+            e.preventDefault();
+
+            var form = $(this);
+            var alert = $(".alert-form-object");
+
+            $.ajax({
+                url: form.attr("action"),
+                data: form.serialize(),
+                type: "post",
+                dataType: "json",
+                success: function(callback) {
+                    if (!callback.success) {
+                        alert.html(callback.alert).fadeIn();
+                    }else{
+                        window.location.href = "<?= url("admin/projeto")?>";
+                    }
+                }
+            });
+        });
     });
 </script>
 <?php $v->end(); ?>
