@@ -80,19 +80,23 @@ class Specie extends DataLayer
         $data["total"] = $fish->find("specie_id = :specie_id", "specie_id={$this->id}")->count();
 
         $totalWeight = 0;
-        $totalTotalLenght = 0;
-        $totalDefaultLenght = 0;
+        $totalTotalLength = 0;
+        $totalDefaultLength = 0;
 
         if ($data["fishes"]) {
             foreach ($data["fishes"] as $fish) {
                 $totalWeight += $fish->weight;
-                $totalTotalLenght += $fish->totalLenght;
-                $totalDefaultLenght += $fish->defaultLenght;
+                $totalTotalLength += $fish->totalLength;
+                $totalDefaultLength += $fish->defaultLength;
             }
 
             $data["totalWeight"] = $totalWeight / $data["total"];
-            $data["totalTotalLenght"] = $totalTotalLenght / $data["total"];
-            $data["totalDefaultLenght"] = $totalDefaultLenght / $data["total"];
+            $data["totalTotalLength"] = $totalTotalLength / $data["total"];
+            $data["totalDefaultLength"] = $totalDefaultLength / $data["total"];
+        }else{
+            $data["totalWeight"] = 0;
+            $data["totalTotalLength"] = 0;
+            $data["totalDefaultLength"] = 0;
         }
 
         return $data;

@@ -2,10 +2,8 @@
 
 namespace Source\Controllers;
 
-use CoffeeCode\Router\Router;
 use Source\Core\Controller;
 use Source\Models\Specie;
-use Source\Controllers\Web;
 
 class SpecieController extends Controller
 {
@@ -71,8 +69,8 @@ class SpecieController extends Controller
         $this->specie->edit();
 
         $callback["success"] = true;
-        $callback["alert"] = $this->view->render("admin/fragments/widgets/general/alert", ["type" => "success", "message" => "Espécie {$this->specie->name} foi cadastrada com sucesso! :)"]);
-        $callback["header"] = $this->view->render("admin/fragments/widgets/specie/header", ["specie" => $this->specie]);
+        $callback["alert"] = $this->view->render("admin/fragments/widgets/general/alert", ["type" => "success", "message" => "Espécie {$this->specie->name} foi editada com sucesso! :)"]);
+        $callback["specieName"] = $this->specie->name;
         echo json_encode($callback);
     }
 

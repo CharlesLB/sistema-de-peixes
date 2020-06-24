@@ -86,7 +86,7 @@ class Web extends Controller
             "title" => $specie->name . " | " . SITE["name"],
             "page" => "project",
             "specie" => $specie,
-            "dataEspecie" => $dataSpecie,
+            "dataSpecie" => $dataSpecie,
         ]);
     }
 
