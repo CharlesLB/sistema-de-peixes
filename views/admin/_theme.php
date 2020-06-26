@@ -9,6 +9,7 @@
 
   <link href="<?= shared("vendor/fontawesome/css/all.css") ?>" rel="stylesheet">
   <link href="<?= asset("css/styles.css?ess", "admin") ?>" rel="stylesheet">
+  <?= $v->section("styles"); ?>
 
   <title><?= $title ?></title>
 </head>
@@ -124,7 +125,7 @@
   <script src="<?= shared("scripts/jquery.min.js") ?>"></script>
   <script src="<?= shared("scripts/bootstrap.min.js") ?>"></script>
   <script src="<?= shared("scripts/popper.min.js") ?>"></script>
-  <script src="<?= shared("/scripts/icons.js"); ?>"></script>
+  <script src="<?= shared("scripts/icons.js"); ?>"></script>
   <script src="<?= asset("scripts/scripts.min.js", "admin") ?>"></script>
 
   <?= $v->section("scripts"); ?>

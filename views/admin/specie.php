@@ -1,5 +1,9 @@
 <?php $v->layout('admin/_theme'); ?>
 
+<?php $v->start("styles");?>
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+<?php $v->end();?>
+
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800"><span id="specieName"><?= $specie->name ?></span></h1>
     <div>
@@ -529,4 +533,12 @@
 
 <?php $v->start("scripts"); ?>
 <?php $v->insert("admin/fragments/scripts/specie") ?>
+  <!-- DataTables -->
+  <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+  <script>
+    $(document).ready(function() {
+        $('#dataTable').DataTable();
+    });
+  </script>
 <?php $v->end(); ?>
