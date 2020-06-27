@@ -1,7 +1,7 @@
 <?php $v->layout('admin/_theme'); ?>
 
 <?php $v->start("styles");?>
-    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="<?= asset("css/datatables.min.css", "admin") ?>" rel="stylesheet">
 <?php $v->end();?>
 
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -534,8 +534,8 @@
 <?php $v->start("scripts"); ?>
 <?php $v->insert("admin/fragments/scripts/specie") ?>
   <!-- DataTables -->
-  <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-  <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+  <script src="<?= asset("scripts/datatables.bootstrap.min.js", "admin")?>"></script>
+  <script src="<?= asset("scripts/datatables.min.js", "admin")?>"></script>
   <script>
     $(document).ready(function() {
         $('#dataTable').DataTable();
