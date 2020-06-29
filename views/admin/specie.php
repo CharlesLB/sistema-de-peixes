@@ -50,16 +50,6 @@
                         <th>Salary</th>
                     </tr>
                 </thead>
-                <tfoot>
-                    <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
-                    </tr>
-                </tfoot>
                 <tbody>
                     <tr>
                         <td>Tiger Nixon</td>
@@ -534,8 +524,8 @@
 <?php $v->start("scripts"); ?>
 <?php $v->insert("admin/fragments/scripts/specie") ?>
   <!-- DataTables -->
-  <script src="<?= asset("scripts/datatables.bootstrap.min.js", "admin")?>"></script>
   <script src="<?= asset("scripts/datatables.min.js", "admin")?>"></script>
+  <script src="<?= asset("scripts/datatables.bootstrap.min.js", "admin")?>"></script>
   <script>
     $(document).ready(function() {
         $('#dataTable').DataTable();
