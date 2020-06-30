@@ -60,7 +60,7 @@ function storage(string $path): string
 // ─── NUMBER ─────────────────────────────────────────────────────────────────────
 //
 
-function floatFormat(?float $number): ?float
+function floatFormat(?float $number): ?string
 {
     $number = number_format($number, 2, ',', '.');
     return $number;
