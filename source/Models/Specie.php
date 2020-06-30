@@ -37,11 +37,19 @@ class Specie extends DataLayer
         return $species;
     }
 
-    public function edit(): bool
+    public function edit(bool $updateData = false): bool
     {
-        if (!$this->validate(true) || !parent::save()) {
-            return false;
+        if($updateData){
+            if (!$this->validate(false, true) || !parent::save()) {
+                return false;
+            }
+        }else{
+            if (!$this->validate(true) || !parent::save()) {
+                return false;
+            }
         }
+
+        
 
         return true;
     }
@@ -71,12 +79,15 @@ class Specie extends DataLayer
         return null;
     }
 
-    public function fishCount(): int
+    public function fishCount(int $id = null): int
     {
         $fish = new Fish;
-
-        $total = $fish->find("specie_id = :specie_id", "specie_id={$this->id}")->count();
-
+        if (!$id) {
+            $total = $fish->find("specie_id = :specie_id", "specie_id={$this->id}")->count();
+        }else{
+            $total = $fish->find("specie_id = :specie_id", "specie_id={$id}")->count();
+        }
+        
         return $total;
     }
 
@@ -93,16 +104,16 @@ class Specie extends DataLayer
     // ─── PRIVATE FUNCTIONS ──────────────────────────────────────────────────────────
     //
 
-    private function validate(bool $update = false, bool $delete = false): bool
+    private function validate(bool $update = false, bool $deleteOrDataChange = false): bool
     {
-        if ($update || $delete) {
+        if ($update || $deleteOrDataChange) {
             if (!$this->findById($this->id)) {
                 $this->fail = new Exception("Essa espécie já foi excluída.");
                 return false;
             }
         }
 
-        if (!$delete) {
+        if (!$deleteOrDataChange) {
             if (empty($this->name)) {
                 $this->fail = new Exception("Informe o nome da espécie");
                 return false;

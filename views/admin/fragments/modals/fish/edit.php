@@ -11,7 +11,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="specie-name-input">Nome da espécie</label>
-                        <input type="text" class="form-control" name="name" id="specie-name-input" placeholder="Nome da espécie">
+                        <input type="text" class="form-control" name="name" id="edit-name-input" placeholder="Nome da espécie">
                     </div>
                 </div>
                 <div class="modal-footer">

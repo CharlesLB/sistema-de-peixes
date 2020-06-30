@@ -36,13 +36,12 @@
                 type: "post",
                 dataType: "json",
                 success: function(callback) {
+                    alert.html(callback.alert).fadeIn();
+
                     if (callback.success) {
                         input.val("");
-                        alert.html(callback.alert).fadeIn();
                         species.prepend(callback.specie).fadeIn();
                         $('.modal').modal('hide');
-                    } else {
-                        alert.html(callback.alert).fadeIn();
                     }
                 }
             });

@@ -11,7 +11,7 @@
                 <div class="modal-body">
                     <div class="form-group d-none">
                         <label for="specie-name-input">Id da espécie</label>
-                        <input type="text" class="form-control create-fish-input" name="name" id="specie-name-input" placeholder="Nome da espécie" value="<?= $specie_id ?>">
+                        <input type="text" class="form-control" name="specie_id" id="specie-name-input" placeholder="Nome da espécie" value="<?= $specie_id ?>">
                     </div>
                     <div class="form-row">
                         <div class="col-md-6 mb-3">
@@ -24,17 +24,17 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="weight">Peso</label>
-                            <input type="number" class="form-control create-fish-input" id="weight" placeholder="Kilograma">
+                            <input type="number"  step="any" name="weight" class="form-control create-fish-input" id="weight" placeholder="Kilograma">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="col-md-6 mb-3">
                             <label for="defaultLength">Comprimento padrão</label>
-                            <input type="number" class="form-control create-fish-input" id="defaultLength" placeholder="Metros">
+                            <input type="number"  step="any" name="defaultLength" class="form-control create-fish-input" id="defaultLength" placeholder="Metros">
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="totalLength">Comprimento total</label>
-                            <input type="number" class="form-control create-fish-input" id="totalLength" placeholder="Metros">
+                            <input type="number"  step="any" name="totalLength" class="form-control create-fish-input" id="totalLength" placeholder="Metros">
                         </div>
                     </div>
                 </div>

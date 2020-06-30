@@ -21,9 +21,7 @@
 </div>
 
 <!-- species -->
-<div class="species">
-    <?= $v->insert("admin/fragments/pages/project/species", ["species" => $species]) ?>
-</div>
+<?= $v->insert("admin/fragments/pages/project/species", ["species" => $species]) ?>
 
 <!-- Modals -->
 <?php $v->insert("admin/fragments/modals/specie/create") ?>

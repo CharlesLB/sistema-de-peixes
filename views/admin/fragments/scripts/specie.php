@@ -98,7 +98,6 @@
         //
         // ─── FISH ────────────────────────────────────────────────────────
         //
-
         $(".create-fish").submit(function(e) {
             e.preventDefault();
 
@@ -114,13 +113,18 @@
                 type: "post",
                 dataType: "json",
                 success: function(callback) {
+                    alert.html(callback.alert).fadeIn();
+
                     if (callback.success) {
                         input.val("");
-                        alert.html(callback.alert).fadeIn();
-                        species.prepend(callback.specie).fadeIn();
+
+                        $("#totalFish").html(callback.totalFish);
+                        $("#mediaWeight").html(callback.mediaWeight);
+                        $("#mediaDefaultLength").html(callback.mediaDefaultLength);
+                        $("#mediaTotalLength").html(callback.mediaTotalLength);
+
+                        fishes.prepend(callback.fish).fadeIn();
                         $('.modal').modal('hide');
-                    } else {
-                        alert.html(callback.alert).fadeIn();
                     }
                 }
             });

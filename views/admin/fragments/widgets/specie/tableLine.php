@@ -1,9 +1,9 @@
-<tr>
-    <td>1</td>
-    <td>Macho</td>
-    <td>5.76m</td>
-    <td>5.96m</td>
-    <td>7.96kg</td>
-    <td><button type="button" class="btn btn-warning">Editar</button></td>
-    <td><button type="button" class="btn btn-danger">Deletar</button></td>
+<tr id="<?= $fish->id ?>">
+    <td><?= $fish->id ?></td>
+    <td><?= $fish->sex ?></td>
+    <td><?= $fish->defaultLength?></td>
+    <td><?= $fish->totalLength?></td>
+    <td><?= $fish->weight?></td>
+    <td><button type="button" data-role="update" data-id="<?= $fish->id ?>" class="btn btn-warning">Editar</button></td>
+    <td><button type="button" data-role="delete" data-id="<?= $fish->id ?>" class="btn btn-danger">Deletar</button></td>
 </tr>

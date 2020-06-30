@@ -18,19 +18,18 @@
 
 <!-- cards -->
 <div class="row">
-
     <?php $v->insert("admin/fragments/widgets/general/cards/bgCard", [
         "title" => "Dados",
-        "cardBody" => "Total de Peixes: <span id='#totalFish'>{$total}</span> <br><br><br>",
+        "cardBody" => "Total de Peixes: <span id='totalFish'>{$total}</span> <br><br><br>",
         "icon" => "fish"
     ]) ?>
 
     <?php $v->insert("admin/fragments/widgets/general/cards/bgCard", [
         "title" => "Peso e altura",
         "cardBody" => "
-            Peso médio : <span id='#totalWeight'>{$specie->totalWeight}</span>  <br> 
-            Comprimento total média: <span id='#totalTotalLength'>{$specie->totalTotalLength}</span> <br> 
-            Comprimento padrão média: <span id='#totaltotalDefaultLength'>{$specie->totalDefaultLength}</span> <br>",
+            Peso médio : <span id='mediaWeight'>{$specie->mediaWeight}</span>  <br> 
+            Comprimento total média: <span id='mediaTotalLength'>{$specie->mediaTotalLength}</span> <br> 
+            Comprimento padrão média: <span id='mediaDefaultLength'>{$specie->mediaDefaultLength}</span> <br>",
         "icon" => "ruler"
     ]) ?>
 </div>

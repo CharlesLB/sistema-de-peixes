@@ -21,24 +21,28 @@ class FishController extends Controller
     {
         $data = filter_var_array($data, FILTER_SANITIZE_STRING);
 
-        $specie_id = $this->findSpecieId(ucfirst($data["specie"]));
-
-        $this->fish->specie_id = $specie_id;
+        $this->fish->specie_id = $data["specie_id"];
         $this->fish->sex = ucfirst($data["sex"]);
         $this->fish->defaultLength = $data["defaultLength"];
         $this->fish->totalLength = $data["totalLength"];
-        $this->fish->weigth = $data["weigth"];
+        $this->fish->weight = $data["weight"];
 
         if (!$this->fish->save()) {
-            $callback["message"] = message($this->fish->fail()->getMessage(), "error");
+            $callback["alert"] = $this->view->render("admin/fragments/widgets/general/alert", ["type" => "danger", "message" => $this->fish->fail()->getMessage()]);
             echo json_encode($callback);
             return;
         }
 
-        $this->fish->save();
+        $Specie = new Specie;
+        $specie = $Specie->findById($this->fish->specie_id);
 
+        $callback["mediaWeight"] = $specie->mediaWeight;
+        $callback["mediaDefaultLength"] = $specie->mediaDefaultLength;
+        $callback["mediaTotalLength"] = $specie->mediaTotalLength;
+        $callback["totalFish"] = $Specie->fishCount($specie->id);
         $callback["success"] = true;
-        $callback["message"] = message("Peixe editado com sucesso!", "success");
+        $callback["alert"] = $this->view->render("admin/fragments/widgets/general/alert", ["type" => "success", "message" => "Peixe cadastrado com sucesso"]);
+        $callback["fish"] = $this->view->render("admin/fragments/widgets/specie/tableLine", ["fish" => $this->fish]);
         echo json_encode($callback);
     }
 
@@ -51,17 +55,14 @@ class FishController extends Controller
     {
         $data = filter_var_array($data, FILTER_SANITIZE_STRING);
 
-        $specie_id = $this->findSpecieId(ucfirst($data["specie"]));
-
         $this->fish->id = $data["id"];
-        $this->fish->specie_id = $specie_id;
         $this->fish->sex = ucfirst($data["sex"]);
         $this->fish->defaultLength = $data["defaultLength"];
         $this->fish->totalLength = $data["totalLength"];
         $this->fish->weigth = $data["weigth"];
 
         if (!$this->fish->save()) {
-            $callback["message"] = message($this->fish->fail()->getMessage(), "error");
+            $callback["alert"] = $this->view->render("admin/fragments/widgets/general/alert", ["type" => "error", "message" => $this->specie->fail()->getMessage()]);
             echo json_encode($callback);
             return;
         }
@@ -69,7 +70,7 @@ class FishController extends Controller
         $this->fish->save();
 
         $callback["success"] = true;
-        $callback["message"] = message("Peixe editado com sucesso!", "success");
+        $callback["alert"] = $this->view->render("admin/fragments/widgets/general/alert", ["type" => "error", "message" => $this->specie->fail()->getMessage()]);
         echo json_encode($callback);
     }
 
@@ -82,7 +83,7 @@ class FishController extends Controller
 
 
         if (!$this->fish->destroy()) {
-            $callback["message"] = message($this->fish->fail()->getMessage(), "error");
+            $callback["alert"] = $this->view->render("admin/fragments/widgets/general/alert", ["type" => "error", "message" => $this->fish->fail()->getMessage()]);
             echo json_encode($callback);
             return;
         }
@@ -90,7 +91,7 @@ class FishController extends Controller
         $this->fish->destroy();
 
         $callback["success"] = true;
-        $callback["message"] = message("Peixe deletado com sucesso!", "success");
+        $callback["alert"] = $this->view->render("admin/fragments/widgets/general/alert", ["type" => "error", "message" => $this->fish->fail()->getMessage()]);
         echo json_encode($callback);
     }
 
@@ -99,16 +100,5 @@ class FishController extends Controller
     // ─── PRIVATE FUNCTIONS ──────────────────────────────────────────────────────────
     //
 
-    private function findSpecieId($specie_name): ?int
-    {
-        $specie = new Specie;
-        $specie->name = $specie_name;
-        $specieResults = $specie->findByName();
 
-        if ($specieResults) {
-            return $specieResults[0]->id;
-        }
-
-        return null;
-    }
 }

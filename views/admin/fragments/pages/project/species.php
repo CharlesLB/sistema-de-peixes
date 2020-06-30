@@ -1,5 +1,5 @@
 <?php if($species):?>
-<div class="row d-flex">
+<div class="row d-flex species">
     <?php 
     foreach ($species as $listed_specie) :
         $v->insert("admin/fragments/widgets/project/specie", ["specie" => $listed_specie]);
