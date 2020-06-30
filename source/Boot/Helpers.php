@@ -55,3 +55,13 @@ function storage(string $path): string
 
     return URL["base"] . "/Storage/" . ($path[0] == "/" ? mb_substr($path, 1) : $path);
 }
+
+//
+// ─── NUMBER ─────────────────────────────────────────────────────────────────────
+//
+
+function floatFormat(?float $number): ?float
+{
+    $number = number_format($number, 2, ',', '.');
+    return $number;
+}
