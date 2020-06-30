@@ -7,31 +7,18 @@
 <!-- cards -->
 <div class="row">
     <?php
-    $v->insert("admin/fragments/widgets/general/cards/smCard", [
+    $v->insert("admin/fragments/widgets/general/cards/bgCard", [
         "title" => "Espécie",
         "cardBody" => "Espécies : 0 <br> Peixes : 120<br>",
         "icon" => "fish"
     ]);
 
-    $v->insert("admin/fragments/widgets/general/cards/smCard", [
-        "title" => "Peso e altura",
-        "cardBody" => "Peso médio : 4,56kg <br> Altura média : 0,56m <br>",
-        "icon" => "ruler"
-    ]);
-
-    $v->insert("admin/fragments/widgets/general/cards/smCard", [
+    $v->insert("admin/fragments/widgets/general/cards/bgCard", [
         "title" => "Mensagens",
         "cardBody" => "Não lidas : 2 <br> Total : 17 <br>",
         "icon" => "envelope"
     ]);
 
-    if (1 == 1) :
-        $v->insert("admin/fragments/widgets/general/cards/smCard", [
-            "title" => "Usuários",
-            "cardBody" => "Bolsistas : 9 <br> Administradores : 120  <br>",
-            "icon" => "users"
-        ]);
-    endif;
     ?>
 </div>
 

@@ -80,13 +80,15 @@ class Web extends Controller
         $Specie->id =  $data['specie_id'];
         $specie = $Specie->find("id = :id", "id={$Specie->id}")->fetch()->data();
         
-        $dataSpecie = $Specie->dataFind();
+        $fishes = $Specie->fishFind();
+        $total = $Specie->fishCount();
 
         echo $this->view->render("admin/specie", [
             "title" => $specie->name . " | " . SITE["name"],
             "page" => "project",
             "specie" => $specie,
-            "dataSpecie" => $dataSpecie,
+            "total" => $total,
+            "fishes" => $fishes
         ]);
     }
 

@@ -71,35 +71,22 @@ class Specie extends DataLayer
         return null;
     }
 
-    public function dataFind(): array
+    public function fishCount(): int
     {
-        $data[] = "";
         $fish = new Fish;
 
-        $data["fishes"] = $fish->find("specie_id = :specie_id", "specie_id={$this->id}")->fetch(true);
-        $data["total"] = $fish->find("specie_id = :specie_id", "specie_id={$this->id}")->count();
+        $total = $fish->find("specie_id = :specie_id", "specie_id={$this->id}")->count();
 
-        $totalWeight = 0;
-        $totalTotalLength = 0;
-        $totalDefaultLength = 0;
+        return $total;
+    }
 
-        if ($data["fishes"]) {
-            foreach ($data["fishes"] as $fish) {
-                $totalWeight += $fish->weight;
-                $totalTotalLength += $fish->totalLength;
-                $totalDefaultLength += $fish->defaultLength;
-            }
+    public function fishFind(): ?array
+    {
+        $fish = new Fish;
 
-            $data["totalWeight"] = $totalWeight / $data["total"];
-            $data["totalTotalLength"] = $totalTotalLength / $data["total"];
-            $data["totalDefaultLength"] = $totalDefaultLength / $data["total"];
-        }else{
-            $data["totalWeight"] = 0;
-            $data["totalTotalLength"] = 0;
-            $data["totalDefaultLength"] = 0;
-        }
+        $fishes = $fish->find("specie_id = :specie_id", "specie_id={$this->id}")->fetch(true);
 
-        return $data;
+        return $fishes;
     }
 
     //
