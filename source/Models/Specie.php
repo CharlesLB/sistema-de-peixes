@@ -68,9 +68,9 @@ class Specie extends DataLayer
 
     public function findByName(string $name = null): ?Object
     {
-        if(!$name){
+        if (!$name) {
             $specieByName = $this->find("name = :name", "name={$this->name}")->fetch();
-        }else{
+        } else {
             $specieByName = $this->find("name = :name", "name={$name}")->fetch();
         }
 
@@ -121,9 +121,9 @@ class Specie extends DataLayer
                 $this->mediaTotalLength = 0;
                 $this->mediaDefaultLength = 0;
             } else {
-                $this->mediaWeight = ($selectedSpecie->mediaWeight * ($this->fishCount()) - $fish->weight) / ($this->fishCount() - 1);
-                $this->mediaTotalLength = ($selectedSpecie->mediaTotalLength * ($this->fishCount()) - $fish->totalLength) / ($this->fishCount() - 1);
-                $this->mediaDefaultLength = ($selectedSpecie->mediaDefaultLength * ($this->fishCount()) - $fish->defaultLength) / ($this->fishCount() - 1);
+                $this->mediaWeight = ($selectedSpecie->mediaWeight * $this->fishCount() - $fish->weight) / ($this->fishCount() - 1);
+                $this->mediaTotalLength = ($selectedSpecie->mediaTotalLength * $this->fishCount() - $fish->totalLength) / ($this->fishCount() - 1);
+                $this->mediaDefaultLength = ($selectedSpecie->mediaDefaultLength * $this->fishCount() - $fish->defaultLength) / ($this->fishCount() - 1);
             }
         }
 

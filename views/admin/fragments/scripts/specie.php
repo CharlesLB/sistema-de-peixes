@@ -50,7 +50,7 @@
         // ─── SPECIE ──────────────────────────────────────────────────────
         //
 
-        $(".edit-specie").submit(function(e) {
+        $(".edit-specie").on("submit",function(e) {
             e.preventDefault();
 
             var form = $(this);
@@ -73,7 +73,7 @@
             });
         });
 
-        $(".delete-specie").submit(function(e) {
+        $(".delete-specie").on("submit", function(e) {
             e.preventDefault();
 
             var form = $(this);
@@ -97,7 +97,7 @@
         //
         // ─── FISH ────────────────────────────────────────────────────────
         //
-        $(".create-fish").submit(function(e) {
+        $(".create-fish").on("submit", function(e) {
             e.preventDefault();
 
             var fishes = $("#fishes");
@@ -128,15 +128,13 @@
                 }
             });
         });
-
-        $(".edit-fish-button").on("click", function() {
+        
+        $(document).on("click",".edit-fish-button" ,function() {
             var id = $(this).data('id');
             var sex = $('#'+id).children('td[data-target=sex]').text();
             var weight = parseFloat($('#'+id).children('td[data-target=weight]').data("value"));
             var defaultLength = $('#'+id).children('td[data-target=defaultLength]').data("value");
             var totalLength = $('#'+id).children('td[data-target=totalLength]').data("value");
-
-            console.log(id, sex, weight, defaultLength, totalLength);
 
             $("#fish-id-edit-input").val(id);
             $("#fish-sex-edit-select").val(sex).change();
@@ -147,13 +145,12 @@
             $("#edit-fish").modal('show');
         });
 
-        $(".edit-fish").submit(function(e) {
+        $(document).on("submit",".edit-fish",function(e) {
             e.preventDefault();
 
             var fishes = $("#fishes");
             var form = $(this);
             var alert = $(".alert-form-object");
-            var input = $("input");
             var select = $(".create-fish-select");
 
             $.ajax({
@@ -165,8 +162,6 @@
                     alert.html(callback.alert).fadeIn();
 
                     if (callback.success) {
-                        input.val("");
-
                         $("#totalFish").html(callback.totalFish);
                         $("#mediaWeight").html(callback.mediaWeight);
                         $("#mediaDefaultLength").html(callback.mediaDefaultLength);
@@ -181,40 +176,36 @@
             });
         });
 
-        $(".delete-fish-button").on("click", function() {
+        $(document).on("click", ".delete-fish-button",function() {
             var id = $(this).data('id');
             $("#fish-id-delete-input").val(id);
 
             $('#delete-fish').modal('show');
         });
         
-        $(".delete-fish").submit(function(e) {
+        $(document).on("submit", ".delete-fish",function(e) {
             e.preventDefault();
 
             var fishes = $("#fishes");
             var form = $(this);
             var alert = $(".alert-form-object");
-            var input = $("input");
             var select = $(".create-fish-select");
 
             $.ajax({
                 url: form.attr("action"),
                 data: form.serialize(),
-                type: "put",
+                type: "post",
                 dataType: "json",
                 success: function(callback) {
                     alert.html(callback.alert).fadeIn();
 
                     if (callback.success) {
-                        input.val("");
-
                         $("#totalFish").html(callback.totalFish);
                         $("#mediaWeight").html(callback.mediaWeight);
                         $("#mediaDefaultLength").html(callback.mediaDefaultLength);
                         $("#mediaTotalLength").html(callback.mediaTotalLength);
 
                         $('#'+callback.id).remove();
-                        fishes.prepend(callback.fish).fadeIn();
 
                         $('.modal').modal('hide');
                     }

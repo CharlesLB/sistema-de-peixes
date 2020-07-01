@@ -35,7 +35,7 @@ class Fish extends DataLayer
 
     public function destroy(): bool
     {
-        if (!$this->validate(false, true) || !parent::destroy()) {
+        if (!parent::destroy()) {
             return false;
         }
 
@@ -72,7 +72,7 @@ class Fish extends DataLayer
             $this->fail = new Exception("A espécie não foi muito bem especificada");
             return false;
         }
-        
+
         if ($this->sex == "Indefinido" && empty($this->defaultLength) && empty($this->totalLength) && empty($this->weight)) {
             $this->fail = new Exception("Nenhum campo foi preenchido.");
             return false;

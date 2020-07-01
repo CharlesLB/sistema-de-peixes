@@ -39,7 +39,7 @@ class FishController extends Controller
         $specie = $Specie->findById($this->fish->specie_id);
 
         $callback["mediaWeight"] = floatFormat($specie->mediaWeight);
-        $callback["mediaDefaultLength"] = floatFormat( $specie->mediaDefaultLength);
+        $callback["mediaDefaultLength"] = floatFormat($specie->mediaDefaultLength);
         $callback["mediaTotalLength"] = floatFormat($specie->mediaTotalLength);
         $callback["totalFish"] = $Specie->fishCount($specie->id);
         $callback["success"] = true;
@@ -80,7 +80,7 @@ class FishController extends Controller
         $specie = $Specie->findById($this->fish->specie_id);
 
         $callback["mediaWeight"] = floatFormat($specie->mediaWeight);
-        $callback["mediaDefaultLength"] = floatFormat( $specie->mediaDefaultLength);
+        $callback["mediaDefaultLength"] = floatFormat($specie->mediaDefaultLength);
         $callback["mediaTotalLength"] = floatFormat($specie->mediaTotalLength);
         $callback["totalFish"] = $Specie->fishCount($specie->id);
         $callback["success"] = true;
@@ -94,15 +94,32 @@ class FishController extends Controller
     public function delete(array $data): void
     {
         $data = filter_var_array($data, FILTER_SANITIZE_STRING);
-        $this->specie->id = $data["id"];
 
-        if (!$this->specie->destroy()) {
-            $callback["alert"] = $this->view->render("admin/fragments/widgets/general/alert", ["type" => "error", "message" => $this->specie->fail()->getMessage()]);
+        $this->fish->id = $data["id"];
+        $fish = $this->fish->findById($this->fish->id)->data();
+
+        $this->fish->specie_id = $fish->specie_id;
+        $this->fish->sex =  $fish->sex;
+        $this->fish->defaultLength =  $fish->defaultLength;
+        $this->fish->totalLength =  $fish->totalLength;
+        $this->fish->weight =  $fish->weight;
+
+        if (!$this->fish->destroy()) {
+            $callback["alert"] = $this->view->render("admin/fragments/widgets/general/alert", ["type" => "error", "message" => $this->fish->fail()->getMessage()]);
             echo json_encode($callback);
             return;
         };
 
+        $Specie = new Specie;
+        $specie = $Specie->findById($this->fish->specie_id);
+
+        $callback["mediaWeight"] = floatFormat($specie->mediaWeight);
+        $callback["mediaDefaultLength"] = floatFormat($specie->mediaDefaultLength);
+        $callback["mediaTotalLength"] = floatFormat($specie->mediaTotalLength);
+        $callback["totalFish"] = $Specie->fishCount($specie->id);
         $callback["success"] = true;
+        $callback["alert"] = $this->view->render("admin/fragments/widgets/general/alert", ["type" => "success", "message" => "Peixe excluído com sucesso"]);
+        $callback["id"] = $this->fish->id;
         echo json_encode($callback);
     }
 
@@ -124,5 +141,4 @@ class FishController extends Controller
 
         return $fishCopy;
     }
-
 }

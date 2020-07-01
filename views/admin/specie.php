@@ -5,7 +5,12 @@
 <?php $v->end(); ?>
 
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800"><span id="specieName"><?= $specie->name ?></span></h1>
+    <div class="d-flex flex-row">
+        <a href="<?= url("/admin/projeto") ?>" class="btn btn-primary mr-3">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+        <h1 class="h3 mb-0 text-gray-800"><span id="specieName"><?= $specie->name ?></span></h1>
+    </div>
     <div>
         <button class="btn btn-primary mb-1" type="button" data-toggle="modal" data-target="#edit-specie">
             Editar Espécie

@@ -11,5 +11,4 @@ class Salt extends DataLayer
     {
         parent::__construct("salts", ["user_id", "email", "message"], "user_id");
     }
-
 }
