@@ -1,9 +1,9 @@
 <tr id="<?= $fish->id ?>">
-    <td><?= $fish->id ?></td>
-    <td><?= $fish->sex ?></td>
-    <td><?= floatFormat($fish->defaultLength) ?></td>
-    <td><?= floatFormat($fish->totalLength)?></td>
-    <td><?= floatFormat($fish->weight)?></td>
-    <td><button type="button" data-role="update" data-id="<?= $fish->id ?>" class="btn btn-warning">Editar</button></td>
-    <td><button type="button" data-role="delete" data-id="<?= $fish->id ?>" class="btn btn-danger">Deletar</button></td>
+    <td data-target="id"><?= $fish->id ?></td>
+    <td data-target="sex"><?= $fish->sex ?></td>
+    <td data-target="defaultLength" data-value="<?= $fish->defaultLength ?>"><?= floatFormat($fish->defaultLength) ?></td>
+    <td data-target="totalLength" data-value="<?= $fish->totalLength ?>"><?= floatFormat($fish->totalLength)?></td>
+    <td data-target="weight" data-value="<?= $fish->weight ?>"><?= floatFormat($fish->weight)?></td>
+    <td><button type="button" data-id="<?= $fish->id ?>" class="btn btn-warning edit-fish-button">Editar</button></td>
+    <td><button type="button" data-id="<?= $fish->id ?>" class="btn btn-danger delete-fish-button">Deletar</button></td>
 </tr>

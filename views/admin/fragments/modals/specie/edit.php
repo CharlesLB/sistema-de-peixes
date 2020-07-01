@@ -10,12 +10,12 @@
             <form class="edit-specie" action="<?= $router->route("specie.edit"); ?>">
                 <div class="modal-body">
                     <div class="form-group d-none">
-                        <label for="specie-id-input">ID</label>
-                        <input type="text" class="form-control specie-input" name="id" id="specie-id-input" placeholder="ID" value="<?= $specie->id ?>">
+                        <label for="specie-id-input-edit">ID</label>
+                        <input type="text" class="form-control specie-input" name="id" id="specie-id-input-edit" placeholder="ID" value="<?= $specie->id ?>">
                     </div>
                     <div class="form-group">
-                        <label for="specie-name-input">Nome da espécie</label>
-                        <input type="text" class="form-control specie-input" name="name" id="specie-name-input" placeholder="Nome da espécie" value="<?= $specie->name ?>">
+                        <label for="specie-name-input-edit">Nome da espécie</label>
+                        <input type="text" class="form-control specie-input" name="name" id="specie-name-input-edit" placeholder="Nome da espécie" value="<?= $specie->name ?>">
                     </div>
                 </div>
                 <div class="modal-footer">

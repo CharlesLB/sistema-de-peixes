@@ -1,7 +1,6 @@
 <script>
-
     // ─── DATATABLE ──────────────────────────────────────────────────────────────────
-    
+
     $(document).ready(function() {
         $('#dataTable').DataTable({
             "oLanguage": {
@@ -94,7 +93,7 @@
                 }
             });
         });
-        
+
         //
         // ─── FISH ────────────────────────────────────────────────────────
         //
@@ -124,6 +123,77 @@
                         $("#mediaTotalLength").html(callback.mediaTotalLength);
 
                         fishes.prepend(callback.fish).fadeIn();
+                        $('.modal').modal('hide');
+                    }
+                }
+            });
+        });
+
+        $(".edit-fish-button").on("click", function() {
+            var id = $(this).data('id');
+            var sex = $('#'+id).children('td[data-target=sex]').text();
+            var weight = parseFloat($('#'+id).children('td[data-target=weight]').data("value"));
+            var defaultLength = $('#'+id).children('td[data-target=defaultLength]').data("value");
+            var totalLength = $('#'+id).children('td[data-target=totalLength]').data("value");
+
+            console.log(id, sex, weight, defaultLength, totalLength);
+
+            $("#fish-id-edit-input").val(id);
+            $("#fish-sex-edit-select").val(sex).change();
+            $("#fish-weight-edit-input").val(weight);
+            $("#fish-defaultLength-edit-input").val(defaultLength);
+            $("#fish-totalLength-edit-input").val(totalLength);
+
+            $("#edit-fish").modal('show');
+        });
+
+        $(".edit-fish").submit(function(e) {
+            e.preventDefault();
+
+            var form = $(this);
+            var alert = $(".alert-form-object");
+            var title = $("#specieName")
+
+            $.ajax({
+                url: form.attr("action"),
+                data: form.serialize(),
+                type: "put",
+                dataType: "json",
+                success: function(callback) {
+                    alert.html(callback.alert).fadeIn();
+
+                    if (callback.success) {
+                        title.html(callback.specieName);
+                        $('.modal').modal('hide');
+                    }
+                }
+            });
+        });
+
+        $(".delete-fish-button").on("click", function() {
+            var id = $(this).data('id');
+            $("#fish-id-delete-input").val(id);
+
+            $('#delete-fish').modal('show');
+        });
+        
+        $(".delete-fish").submit(function(e) {
+            e.preventDefault();
+
+            var form = $(this);
+            var alert = $(".alert-form-object");
+            var title = $("#specieName")
+
+            $.ajax({
+                url: form.attr("action"),
+                data: form.serialize(),
+                type: "put",
+                dataType: "json",
+                success: function(callback) {
+                    alert.html(callback.alert).fadeIn();
+
+                    if (callback.success) {
+                        title.html(callback.specieName);
                         $('.modal').modal('hide');
                     }
                 }

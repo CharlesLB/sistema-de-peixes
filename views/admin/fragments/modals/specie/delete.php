@@ -9,7 +9,7 @@
             </div>
             <form class="delete-specie" action="<?= $router->route("specie.delete"); ?>" method="post">
                 <div class="modal-body">
-                    Se deseja realmente <strong>deletar para sempre</strong> a espécie <?= $specie->name ?> clique em <strong>deletar espécie</strong>.
+                    Se deseja realmente deletar para sempre a espécie <?= $specie->name ?> clique em <strong>deletar espécie</strong>.
                     <div class="form-group d-none">
                         <label for="specie-id-input">ID</label>
                         <input type="text" class="form-control specie-input" name="id" id="specie-id-input" placeholder="ID" value="<?= $specie->id ?>">
