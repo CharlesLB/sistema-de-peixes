@@ -150,9 +150,11 @@
         $(".edit-fish").submit(function(e) {
             e.preventDefault();
 
+            var fishes = $("#fishes");
             var form = $(this);
             var alert = $(".alert-form-object");
-            var title = $("#specieName")
+            var input = $("input");
+            var select = $(".create-fish-select");
 
             $.ajax({
                 url: form.attr("action"),
@@ -163,7 +165,16 @@
                     alert.html(callback.alert).fadeIn();
 
                     if (callback.success) {
-                        title.html(callback.specieName);
+                        input.val("");
+
+                        $("#totalFish").html(callback.totalFish);
+                        $("#mediaWeight").html(callback.mediaWeight);
+                        $("#mediaDefaultLength").html(callback.mediaDefaultLength);
+                        $("#mediaTotalLength").html(callback.mediaTotalLength);
+
+                        $('#'+callback.id).remove();
+                        fishes.prepend(callback.fish).fadeIn();
+
                         $('.modal').modal('hide');
                     }
                 }
@@ -180,9 +191,11 @@
         $(".delete-fish").submit(function(e) {
             e.preventDefault();
 
+            var fishes = $("#fishes");
             var form = $(this);
             var alert = $(".alert-form-object");
-            var title = $("#specieName")
+            var input = $("input");
+            var select = $(".create-fish-select");
 
             $.ajax({
                 url: form.attr("action"),
@@ -193,7 +206,16 @@
                     alert.html(callback.alert).fadeIn();
 
                     if (callback.success) {
-                        title.html(callback.specieName);
+                        input.val("");
+
+                        $("#totalFish").html(callback.totalFish);
+                        $("#mediaWeight").html(callback.mediaWeight);
+                        $("#mediaDefaultLength").html(callback.mediaDefaultLength);
+                        $("#mediaTotalLength").html(callback.mediaTotalLength);
+
+                        $('#'+callback.id).remove();
+                        fishes.prepend(callback.fish).fadeIn();
+
                         $('.modal').modal('hide');
                     }
                 }

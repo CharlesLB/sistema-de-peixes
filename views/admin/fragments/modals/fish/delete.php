@@ -10,7 +10,7 @@
             <form class="delete-fish" action="<?= $router->route("fish.delete"); ?>">
                 <div class="modal-body">
                 Se deseja realmente deletar para sempre este peixe clique em <strong>deletar peixe</strong>.
-                    <div class="form-group">
+                    <div class="form-group d-none">
                         <label for="specie-name-input">ID</label>
                         <input type="text" class="form-control" name="name" id="fish-id-delete-input">
                     </div>

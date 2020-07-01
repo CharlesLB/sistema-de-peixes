@@ -39,17 +39,15 @@ class Specie extends DataLayer
 
     public function edit(bool $updateData = false): bool
     {
-        if($updateData){
+        if ($updateData) {
             if (!$this->validate(false, true) || !parent::save()) {
                 return false;
             }
-        }else{
+        } else {
             if (!$this->validate(true) || !parent::save()) {
                 return false;
             }
         }
-
-        
 
         return true;
     }
@@ -68,9 +66,13 @@ class Specie extends DataLayer
     // ─── AUXILIAR FUNCTIONS ─────────────────────────────────────────────────────────
     //
 
-    public function findByName(): ?Object
+    public function findByName(string $name = null): ?Object
     {
-        $specieByName = $this->find("name = :name", "name={$this->name}")->fetch();
+        if(!$name){
+            $specieByName = $this->find("name = :name", "name={$this->name}")->fetch();
+        }else{
+            $specieByName = $this->find("name = :name", "name={$name}")->fetch();
+        }
 
         if ($specieByName) {
             return $specieByName;
@@ -84,10 +86,10 @@ class Specie extends DataLayer
         $fish = new Fish;
         if (!$id) {
             $total = $fish->find("specie_id = :specie_id", "specie_id={$this->id}")->count();
-        }else{
+        } else {
             $total = $fish->find("specie_id = :specie_id", "specie_id={$id}")->count();
         }
-        
+
         return $total;
     }
 

@@ -17,7 +17,7 @@
                         <div class="col-md-6 mb-3">
                             <label for="sex">Sexo</label>
                             <select class="custom-select create-fish-select" name="sex" id="sex">
-                                <option value="disable" disabled selected>Selecione uma das opções</option>
+                                <option value="Indefinido" selected>Indefinido</option>
                                 <option value="Macho">Macho</option>
                                 <option value="Fêmea">Fêmea</option>
                             </select>

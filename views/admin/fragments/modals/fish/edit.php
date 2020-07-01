@@ -7,9 +7,9 @@
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <form class="create-specie" action="<?= $router->route("fish-edit"); ?>">
+            <form class="edit-fish" action="<?= $router->route("fish.edit"); ?>">
                 <div class="modal-body">
-                    <div class="form-group">
+                    <div class="form-group d-none">
                         <label for="fish-id-edit-input">Id</label>
                         <input type="text" class="form-control" name="id" id="fish-id-edit-input">
                     </div>
@@ -17,7 +17,7 @@
                         <div class="col-md-6 mb-3">
                             <label for="fish-sex-edit-select">Sexo</label>
                             <select class="custom-select" id="fish-sex-edit-select" name="sex" id="sex">
-                                <option value="disable" disabled selected>Selecione uma das opções</option>
+                                <option value="Indefinido" selected>Indefinido</option>
                                 <option value="Macho">Macho</option>
                                 <option value="Fêmea">Fêmea</option>
                             </select>
@@ -40,7 +40,7 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                    <button class="btn btn-primary" type="submit">Adicionar espécie</button>
+                    <button class="btn btn-primary" type="submit">Editar espécie</button>
                 </div>
             </form>
         </div>
