@@ -102,6 +102,34 @@ class Specie extends DataLayer
         return $fishes;
     }
 
+    public function updateData(string $method, Fish $fish): void
+    {
+        $selectedSpecie = $this->findById($fish->specie_id)->data();
+
+        $this->id = $selectedSpecie->id;
+        $this->name = $selectedSpecie->name;
+
+        if ($method == "create") {
+            $this->mediaWeight = ($selectedSpecie->mediaWeight * ($this->fishCount() - 1) + $fish->weight) / ($this->fishCount());
+            $this->mediaTotalLength = ($selectedSpecie->mediaTotalLength * ($this->fishCount() - 1) + $fish->totalLength) / ($this->fishCount());
+            $this->mediaDefaultLength = ($selectedSpecie->mediaDefaultLength * ($this->fishCount() - 1) + $fish->defaultLength) / ($this->fishCount());
+        }
+
+        if ($method == "destroy") {
+            if ($this->fishCount() == 1) {
+                $this->mediaWeight = 0;
+                $this->mediaTotalLength = 0;
+                $this->mediaDefaultLength = 0;
+            } else {
+                $this->mediaWeight = ($selectedSpecie->mediaWeight * ($this->fishCount()) - $fish->weight) / ($this->fishCount() - 1);
+                $this->mediaTotalLength = ($selectedSpecie->mediaTotalLength * ($this->fishCount()) - $fish->totalLength) / ($this->fishCount() - 1);
+                $this->mediaDefaultLength = ($selectedSpecie->mediaDefaultLength * ($this->fishCount()) - $fish->defaultLength) / ($this->fishCount() - 1);
+            }
+        }
+
+        $this->edit(true);
+    }
+
     //
     // ─── PRIVATE FUNCTIONS ──────────────────────────────────────────────────────────
     //

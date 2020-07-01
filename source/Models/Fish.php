@@ -51,31 +51,7 @@ class Fish extends DataLayer
     public function updateSpecieData(string $method = "create"): void
     {
         $specie = new Specie;
-
-        $selectedSpecie = $specie->findById($this->specie_id)->data();
-
-        $specie->id = $selectedSpecie->id;
-        $specie->name = $selectedSpecie->name;
-
-        if ($method == "create") {
-            $specie->mediaWeight = ($selectedSpecie->mediaWeight * ($specie->fishCount() - 1) + $this->weight) / ($specie->fishCount());
-            $specie->mediaTotalLength = ($selectedSpecie->mediaTotalLength * ($specie->fishCount() - 1) + $this->totalLength) / ($specie->fishCount());
-            $specie->mediaDefaultLength = ($selectedSpecie->mediaDefaultLength * ($specie->fishCount() - 1) + $this->defaultLength) / ($specie->fishCount());
-        }
-
-        if ($method == "destroy") {
-            if ($specie->fishCount() == 1) {
-                $specie->mediaWeight = 0;
-                $specie->mediaTotalLength = 0;
-                $specie->mediaDefaultLength = 0;
-            } else {
-                $specie->mediaWeight = ($selectedSpecie->mediaWeight * ($specie->fishCount()) - $this->weight) / ($specie->fishCount() - 1);
-                $specie->mediaTotalLength = ($selectedSpecie->mediaTotalLength * ($specie->fishCount()) - $this->totalLength) / ($specie->fishCount() - 1);
-                $specie->mediaDefaultLength = ($selectedSpecie->mediaDefaultLength * ($specie->fishCount()) - $this->defaultLength) / ($specie->fishCount() - 1);
-            }
-        }
-
-        $specie->edit(true);
+        $specie->updateData($method, $this);
     }
 
 
@@ -97,7 +73,7 @@ class Fish extends DataLayer
             return false;
         }
         
-        if ($this->sex == "Indefinido" && empty($this->defaultLength) && empty($this->totalLength) && empty($this->weigth)) {
+        if ($this->sex == "Indefinido" && empty($this->defaultLength) && empty($this->totalLength) && empty($this->weight)) {
             $this->fail = new Exception("Nenhum campo foi preenchido.");
             return false;
         }
