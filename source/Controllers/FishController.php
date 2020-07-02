@@ -84,7 +84,7 @@ class FishController extends Controller
         $callback["mediaTotalLength"] = floatFormat($specie->mediaTotalLength);
         $callback["totalFish"] = $Specie->fishCount($specie->id);
         $callback["success"] = true;
-        $callback["alert"] = $this->view->render("admin/fragments/widgets/general/alert", ["type" => "success", "message" => "Peixe cadastrado com sucesso"]);
+        $callback["alert"] = $this->view->render("admin/fragments/widgets/general/alert", ["type" => "success", "message" => "Peixe editado com sucesso"]);
         $callback["fish"] = $this->view->render("admin/fragments/widgets/specie/tableLine", ["fish" => $this->fish]);
         $callback["id"] = $this->fish->id;
         echo json_encode($callback);
