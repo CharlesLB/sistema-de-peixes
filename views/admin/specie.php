@@ -33,8 +33,8 @@
         "title" => "Peso e altura",
         "cardBody" => "
             Peso médio : <span id='mediaWeight'>" . floatFormat($specie->mediaWeight) . "</span>  <br> 
-            Comprimento total média: <span id='mediaTotalLength'>" . floatFormat($specie->mediaTotalLength) ."</span> <br> 
-            Comprimento padrão média: <span id='mediaDefaultLength'>". floatFormat($specie->mediaDefaultLength) ."</span> <br>",
+            Comprimento total média: <span id='mediaTotalLength'>" . floatFormat($specie->mediaTotalLength) . "</span> <br> 
+            Comprimento padrão média: <span id='mediaDefaultLength'>" . floatFormat($specie->mediaDefaultLength) . "</span> <br>",
         "icon" => "ruler"
     ]) ?>
 </div>
@@ -75,21 +75,18 @@
 
 
 <!-- Modals -->
-<?php $v->insert("admin/fragments/modals/specie/edit", ["specie" => $specie]); ?>
-<?php $v->insert("admin/fragments/modals/specie/delete", ["specie" => $specie]); ?>
+<?php $v->start("modals");
+$v->insert("admin/fragments/modals/specie/edit", ["specie" => $specie]);
+$v->insert("admin/fragments/modals/specie/delete", ["specie" => $specie]);
+$v->insert("admin/fragments/modals/fish/create", ["specie_id" => $specie->id]);
+$v->insert("admin/fragments/modals/fish/edit");
+$v->insert("admin/fragments/modals/fish/delete");
+$v->end(); ?>
 
-<?php $v->insert("admin/fragments/modals/fish/create", ["specie_id" => $specie->id]); ?>
-<?php $v->insert("admin/fragments/modals/fish/edit"); ?>
-<?php $v->insert("admin/fragments/modals/fish/delete"); ?>
 
+<?php $v->start("scripts");
 
-
-<div id="header">
-</div>
-
-<?php $v->start("scripts"); ?>
-
-<?php $v->insert("admin/fragments/scripts/specie") ?>
+$v->insert("admin/fragments/scripts/specie") ?>
 
 <!-- DataTables -->
 <script src="<?= asset("scripts/datatables.min.js", "admin") ?>"></script>

@@ -120,6 +120,7 @@
 
   <!-- Modals -->
   <?php $v->insert("admin/fragments/modals/logout") ?>
+  <?= $v->section("modals"); ?>
 
   <!-- Scripts -->
   <script src="<?= shared("scripts/jquery.min.js") ?>"></script>
