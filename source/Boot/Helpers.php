@@ -65,3 +65,19 @@ function floatFormat(?float $number): ?string
     $number = number_format($number, 2, ',', '.');
     return $number;
 }
+
+
+//
+// ─── DATE ───────────────────────────────────────────────────────────────────────
+//
+
+function dateFormat(string $date, bool $hour = false): string
+{
+    if ($hour) {
+        $date = date("d/m/Y H:i", strtotime($date));
+    } else {
+        $date = date("d/m/Y", strtotime($date));
+    }
+
+    return $date;
+}
