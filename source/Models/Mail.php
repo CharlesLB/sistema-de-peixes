@@ -32,6 +32,34 @@ class Mail extends DataLayer
     }
 
     //
+    // ─── AUXILIAR FUNCTION ──────────────────────────────────────────────────────────
+    //
+
+    public function listReaded(): ?array
+    {
+        $listMails = $this->find("status = :status" , "status=respondida")->order("created_at DESC")->fetch(true);
+        return $listMails;
+    }
+
+    public function listUnreaded(bool $all = false): ?array
+    {
+        if ($all) {
+            $listMails = $this->find("status = :status" , "status=pendente")->order("created_at DESC")->fetch(true);
+        }else{
+            $listMails = $this->find("status = :status" , "status=pendente")->order("created_at DESC")->limit(3)->fetch(true);
+        }
+
+        return $listMails;
+    }
+
+    public function countUnreaded(): int
+        {
+        $totalMails = $this->find("status = :status" , "status=pendente")->count();
+
+        return $totalMails;
+    }
+
+    //
     // ─── PRIVATE FUNCTIONS ──────────────────────────────────────────────────────────
     //
 

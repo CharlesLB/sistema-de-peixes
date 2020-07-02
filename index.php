@@ -53,7 +53,7 @@ $route->put("/projeto/edit-fish", "FishController:edit", "fish.edit");
 $route->post("/projeto/delete-fish", "FishController:delete", "fish.delete");
 
 $route->get("/mensagens", "Web:mails", "web.mails");
-$route->get("/mensagens/visualizadas", "Web:readedMails", "web.readedmails");
+$route->get("/mensagens/respondidas", "Web:readedMails", "web.readedmails");
 $route->post("/mensagens/make-as-read", "MailController:makeAsRead", "mail.makeasread");
 $route->post("/mensagens/make-as-unread", "MailController:makeAsUnread", "mail.makeasunread");
 

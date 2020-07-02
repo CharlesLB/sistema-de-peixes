@@ -37,7 +37,7 @@
 
               <a class="nav-link dropdown-toggle" href="" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-bell fa-fw"></i>
-                <span class="badge badge-danger badge-counter"><?= 3 > 0 ? "+3" : ""; ?></span>
+                <span class="badge badge-danger badge-counter"><?= $totalMails > 0 ? "+{$totalMails}" : ""; ?></span>
               </a>
 
               <?php if (1 == 1) : ?>
@@ -45,10 +45,10 @@
                   <h6 class="dropdown-header">
                     Mensagens
                   </h6>
-                  <?php for ($i = 0; $i < 3; $i++) :
-                    $v->insert("admin/fragments/widgets/theme/mini-mail");
-                  endfor; ?>
-                  <a class="dropdown-item text-center small text-gray-500" href="<?= url("/admin/mails") ?>">Ver todas as novas mensagens</a>
+                  <?php foreach ($listMails as $mail) :
+                    $v->insert("admin/fragments/widgets/theme/mini-mail", ["mail" => $mail]);
+                  endforeach; ?>
+                  <a class="dropdown-item text-center small text-gray-500" href="<?= url("admin/mensagens") ?>">Ver todas as novas mensagens</a>
                 </div>
               <?php else : ?>
                 <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
@@ -63,7 +63,7 @@
                     </div>
                     <div>
                       <div class="small text-gray-500">Não há novas mensagens</div>
-                      <span class="font-weight-bold">Todas as mensagens já foram visualizadas!</span>
+                      <span class="font-weight-bold">Todas as mensagens já foram respondidas!</span>
                     </div>
                   </a>
                   <a class="dropdown-item text-center small text-gray-500" href="<?= url("/admin/mails") ?>">Ver todas as mensagens</a>
@@ -114,7 +114,7 @@
   </div>
 
   <!-- Arrow up -->
-  <a class="scroll-to-top rounded" href="">
+  <a class="scroll-to-top rounded" href="#">
     <i class="fas fa-angle-up"></i>
   </a>
 

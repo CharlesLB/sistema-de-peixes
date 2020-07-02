@@ -34,8 +34,8 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Categoria:</h6>
-                <a class="collapse-item" href="<?= url("/admin/mensagens") ?>">Não visualizadas</a>
-                <a class="collapse-item" href="<?= url("/admin/mensagens/visualizadas") ?>">Visualizadas</a>
+                <a class="collapse-item" href="<?= url("/admin/mensagens") ?>">Não respondidas</a>
+                <a class="collapse-item" href="<?= url("/admin/mensagens/respondidas") ?>">respondidas</a>
             </div>
         </div>
     </li>

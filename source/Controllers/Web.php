@@ -4,6 +4,7 @@ namespace Source\Controllers;
 
 use Source\Core\Controller;
 use Source\Models\Fish;
+use Source\Models\Mail;
 use Source\Models\Specie;
 
 class Web extends Controller
@@ -54,9 +55,15 @@ class Web extends Controller
 
     public function admin(): void
     {
+        $mail = new Mail;
+        $listMails = $mail->listUnreaded();
+        $totalMails = $mail->countUnreaded();
+
         echo $this->view->render("admin/dashboard", [
             "title" => "Administrador | " . SITE["name"],
             "page" => "dashboard",
+            "listMails" => $listMails,
+            "totalMails" => $totalMails
         ]);
     }
 
@@ -65,10 +72,16 @@ class Web extends Controller
         $Specie = new Specie;
         $species = $Specie->show();
 
+        $mail = new Mail;
+        $listMails = $mail->listUnreaded();
+        $totalMails = $mail->countUnreaded();
+
         echo $this->view->render("admin/project", [
             "title" => "Projeto | " . SITE["name"],
             "page" => "project",
-            "species" => $species
+            "species" => $species,
+            "listMails" => $listMails,
+            "totalMails" => $totalMails
         ]);
     }
 
@@ -83,44 +96,82 @@ class Web extends Controller
         $fishes = $Specie->fishFind();
         $total = $Specie->fishCount();
 
+        $mail = new Mail;
+        $listMails = $mail->listUnreaded();
+        $totalMails = $mail->countUnreaded();
+
         echo $this->view->render("admin/specie", [
             "title" => $specie->name . " | " . SITE["name"],
             "page" => "project",
             "specie" => $specie,
             "total" => $total,
-            "fishes" => $fishes
+            "fishes" => $fishes,
+            "listMails" => $listMails,
+            "totalMails" => $totalMails
         ]);
     }
 
     public function mails(): void
     {
+        $mail = new Mail;
+        $allMails = $mail->listUnreaded(true);
+
+        $listMails = $mail->listUnreaded();
+        $totalMails = $mail->countUnreaded();
+
         echo $this->view->render("admin/mails", [
             "title" => "Notificações | " . SITE["name"],
             "page" => "mails",
+            "reads" => "false",
+            "listMails" => $listMails,
+            "totalMails" => $totalMails,
+            "allMails" => $allMails
         ]);
     }
 
     public function readedMails(): void
     {
+        $mail = new Mail;
+        $allMails = $mail->listReaded();
+
+        $listMails = $mail->listUnreaded();
+        $totalMails = $mail->countUnreaded();
+
         echo $this->view->render("admin/mails", [
             "title" => "Notificações | " . SITE["name"],
             "page" => "mails",
+            "reads" => true,
+            "listMails" => $listMails,
+            "totalMails" => $totalMails,
+            "allMails" => $allMails
         ]);
     }
 
     public function users(): void
     {
+        $mail = new Mail;
+        $listMails = $mail->listUnreaded();
+        $totalMails = $mail->countUnreaded();
+
         echo $this->view->render("admin/users", [
             "title" => "Usuários | " . SITE["name"],
             "page" => "users",
+            "listMails" => $listMails,
+            "totalMails" => $totalMails
         ]);
     }
 
     public function user(): void
     {
+        $mail = new Mail;
+        $listMails = $mail->listUnreaded();
+        $totalMails = $mail->countUnreaded();
+
         echo $this->view->render("admin/user", [
             "title" => "Meu usuário | " . SITE["name"],
             "page" => "user",
+            "listMails" => $listMails,
+            "totalMails" => $totalMails
         ]);
     }
 

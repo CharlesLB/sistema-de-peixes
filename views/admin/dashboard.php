@@ -29,27 +29,17 @@
                 <h6 class="m-0 font-weight-bold text-primary">Novas mensagens</h6>
             </div>
             <!-- Card Body -->
-            <div class="card-body">
+            <div class="card-body d-flex flex-column">
                 <?php if (1 == 0) :
                     $v->insert("admin/fragments/widgets/general/message", ["message" => "Você, junto com todos os outros membros do projeto, já visualaram todas as mensagens. Quando enviarem mais uma mensagem para o projeto, ela aparecerá aqui!", "type" => "primary"]);
                 else :
-                    for ($i = 0; $i < 5; $i++) {
-                        $v->insert("admin/fragments/widgets/mails/mail", ["message" => "Você, junto com todos os outros membros do projeto, já visualaram todas as mensagens. Quando enviarem mais uma mensagem para o projeto, ela aparecerá aqui!", ""]);
-                    }
+                    foreach ($listMails as $mail) :
+                        $v->insert("admin/fragments/widgets/mails/mail", ["mail" => $mail]);
+                    endforeach;
                 ?>
-                    <nav aria-label="Page navigation example container">
-                        <ul class="pagination justify-content-center mt-4">
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true"><i class="fas fa-arrow-left"></i></a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#"><i class="fas fa-arrow-right"></i></a>
-                            </li>
-                        </ul>
-                    </nav>
+                    <div class="d-flex justify-content-center">
+                        <a href="<?= url("admin/mensagens")?>" type="button" class="btn btn-secondary mr-3">Visualizar todas as novas mensagens</a>
+                    </div>
                 <?php endif; ?>
             </div>
         </div>
