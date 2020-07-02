@@ -31,11 +31,35 @@ class MailController extends Controller
             return;
         }
 
-        $this->mail->save();
         # $this->mail->send("Nova mensagem do {$this->mail->name}", $this->mail->message );
 
         $callback["success"] = true;
         $callback["alert"] = $this->view->render("admin/fragments/widgets/general/alert", ["type" => "success", "message" => "E-mail enviado com sucesso! :)"]);
+        echo json_encode($callback);
+    }
+
+    public function read(array $data): void
+    {
+        $data = filter_var_array($data, FILTER_SANITIZE_STRING);
+
+        $this->mail->id = $data["id"];
+        $selectedMail = $this->mail->findById($this->mail->id);
+
+        $this->mail->name = $selectedMail->name;
+        $this->mail->email = $selectedMail->email;
+        $this->mail->message = $selectedMail->message;
+
+        $this->mail->status = "respondido";
+
+        if (!$this->mail->edit()) {
+            $callback["alert"] = $this->view->render("admin/fragments/widgets/general/alert", ["type" => "danger", "message" => $this->mail->fail()->getMessage()]);
+            $callback["success"] = false;
+            echo json_encode($callback);
+            return;
+        }
+
+        $callback["success"] = true;
+        $callback["alert"] = $this->view->render("admin/fragments/widgets/general/alert", ["type" => "success", "message" => "Mensagem editada com sucesso :)"]);
         echo json_encode($callback);
     }
 }

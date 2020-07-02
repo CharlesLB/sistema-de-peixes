@@ -28,9 +28,7 @@ class SpecieController extends Controller
             echo json_encode($callback);
             return;
         }
-
-        $this->specie->save();
-
+        
         $callback["success"] = true;
         $callback["alert"] = $this->view->render("admin/fragments/widgets/general/alert", ["type" => "success", "message" => "Espécie {$this->specie->name} foi cadastrada com sucesso! :)"]);
         $callback["specie"] = $this->view->render("admin/fragments/widgets/project/specie", ["specie" => $this->specie]);
@@ -65,8 +63,6 @@ class SpecieController extends Controller
             echo json_encode($callback);
             return;
         }
-
-        $this->specie->edit();
 
         $callback["success"] = true;
         $callback["alert"] = $this->view->render("admin/fragments/widgets/general/alert", ["type" => "success", "message" => "Espécie {$this->specie->name} foi editada com sucesso! :)"]);

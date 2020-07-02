@@ -114,25 +114,25 @@ class Web extends Controller
     public function mails(): void
     {
         $mail = new Mail;
-        $allMails = $mail->listUnreaded(true);
-
+        $mails = $mail->listUnreaded(true);
+        
         $listMails = $mail->listUnreaded();
         $totalMails = $mail->countUnreaded();
 
         echo $this->view->render("admin/mails", [
             "title" => "Notificações | " . SITE["name"],
             "page" => "mails",
-            "reads" => "false",
+            "reads" => false,
             "listMails" => $listMails,
             "totalMails" => $totalMails,
-            "allMails" => $allMails
+            "mails" => $mails
         ]);
     }
 
     public function readedMails(): void
     {
         $mail = new Mail;
-        $allMails = $mail->listReaded();
+        $mails = $mail->listReaded();
 
         $listMails = $mail->listUnreaded();
         $totalMails = $mail->countUnreaded();
@@ -143,7 +143,7 @@ class Web extends Controller
             "reads" => true,
             "listMails" => $listMails,
             "totalMails" => $totalMails,
-            "allMails" => $allMails
+            "mails" => $mails
         ]);
     }
 

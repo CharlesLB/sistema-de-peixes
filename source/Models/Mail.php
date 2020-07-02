@@ -26,6 +26,25 @@ class Mail extends DataLayer
         return true;
     }
 
+    public function edit(): bool
+    {
+        if (!$this->validate(true) || !parent::save()) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public function destroy(): bool
+    {
+        if (!$this->validate(true) || !parent::save()) {
+            return false;
+        }
+
+        return true;
+    }
+
+
     public function send(string $subject, string $body, string $recipient_name = MAIL["from_name"], string $recipient_mail = MAIL["from_email"]): void
     {
         $this->Email->add($subject, $body, $recipient_name, $recipient_mail)->send();
@@ -37,7 +56,7 @@ class Mail extends DataLayer
 
     public function listReaded(): ?array
     {
-        $listMails = $this->find("status = :status" , "status=respondida")->order("created_at DESC")->fetch(true);
+        $listMails = $this->find("status = :status" , "status=respondido")->order("created_at DESC")->fetch(true);
         return $listMails;
     }
 
@@ -63,21 +82,28 @@ class Mail extends DataLayer
     // ─── PRIVATE FUNCTIONS ──────────────────────────────────────────────────────────
     //
 
-    private function validate(): bool
+    private function validate(bool $deleteOrUpdate = false): bool
     {
-        if (empty($this->name)) {
-            $this->fail = new Exception("Informe o seu nome");
-            return false;
-        }
-
-        if (empty($this->email) || !filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
-            $this->fail = new Exception("Informe um e-mail válido");
-            return false;
-        }
-
-        if (empty($this->message)) {
-            $this->fail = new Exception("Informe a mensagem");
-            return false;
+        if($deleteOrUpdate){
+            if (!$this->findById($this->id)) {
+                $this->fail = new Exception("Essa mensagem já foi excluída ou nunca existiu");
+                return false;
+            }
+        }else{
+            if (empty($this->name)) {
+                $this->fail = new Exception("Informe o seu nome");
+                return false;
+            }
+    
+            if (empty($this->email) || !filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
+                $this->fail = new Exception("Informe um e-mail válido");
+                return false;
+            }
+    
+            if (empty($this->message)) {
+                $this->fail = new Exception("Informe a mensagem");
+                return false;
+            }
         }
 
         return true;

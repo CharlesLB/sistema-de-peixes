@@ -54,8 +54,8 @@ $route->post("/projeto/delete-fish", "FishController:delete", "fish.delete");
 
 $route->get("/mensagens", "Web:mails", "web.mails");
 $route->get("/mensagens/respondidas", "Web:readedMails", "web.readedmails");
-$route->post("/mensagens/make-as-read", "MailController:makeAsRead", "mail.makeasread");
-$route->post("/mensagens/make-as-unread", "MailController:makeAsUnread", "mail.makeasunread");
+$route->post("/mensagens/make-as-read", "MailController:read", "mail.read");
+$route->post("/mensagens/make-as-unread", "MailController:unread", "mail.unread");
 
 $route->get("/usuarios", "Web:users", "web.users");
 $route->post("/usuarios/create-users", "UsersController:create", "users.create");
