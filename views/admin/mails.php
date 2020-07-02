@@ -44,7 +44,7 @@ $v->layout('admin/_theme'); ?>
                         $v->insert("admin/fragments/widgets/general/message", ["type" => "primary", "message" => "Nenhuma mensagem foi respondida ainda. Quando for, ela aparecerá aqui."]);
                     else :
                         foreach ($mails as $mail) :
-                            $v->insert("admin/fragments/widgets/mails/mail", ["mail" => $mail]);
+                            $v->insert("admin/fragments/widgets/mails/readedMail", ["mail" => $mail]);
                         endforeach;
                     endif; ?>
                 </div>
