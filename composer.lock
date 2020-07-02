@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "eae4a5817cbfb97177d192aabb043f57",
+    "content-hash": "1c53bfd617541e13ff98828ac6b5a24c",
     "packages": [
         {
             "name": "coffeecode/datalayer",
-            "version": "1.1.4",
+            "version": "1.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/robsonvleite/datalayer.git",
-                "reference": "17fecff8edb8fb5287648875f182acbb80389614"
+                "reference": "cd8e91edfe30d221be50de542f2d89dda9975696"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/robsonvleite/datalayer/zipball/17fecff8edb8fb5287648875f182acbb80389614",
-                "reference": "17fecff8edb8fb5287648875f182acbb80389614",
+                "url": "https://api.github.com/repos/robsonvleite/datalayer/zipball/cd8e91edfe30d221be50de542f2d89dda9975696",
+                "reference": "cd8e91edfe30d221be50de542f2d89dda9975696",
                 "shasum": ""
             },
             "require": {
@@ -53,20 +53,20 @@
                 "save",
                 "upinside"
             ],
-            "time": "2019-10-29T13:34:17+00:00"
+            "time": "2020-06-23T13:24:09+00:00"
         },
         {
             "name": "coffeecode/paginator",
-            "version": "1.0.4",
+            "version": "1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/robsonvleite/paginator.git",
-                "reference": "98b6a42ab7ee4a9ec08faa37e5cfb0a073143d2d"
+                "reference": "7ee353b183fa2915ba2e2d7296108c075b7d0917"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/robsonvleite/paginator/zipball/98b6a42ab7ee4a9ec08faa37e5cfb0a073143d2d",
-                "reference": "98b6a42ab7ee4a9ec08faa37e5cfb0a073143d2d",
+                "url": "https://api.github.com/repos/robsonvleite/paginator/zipball/7ee353b183fa2915ba2e2d7296108c075b7d0917",
+                "reference": "7ee353b183fa2915ba2e2d7296108c075b7d0917",
                 "shasum": ""
             },
             "require": {
@@ -97,7 +97,7 @@
                 "paginator",
                 "upinside"
             ],
-            "time": "2019-03-12T14:38:13+00:00"
+            "time": "2020-06-29T14:43:29+00:00"
         },
         {
             "name": "coffeecode/router",
@@ -143,6 +143,56 @@
                 "upinside"
             ],
             "time": "2019-09-30T16:29:47+00:00"
+        },
+        {
+            "name": "fzaninotto/faker",
+            "version": "v1.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fzaninotto/Faker.git",
+                "reference": "f72816b43e74063c8b10357394b6bba8cb1c10de"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/f72816b43e74063c8b10357394b6bba8cb1c10de",
+                "reference": "f72816b43e74063c8b10357394b6bba8cb1c10de",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.3.3 || ^7.0"
+            },
+            "require-dev": {
+                "ext-intl": "*",
+                "phpunit/phpunit": "^4.8.35 || ^5.7",
+                "squizlabs/php_codesniffer": "^1.5"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.8-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Faker\\": "src/Faker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "François Zaninotto"
+                }
+            ],
+            "description": "Faker is a PHP library that generates fake data for you.",
+            "keywords": [
+                "data",
+                "faker",
+                "fixtures"
+            ],
+            "time": "2018-07-12T10:23:15+00:00"
         },
         {
             "name": "league/plates",
@@ -276,6 +326,12 @@
                 }
             ],
             "description": "PHPMailer is a full-featured email creation and transfer class for PHP",
+            "funding": [
+                {
+                    "url": "https://github.com/synchro",
+                    "type": "github"
+                }
+            ],
             "time": "2020-05-27T12:24:03+00:00"
         }
     ],
@@ -291,5 +347,6 @@
         "php": "^7.1",
         "ext-pdo": "^7.1"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "1.1.0"
 }
