@@ -81,3 +81,8 @@ function dateFormat(string $date, bool $hour = false): string
 
     return $date;
 }
+
+function message(string $message, string $type): string
+{
+    return "<div class=\"message {$type}\">{$message}</div>";
+}

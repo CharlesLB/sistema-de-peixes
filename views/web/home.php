@@ -166,8 +166,8 @@
 				type: "post",
 				dataType: "json",
 				success: function(callback) {
-					if (callback.message) {
-						form_ajax.html(callback.message).fadeIn();
+					if (callback.alert) {
+						form_ajax.html(callback.alert).fadeIn();
 					} else {
 						form_ajax.fadeOut(function() {
 							$(this).html("");
@@ -179,7 +179,6 @@
 						$("#email").val("");
 						$("#message").val("");
 					}
-					
 				}
 			});
 		});
