@@ -30,7 +30,7 @@
             </div>
             <!-- Card Body -->
             <div class="card-body d-flex flex-column">
-                <?php if (1 == 0) :
+                <?php if (!$listMails) :
                     $v->insert("admin/fragments/widgets/general/message", ["message" => "Você, junto com todos os outros membros do projeto, já visualaram todas as mensagens. Quando enviarem mais uma mensagem para o projeto, ela aparecerá aqui!", "type" => "primary"]);
                 else :
                     foreach ($listMails as $mail) :
@@ -45,3 +45,12 @@
         </div>
     </div>
 </div>
+
+<?php $v->start("modals");
+$v->insert("admin/fragments/modals/mails/read");
+$v->insert("admin/fragments/modals/mails/unread");
+$v->end(); ?>
+
+<?php $v->start("scripts");
+$v->insert("admin/fragments/scripts/mails");
+$v->end(); ?>

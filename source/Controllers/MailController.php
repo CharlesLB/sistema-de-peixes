@@ -26,7 +26,7 @@ class MailController extends Controller
         $this->mail->message = $data["message"];
 
         if (!$this->mail->save()) {
-            $callback["alert"] = $this->view->render("admin/fragments/widgets/general/alert", ["type" => "danger", "message" => $this->specie->fail()->getMessage()]);
+            $callback["alert"] = message($this->mail->fail()->getMessage(), "error");
             echo json_encode($callback);
             return;
         }
@@ -34,7 +34,7 @@ class MailController extends Controller
         # $this->mail->send("Nova mensagem do {$this->mail->name}", $this->mail->message );
 
         $callback["success"] = true;
-        $callback["alert"] = $this->view->render("admin/fragments/widgets/general/alert", ["type" => "success", "message" => "E-mail enviado com sucesso! :)"]);
+        $callback["alert"] = message('Email enviado com sucesso', "success");
         echo json_encode($callback);
     }
 
