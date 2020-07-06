@@ -9,13 +9,13 @@
     <?php
     $v->insert("admin/fragments/widgets/general/cards/bgCard", [
         "title" => "Espécie",
-        "cardBody" => "Espécies : 0 <br> Peixes : 120<br>",
+        "cardBody" => "Espécies : {$totalSpecie} <br> Peixes : {$totalFish}<br>",
         "icon" => "fish"
     ]);
 
     $v->insert("admin/fragments/widgets/general/cards/bgCard", [
         "title" => "Mensagens",
-        "cardBody" => "Não lidas : 2 <br> Total : 17 <br>",
+        "cardBody" => "Não lidas : {$totalMails} <br> Total : {$totalReadedMails} <br>",
         "icon" => "envelope"
     ]);
 

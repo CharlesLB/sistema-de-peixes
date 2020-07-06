@@ -26,7 +26,7 @@
     <?php $v->insert("admin/fragments/widgets/general/cards/bgCard", [
         "title" => "Dados",
         "cardBody" => "Total de Peixes: <span id='totalFish'>{$data["total"]}</span> <br><br><br>",
-        "icon" => "<i class='fas fa-fish fa-2x text-gray-300'></i>"
+        "icon" => "fish"
     ]) ?>
 
     <?php $v->insert("admin/fragments/widgets/general/cards/bgCard", [
@@ -35,10 +35,7 @@
             Peso médio : <span id='mediaWeight'>" . floatFormat($data["mediaWeight"]) . "</span>  <br> 
             Comprimento total média: <span id='mediaTotalLength'>" . floatFormat($data["mediaTotalLength"]) . "</span> <br> 
             Comprimento padrão média: <span id='mediaDefaultLength'>" . floatFormat($data["mediaDefaultLength"]) . "</span> <br>",
-        "icon" => "
-            <button class='btn btn-primary float-right mb-1' type='button' data-toggle='modal' data-target='#delete-specie'>
-                Calcular dados
-            </button>  "
+        "icon" => "ruler"
     ]) ?>
 </div>
 

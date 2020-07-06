@@ -55,15 +55,25 @@ class Web extends Controller
 
     public function admin(): void
     {
+        $specie = new Specie;
+        $totalSpecie = $specie->find()->count();
+
+        $fish = new Fish;
+        $totalFish = $fish->find()->count();
+
         $mail = new Mail;
         $listMails = $mail->listUnreaded();
         $totalMails = $mail->countUnreaded();
+        $totalReadedMails = $mail->find()->count();
 
         echo $this->view->render("admin/dashboard", [
             "title" => "Administrador | " . SITE["name"],
             "page" => "dashboard",
+            "totalSpecie" => $totalSpecie,
+            "totalFish" => $totalFish,
             "listMails" => $listMails,
-            "totalMails" => $totalMails
+            "totalMails" => $totalMails,
+            "totalReadedMails" => $totalReadedMails
         ]);
     }
 
