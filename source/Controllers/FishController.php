@@ -33,15 +33,12 @@ class FishController extends Controller
             return;
         }
 
-        $this->fish->updateSpecieData("create");
-
-        $Specie = new Specie;
-        $specie = $Specie->findById($this->fish->specie_id);
-
-        $callback["mediaWeight"] = floatFormat($specie->mediaWeight);
-        $callback["mediaDefaultLength"] = floatFormat($specie->mediaDefaultLength);
-        $callback["mediaTotalLength"] = floatFormat($specie->mediaTotalLength);
-        $callback["totalFish"] = $Specie->fishCount($specie->id);
+        $data = $this->specieData();
+        
+        $callback["mediaWeight"] = floatFormat($data["mediaWeight"]);
+        $callback["mediaDefaultLength"] = floatFormat($data["mediaDefaultLength"]);
+        $callback["mediaTotalLength"] = floatFormat($data["mediaTotalLength"]);
+        $callback["totalFish"] = $data["total"];
         $callback["success"] = true;
         $callback["alert"] = $this->view->render("admin/fragments/widgets/general/alert", ["type" => "success", "message" => "Peixe cadastrado com sucesso"]);
         $callback["fish"] = $this->view->render("admin/fragments/widgets/specie/tableLine", ["fish" => $this->fish]);
@@ -64,25 +61,18 @@ class FishController extends Controller
         $this->fish->totalLength = $data["totalLength"];
         $this->fish->weight = $data["weight"];
 
-
-        $oldFish = $this->fishCache($this->fish);
-
         if (!$this->fish->save()) {
             $callback["alert"] = $this->view->render("admin/fragments/widgets/general/alert", ["type" => "error", "message" => $this->fish->fail()->getMessage()]);
             echo json_encode($callback);
             return;
         }
 
-        $oldFish->updateSpecieData("destroy");
-        $this->fish->updateSpecieData("create");
-
-        $Specie = new Specie;
-        $specie = $Specie->findById($this->fish->specie_id);
-
-        $callback["mediaWeight"] = floatFormat($specie->mediaWeight);
-        $callback["mediaDefaultLength"] = floatFormat($specie->mediaDefaultLength);
-        $callback["mediaTotalLength"] = floatFormat($specie->mediaTotalLength);
-        $callback["totalFish"] = $Specie->fishCount($specie->id);
+        $data = $this->specieData();
+        
+        $callback["mediaWeight"] = floatFormat($data["mediaWeight"]);
+        $callback["mediaDefaultLength"] = floatFormat($data["mediaDefaultLength"]);
+        $callback["mediaTotalLength"] = floatFormat($data["mediaTotalLength"]);
+        $callback["totalFish"] = $data["total"];
         $callback["success"] = true;
         $callback["alert"] = $this->view->render("admin/fragments/widgets/general/alert", ["type" => "success", "message" => "Peixe editado com sucesso"]);
         $callback["fish"] = $this->view->render("admin/fragments/widgets/specie/tableLine", ["fish" => $this->fish]);
@@ -110,13 +100,12 @@ class FishController extends Controller
             return;
         };
 
-        $Specie = new Specie;
-        $specie = $Specie->findById($this->fish->specie_id);
-
-        $callback["mediaWeight"] = floatFormat($specie->mediaWeight);
-        $callback["mediaDefaultLength"] = floatFormat($specie->mediaDefaultLength);
-        $callback["mediaTotalLength"] = floatFormat($specie->mediaTotalLength);
-        $callback["totalFish"] = $Specie->fishCount($specie->id);
+        $data = $this->specieData();
+        
+        $callback["mediaWeight"] = floatFormat($data["mediaWeight"]);
+        $callback["mediaDefaultLength"] = floatFormat($data["mediaDefaultLength"]);
+        $callback["mediaTotalLength"] = floatFormat($data["mediaTotalLength"]);
+        $callback["totalFish"] = $data["total"];
         $callback["success"] = true;
         $callback["alert"] = $this->view->render("admin/fragments/widgets/general/alert", ["type" => "success", "message" => "Peixe excluído com sucesso"]);
         $callback["id"] = $this->fish->id;
@@ -128,17 +117,14 @@ class FishController extends Controller
     // ─── PRIVATE FUNCTIONS ──────────────────────────────────────────────────────────
     //
 
-    private function fishCache(object $fish): object
+    private function specieData(): array
     {
-        $fishCopy = new Fish;
+        $specie = new Specie;
+        $selectedSpecie = $specie->findById($this->fish->specie_id , "id");
+        $specie->id = $selectedSpecie->id;
 
-        $fishCopy->id = $fish->id;
-        $fishCopy->specie_id = $fish->specie_id;
-        $fishCopy->sex = ucfirst($fish->sex);
-        $fishCopy->defaultLength = $fish->defaultLength;
-        $fishCopy->totalLength = $fish->totalLength;
-        $fishCopy->weigth = $fish->weigth;
+        $data = $specie->showData();
 
-        return $fishCopy;
+        return $data;
     }
 }

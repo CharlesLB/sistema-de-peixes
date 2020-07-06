@@ -93,8 +93,8 @@ class Web extends Controller
         $Specie->id =  $data['specie_id'];
         $specie = $Specie->find("id = :id", "id={$Specie->id}")->fetch()->data();
         
-        $fishes = $Specie->fishFind();
-        $total = $Specie->fishCount();
+        $fishes = $Specie->fishesFind();
+        $data = $Specie->showData();
 
         $mail = new Mail;
         $listMails = $mail->listUnreaded();
@@ -104,7 +104,7 @@ class Web extends Controller
             "title" => $specie->name . " | " . SITE["name"],
             "page" => "project",
             "specie" => $specie,
-            "total" => $total,
+            "data" => $data,
             "fishes" => $fishes,
             "listMails" => $listMails,
             "totalMails" => $totalMails

@@ -25,17 +25,20 @@
 <div class="row">
     <?php $v->insert("admin/fragments/widgets/general/cards/bgCard", [
         "title" => "Dados",
-        "cardBody" => "Total de Peixes: <span id='totalFish'>{$total}</span> <br><br><br>",
-        "icon" => "fish"
+        "cardBody" => "Total de Peixes: <span id='totalFish'>{$data["total"]}</span> <br><br><br>",
+        "icon" => "<i class='fas fa-fish fa-2x text-gray-300'></i>"
     ]) ?>
 
     <?php $v->insert("admin/fragments/widgets/general/cards/bgCard", [
         "title" => "Peso e altura",
         "cardBody" => "
-            Peso médio : <span id='mediaWeight'>" . floatFormat($specie->mediaWeight) . "</span>  <br> 
-            Comprimento total média: <span id='mediaTotalLength'>" . floatFormat($specie->mediaTotalLength) . "</span> <br> 
-            Comprimento padrão média: <span id='mediaDefaultLength'>" . floatFormat($specie->mediaDefaultLength) . "</span> <br>",
-        "icon" => "ruler"
+            Peso médio : <span id='mediaWeight'>" . floatFormat($data["mediaWeight"]) . "</span>  <br> 
+            Comprimento total média: <span id='mediaTotalLength'>" . floatFormat($data["mediaTotalLength"]) . "</span> <br> 
+            Comprimento padrão média: <span id='mediaDefaultLength'>" . floatFormat($data["mediaDefaultLength"]) . "</span> <br>",
+        "icon" => "
+            <button class='btn btn-primary float-right mb-1' type='button' data-toggle='modal' data-target='#delete-specie'>
+                Calcular dados
+            </button>  "
     ]) ?>
 </div>
 

@@ -93,7 +93,7 @@ class Specie extends DataLayer
         return $total;
     }
 
-    public function fishFind(): ?array
+    public function fishesFind(): ?array
     {
         $fish = new Fish;
 
@@ -102,32 +102,36 @@ class Specie extends DataLayer
         return $fishes;
     }
 
-    public function updateData(string $method, Fish $fish): void
+    public function showData(): array
     {
-        $selectedSpecie = $this->findById($fish->specie_id)->data();
+        $fish = new Fish;
 
-        $this->id = $selectedSpecie->id;
-        $this->name = $selectedSpecie->name;
+        $data["total"] = $this->fishCount();
 
-        if ($method == "create") {
-            $this->mediaWeight = ($selectedSpecie->mediaWeight * ($this->fishCount() - 1) + $fish->weight) / ($this->fishCount());
-            $this->mediaTotalLength = ($selectedSpecie->mediaTotalLength * ($this->fishCount() - 1) + $fish->totalLength) / ($this->fishCount());
-            $this->mediaDefaultLength = ($selectedSpecie->mediaDefaultLength * ($this->fishCount() - 1) + $fish->defaultLength) / ($this->fishCount());
-        }
+        if ($data["total"] != 0) {
+            $fishes = $this->fishesFind();
 
-        if ($method == "destroy") {
-            if ($this->fishCount() == 1) {
-                $this->mediaWeight = 0;
-                $this->mediaTotalLength = 0;
-                $this->mediaDefaultLength = 0;
-            } else {
-                $this->mediaWeight = ($selectedSpecie->mediaWeight * $this->fishCount() - $fish->weight) / ($this->fishCount() - 1);
-                $this->mediaTotalLength = ($selectedSpecie->mediaTotalLength * $this->fishCount() - $fish->totalLength) / ($this->fishCount() - 1);
-                $this->mediaDefaultLength = ($selectedSpecie->mediaDefaultLength * $this->fishCount() - $fish->defaultLength) / ($this->fishCount() - 1);
+            $totalWeight = 0;
+            $totalTotalLength = 0;
+            $totalDefaultLength = 0;
+
+            foreach ($fishes as $fish) {
+                $totalWeight += $fish->weight;
+                $totalTotalLength += $fish->totalLength;
+                $totalDefaultLength += $fish->defaultLength;
             }
+
+            $data["mediaWeight"] = $totalWeight / $data["total"];
+            $data["mediaTotalLength"] = $totalTotalLength / $data["total"];
+            $data["mediaDefaultLength"] = $totalDefaultLength / $data["total"];
+        
+        }else{
+            $data["mediaWeight"] = 0;
+            $data["mediaTotalLength"] = 0;
+            $data["mediaDefaultLength"] = 0;
         }
 
-        $this->edit(true);
+        return $data;
     }
 
     //

@@ -9,7 +9,7 @@
                     </div>
                 </div>
                 <div class="col-auto">
-                    <i class="fas fa-<?= $icon ?> fa-2x text-gray-300"></i>
+                    <?= $icon ?>
                 </div>
             </div>
         </div>

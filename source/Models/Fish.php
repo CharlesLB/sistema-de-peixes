@@ -28,8 +28,6 @@ class Fish extends DataLayer
             return false;
         }
 
-        $this->updateSpecieData("create");
-
         return true;
     }
 
@@ -39,21 +37,8 @@ class Fish extends DataLayer
             return false;
         }
 
-        $this->updateSpecieData("destroy");
         return true;
     }
-
-    //
-    // ─── AUXILIAR FUNCTIONS ─────────────────────────────────────────────────────────
-    //
-
-
-    public function updateSpecieData(string $method = "create"): void
-    {
-        $specie = new Specie;
-        $specie->updateData($method, $this);
-    }
-
 
     //
     // ─── PRIVATE FUNCTIONS ──────────────────────────────────────────────────────────
