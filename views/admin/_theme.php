@@ -40,7 +40,7 @@
                 <span class="badge badge-danger badge-counter"><?= $totalMails > 0 ? "+{$totalMails}" : ""; ?></span>
               </a>
 
-              <?php if (1 == 1) : ?>
+              <?php if ($listMails) : ?>
                 <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                   <h6 class="dropdown-header">
                     Mensagens
